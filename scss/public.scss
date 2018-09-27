@@ -47,6 +47,122 @@ header#banner {
   background-color: rgba(212, 219, 223, 1.00);
   z-index: 999;
 }
+#search-chk {
+  z-index: -9999999999999;
+  display: none;
+}
+
+#search {
+  position: fixed;
+  display: inline-block;
+  bottom: 20px;
+  right: -290px;
+  width: 350px;
+  height: 50px;
+  background-color: #777b7d;
+  z-index: 999;
+  overflow: hidden;
+  @include border-radius(50px);
+  @include transition(left, .5s);
+  &:hover {
+    right: -30px;
+    background-color: #545a5f;
+  }
+
+  button {
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+  }
+
+  input {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: white;
+    font-size: 18px;
+    margin-top: 13px;
+    margin-left: -20px;
+
+    @include input-placeholder {
+      font-weight: normal;
+      color: white;
+    }
+  }
+}
+
+#chk-sidemenu {
+  display: none;
+  z-index: -99999999999;
+
+  &:checked {
+    ~ #sidemenu {
+      width: 80px;
+      overflow: hidden;
+      .back {
+        display: inline-block;
+      }
+      .layer {
+        .info {
+          margin-top: 70px;
+          .title {
+            display: none;
+          }
+          .avatar {
+            width: 50px;
+            height: 50px;
+            float: left;
+            margin-left: 15px;
+          }
+        }
+        .reply {
+          width: 50px;
+          height: 50px;
+          margin-left: 15px;
+          &:before {
+            line-height: 50px;
+            margin-left: 18px;
+          }
+          &:after {
+            display: none;
+          }
+        }
+        .menu {
+
+          a {
+            margin-left: 32px;
+            margin-bottom: 37px;
+            font-size: 20px;
+            color: transparent;
+            &:before {
+              color: white;
+              margin-right: 40px;
+            }
+
+            &:hover {
+              color: red;
+              &:before {
+                color: #eaa332;
+              }
+            }
+          }
+        }
+      }
+    }
+    ~ #container {
+      margin-left: 90px;
+    }
+  }
+}
 
 #sidemenu {
   position: fixed;
@@ -57,10 +173,24 @@ header#banner {
   height: 100%;
   background-color: #384854;
   @include box-shadow(3px 1px 3px #e0e0e0);
+  @include transition(left, .3s);
+
   > * {
     display: inline-block;
   }
 
+  .back {
+    position: relative;
+    display: none;
+    &:before {
+      position: absolute;
+      top: 30px;
+      right: -13px;
+      color: white;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
   .layer {
     width: 250px;
     height: 100%;
@@ -94,15 +224,15 @@ header#banner {
         }
 
         &:hover {
-            cursor: pointer;
-          }
+          cursor: pointer;
+        }
       }
 
       .avatar {
         width: 40px;
         height: 40px;
         border: 2px solid #e0e0e0;
-        @include border-radius(20px);
+        @include border-radius(30px);
         overflow: hidden;
         float: right;
         text-align: right;
@@ -130,6 +260,11 @@ header#banner {
         line-height: 55px;
         float: left;
         margin-left: 30px;
+      }
+
+      &:after {
+        display: inline-block;
+        content: 'reply';
       }
     }
 
@@ -177,33 +312,12 @@ $boxMaxWidth: 900px;
   height: 100%;
   margin-left: 300px;
   margin-top: 30px;
+  @include transition(left, .3s);
 
   .center {
     position: relative;
     display: inline-block;
     width: $boxMaxWidth;
-
-    // form.search {
-    //   position: absolute;
-    //   display: inline-block;
-    //   top: 0;
-    //   right: 0;
-   
-    //   > * {
-    //     display: inline-block;
-    //     float: right;
-    //   }
-
-    //   input[type="text"] {
-    //     width: 200px;
-    //     height: 30px;
-    //   }
-
-    //   button {
-    //     width: 30px;
-    //     height: 30px;
-    //   }
-    // }
 
     .box {
       display: block;

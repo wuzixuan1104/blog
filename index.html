@@ -16,16 +16,23 @@
   </head>
   <body lang="zh-tw">
     <header id="banner"></header>
-    <label id="search icon-6"></label>
+
+    <form id="search">
+      <button type="submit" class="icon-s"></button>
+      <input type="text" name="keyword" id="keyword" placeholder="搜尋 Chestnuter ...">
+    </form>
+
+    <input id="chk-sidemenu" type="checkbox">
 
     <div id="sidemenu">
+      <label class="back icon-r" for="chk-sidemenu"></label>
       <div class="layer">
         <div class="info">
-          <label class="icon-l title">Chestnuter</label>
+          <label class="icon-l title" for="chk-sidemenu">Chestnuter</label>
           <label class="avatar"><img src="img/me.png"></label>
         </div>
 
-        <a class="icon-edit-pencil reply" href="#">reply</a>
+        <a class="icon-edit-pencil reply" href="#"></a>
 
         <div class="menu">
           <a class="icon-home3" href="#">網站首頁</a>
@@ -34,14 +41,14 @@
           <a class="icon-file-text2" href="#" data-cnt="2">心情隨筆</a>
         </div>
       </div>
+      
     </div>
+
     <div id="container">
       <div class="center">
-        <!-- <form class="search">
-          <input type="text" name="keyword" id="keyword">
-          <button type="submit" class="icon-s"></button>
-        </form> -->
-        <div class="box"></div>
+        <div class="box">
+          <label class="title">這是我設計的部落格</label>
+        </div>
         <div class="box"></div>
         <div class="box"></div>
         <div class="box"></div>
