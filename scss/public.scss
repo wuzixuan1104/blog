@@ -43,6 +43,7 @@ $boxWidth2: 700px;
 
 $sidemenuMobileLeft: -300px;
 
+$mobileSidemenuHeight: 50px;
 header#banner {
   position: fixed;
   display: inline-block;
@@ -61,18 +62,110 @@ header#banner {
   &:checked {
     ~ #sidemenu {
       width: 80px;
+      overflow: hidden;
       .back {
         display: inline-block;
       }
+      .layer {
+        .info {
+          .title {
+            display: none;
+            width: 0;
+          }
+          .avatar {
+            display: block;
+            width: 50px;
+            height: 50px;
+            margin-left: 15px;
+          }
+        }
+        .reply {
+          width: 50px;
+          height: 50px;
+          margin-left: 15px;
+          @include border-radius(50px);
+          &:before {
+            margin-left: 17px;
+            font-size: 18px;
+          }
+          &:after {
+            display: none;
+          }
+        }
+        .menu {
+          a {
+            margin-bottom: 40px;
+            color: transparent;
+            &:before {
+              color: white;
+              font-size: 20px;
+              margin-right: 50px;
+              margin-left: 10px;
+            }
+
+            &.active {
+              &:before {
+                color: #eaa332;
+              }
+            }
+
+            &:hover {
+              &:before {
+                color: #eaa332;
+              }
+            }
+          } 
+        }
+      }
     }
 
-    ~#container {
+    ~ #container {
       @include range-width(1030px) {
         width: calc(100% - 80px);
         margin-left: 80px;
       }
     }
   }
+}
+
+#mobileSidemenu {
+  position: fixed;
+  display: none;
+  bottom: 0;
+  left: 0;
+  height: $mobileSidemenuHeight;
+  width: 100%;
+  z-index: 10;
+  
+  .menu {
+    display: inline-block;
+  }
+  // width: 100%;
+  // z-index: 10;
+  // background-color: #384854;
+  @include range-width(0, 1030px) {
+    display: inline-block;
+  }
+
+  // .reply {
+  //   position: relative;
+  //   display: inline-block;
+  //   width: 65px;
+  //   height: 65px;
+  //   text-decoration: none;
+  //   color: black;
+  //   background-color: #eaa332;
+  //   margin-top: -35px;
+  //   @include border-radius(65px);
+  //   border: 6px solid white;
+
+  //   &:before {
+  //     position: absolute;
+  //     font-size: 20px;
+  //     top: 18px;
+  //     left: 18px;
+  //   }
+  // }
 }
 
 #sidemenu {
@@ -152,6 +245,9 @@ header#banner {
         font-size: 20px;
         line-height: 50px;
       }
+      &:hover {
+        background-color: #ffd252;
+      }
     }
 
     .menu {
@@ -202,10 +298,10 @@ header#banner {
   width: calc(100% - #{$sidemenuWidth});
   margin-top: 30px;
   margin-left: $sidemenuWidth;
-
   @include range-width(0, 1030px) {
     margin-left: 0;
     width: 100%;
+    margin-bottom: $mobileSidemenuHeight;
   } 
 
   .box {
@@ -334,6 +430,25 @@ header#banner {
     @include input-placeholder {
       font-weight: normal;
       color: white;
+    }
+  }
+
+  @include range-width(0, 1030px) {
+    top: 50px;
+    height: 40px;
+    right: -220px;
+    width: 260px;
+    button {
+      top: 5px;
+      left: 5px;
+      font-size: 20px;
+      width: 30px;
+      height: 30px;
+    }
+    input {
+      font-size: 15px;
+      margin-top: 10px;
+      margin-left: -10px;
     }
   }
 }
