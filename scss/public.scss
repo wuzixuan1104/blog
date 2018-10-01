@@ -37,13 +37,11 @@ html {
   }
 }
 $sidemenuWidth: 300px;
-$boxWidth: 900px;
 
-$sidemenuWidth:100px;
-@include range-width(0, 1310px) {
-  $sidemenuWidth: 300px;
-  $boxWidth: 800px;
-}
+$boxWidth: 900px;
+$boxWidth2: 700px;
+
+$sidemenuMobileLeft: -300px;
 
 header#banner {
   position: fixed;
@@ -56,6 +54,27 @@ header#banner {
   z-index: 999;
 }
 
+#chk-sidemenu {
+  display: none;
+  z-index: -99999999999;
+
+  &:checked {
+    ~ #sidemenu {
+      width: 80px;
+      .back {
+        display: inline-block;
+      }
+    }
+
+    ~#container {
+      @include range-width(1030px) {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+      }
+    }
+  }
+}
+
 #sidemenu {
   position: fixed;
   display: inline-block;
@@ -64,6 +83,118 @@ header#banner {
   width: $sidemenuWidth;
   height: 100%;
   background-color: #384854;
+  @include transition(width, .3s);
+
+  @include range-width(0, 1030px) {
+    display: none;
+    left: $sidemenuMobileLeft;
+  }
+
+  .layer {
+    display: inline-block;
+    width: calc(#{$sidemenuWidth} - 60px);
+
+    .info {
+      display: inline-block;
+      width: 100%;
+      margin-top: 20px;
+      > * {
+        display: inline-block;
+      }
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        text-align: left;
+        line-height: 36px;
+        height: 36px;
+        width: calc(100% - 50px);
+        &:before {
+          display: inline-block;
+          line-height: 40px;
+          margin-right: 10px;
+          font-weight: bold;
+        }
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+        border: 1px solid white;
+        @include border-radius(40px);
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .reply {
+      display: block;
+      width: 180px;
+      height: 55px;
+      line-height: 55px;
+      text-decoration: none;
+      text-align: left;
+      font-size: 20px;
+      font-weight: bold;
+      color: black;
+      background-color: #eaa332;
+      margin-top: 25px;
+      @include border-radius(50px);
+
+      &:before {
+        margin-left: 30px;
+        margin-right: 25px;
+      }
+      &:after {
+        display: inline-block;
+        content: 'GitHub';
+        font-size: 20px;
+        line-height: 50px;
+      }
+    }
+
+    .menu {
+      display: inline-block;
+      width: 100%;
+      margin-top: 50px;
+      margin-left: 20px;
+
+      a {
+        display: block;
+        text-align: left;
+        margin-bottom: 30px;
+        color: rgba(238, 240, 242, 1.00);
+        text-decoration: none;
+        height: 20px;
+        line-height: 20px;
+
+        &.active {
+          color: #eaa332;
+        }
+
+        &:before {
+          margin-right: 15px;
+        }
+
+        &:hover {
+          cursor: pointer;
+          color: #eaa332;
+        }
+      }
+    }
+  }
+
+  .back {
+    display: none;
+    font-size: 20px;
+    color: white;
+    margin-top: 30px;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 #container {
@@ -72,71 +203,141 @@ header#banner {
   margin-top: 30px;
   margin-left: $sidemenuWidth;
 
+  @include range-width(0, 1030px) {
+    margin-left: 0;
+    width: 100%;
+  } 
+
   .box {
+    position: relative;
     display: inline-block;
     width: $boxWidth;
-    height: 100px;
     background-color: white;
+    padding: 15px;
     @include border-radius(5px);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
     &:first-child {
       margin-top: 40px;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
+    .title {
+      display: block;
+      text-align: left;
+      color: rgba(29, 39, 42, 1.00);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .datetime {
+      position: absolute;
+      display: inline-block;
+      top: 15px;
+      right: 15px;
+      font-size: 12px;
+      color: #989898;
+    }
+
+    .content {
+      display: block;
+      text-align: left;
+      margin-top: 20px;
+
+      &:after {
+        display: inline-block;
+        content: ' ...查看更多';
+        font-size: 12px;
+        margin-top: 5px;
+        color: #799ad2;
+      }
+    }
+
+    @include range-width(1030px, 1310px) {
+      width: $boxWidth2;
+    }
+    @include range-width(440px, 1030px) {
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 10px;
+      &:first-child {
+        margin-top: 10px;
+      }
+    } 
+    @include range-width(0, 440px) {
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 10px;
+      &:first-child {
+        margin-top: 10px;
+      }
+      .title {
+        font-size: 18px;
+      }
+      .content {
+        font-size: 15px;
+      }
+      .datetime {
+        position: relative;
+        display: block;
+        font-size: 10px;
+        text-align: left;
+        margin-left: 15px;
+      }
+    }
   }
 }
-// #search-chk {
-//   z-index: -9999999999999;
-//   display: none;
-// }
 
-// #search {
-//   position: fixed;
-//   display: inline-block;
-//   bottom: 20px;
-//   right: -290px;
-//   width: 350px;
-//   height: 50px;
-//   background-color: #777b7d;
-//   z-index: 999;
-//   overflow: hidden;
-//   @include border-radius(50px);
-//   @include transition(left, .5s);
-//   &:hover {
-//     right: -30px;
-//     background-color: #545a5f;
-//   }
+#search {
+  position: fixed;
+  display: inline-block;
+  bottom: 20px;
+  right: -290px;
+  width: 350px;
+  height: 50px;
+  background-color: #777b7d;
+  z-index: 999;
+  overflow: hidden;
+  @include border-radius(50px);
+  @include transition(left, .5s);
+  &:hover {
+    right: -30px;
+    background-color: #545a5f;
+  }
 
-//   button {
-//     position: absolute;
-//     top: 2px;
-//     left: 8px;
-//     font-size: 25px;
-//     width: 50px;
-//     height: 50px;
-//     display: inline-block;
-//     background-color: transparent;
-//     color: white;
-//     border: 0;
-//     cursor: pointer;
-//     outline: none;
-//   }
+  button {
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+  }
 
-//   input {
-//     background-color: transparent;
-//     border: 0;
-//     outline: 0;
-//     color: white;
-//     font-size: 18px;
-//     margin-top: 13px;
-//     margin-left: -20px;
+  input {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: white;
+    font-size: 18px;
+    margin-top: 13px;
+    margin-left: -20px;
 
-//     @include input-placeholder {
-//       font-weight: normal;
-//       color: white;
-//     }
-//   }
-// }
+    @include input-placeholder {
+      font-weight: normal;
+      color: white;
+    }
+  }
+}
+
 
 // #chk-sidemenu {
 //   display: none;
