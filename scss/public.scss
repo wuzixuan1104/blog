@@ -139,6 +139,26 @@ header#banner {
   
   .menu {
     display: inline-block;
+    width: 100%;
+    @include clearfix();
+    > * {
+      display: inline-block;
+      float: left;
+      
+    }
+    .main {
+      width: calc(50% - 50px);
+      height: 50px;
+      background-color: #384854;
+    }
+    .bar {
+      width: 100px;
+    }
+    .slogan {
+      width: calc(50% - 50px);
+      height: 50px;
+      background-color: #384854;
+    }
   }
   // width: 100%;
   // z-index: 10;
@@ -147,25 +167,24 @@ header#banner {
     display: inline-block;
   }
 
-  // .reply {
-  //   position: relative;
-  //   display: inline-block;
-  //   width: 65px;
-  //   height: 65px;
-  //   text-decoration: none;
-  //   color: black;
-  //   background-color: #eaa332;
-  //   margin-top: -35px;
-  //   @include border-radius(65px);
-  //   border: 6px solid white;
-
-  //   &:before {
-  //     position: absolute;
-  //     font-size: 20px;
-  //     top: 18px;
-  //     left: 18px;
-  //   }
-  // }
+  .reply {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+    color: black;
+    background-color: #eaa332;
+    margin-top: -75px;
+    @include border-radius(50px);
+    @include box-shadow(0 0 2px 1px rgba(0,0,0,0.2));
+    &:before {
+      position: absolute;
+      font-size: 20px;
+      top: 12px;
+      left: 18px;
+    }
+  }
 }
 
 #sidemenu {
