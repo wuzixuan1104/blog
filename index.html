@@ -23,6 +23,7 @@
     </form>
 
     <input id="chk-sidemenu" type="checkbox">
+    <input id="chk-mobSidemenu" type="checkbox">
 
     <div id="sidemenu">
       <label class="back icon-r" for="chk-sidemenu"></label>
@@ -43,26 +44,42 @@
       </div>
     </div>
 
-
-    <div id="mobileSidemenu">
+    <div id="mobSidemenu">
       <div class="menu"> 
-        <label class="main"></label>
+        <div class="detail">
+          <label class="avatar"><img src="img/me.png"></label>
+          <div class="svg">
+            <span class="first"></span>
+            <svg class="bar" height="50px" width="100px" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 
+                       L 25 0
+                       A 25 25 0 0 0 50 25 
+                       A 25 25 0 0 0 75 0
+                       L 100 0
+                       L 100 50
+                       L 0 50
+                      " fill="#35444e"/>
+            </svg>
+            <span class="last"></span>
+          </div>
+          <div class="items">
+            <a class="icon-home3 active" href="#">網站首頁</a>
+            <a class="icon-tools" href="#" data-cnt="19">開發心得</a>
+            <a class="icon-medal" href="#" data-cnt="1">成就紀錄</a>
+            <a class="icon-file-text2" href="#" data-cnt="2">心情隨筆</a>
+          </div>
+        </div>
+
+        <label class="open icon-list" for="chk-mobSidemenu"></label>
         <svg class="bar" height="60px" width="100px" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0 
-                   L 15 0
-                   A 35 35 0 0 0 50 35 
-                   A 35 35 0 0 0 85 0
-                   L 100 0
-                   L 100 60
-                   L 0 60
-                  " fill="#384854"/>
+          <path d="M0 0 L 15 0 A 35 35 0 0 0 50 35 A 35 35 0 0 0 85 0 L 100 0 L 100 60 L 0 60" fill="#384854"/>
         </svg>
         <label class="slogan"></label>
       </div>
       <a class="icon-edit-pencil reply" href="#"></a>
     </div>
 
-    <label id="bg-cover" for="chk-sidemenu"></label>
+    <label id="bg-cover" for="chk-mobSidemenu"></label>
 
     <div id="container">
       <div class="box">
