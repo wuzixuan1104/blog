@@ -36,17 +36,9 @@ html {
     @include font-smoothing(antialiased);
   }
 }
-$sidemenuWidth: 300px;
 
-$boxWidth: 900px;
-$boxWidth2: 700px;
-
-$sidemenuMobileLeft: -300px;
-
-$mobileSidemenuHeight: 60px;
-
-$bannerHeight: 30px;
-$bannerHeight2: 20px;
+$bannerHeight: 30px !global;
+$bannerHeight2: 20px !global;
 
 header#banner {
   position: fixed;
@@ -57,9 +49,10 @@ header#banner {
   height: $bannerHeight;
   background-color: rgba(212, 219, 223, 1.00);
   z-index: 999;
+  @include box-shadow(0 3px 2px rgba(60, 58, 58, 0.2));
 
   @include range-width(0, 1030px) {
-    height: $bannerHeight;
+    height: $bannerHeight2;
   }
 }
 
@@ -137,18 +130,25 @@ header#banner {
 }
 
 #chk-mobSidemenu {
+  display: none;
+  z-index: -9999999999999999;
   &:checked {
     ~ #mobSidemenu {
       .menu {
+        .open {
+          width: calc(50% + 5px);
+        }
         .slogan {
-          width: calc(50% - 50px + 100px);
+          width: calc(50% + 5px);
         }
         .detail {
-          top: -300px;
+          top: -290px;
+          @include opacity(1);
         }
       }
       .reply {
-        display: none;
+        margin-top: 0;
+        @include opacity(0);
       }
     }
     ~ #bg-cover {
@@ -191,7 +191,8 @@ header#banner {
       height: 300px;
       background-color: rgba(28, 38, 41, 1.00);
       @include border-radius(15px);
-      @include transition(top, .3s);
+      @include transition(top .5s cubic-bezier(.39,1.43,.75,.92), opacity .3s);
+      @include opacity(0);
 
       .avatar {
         display: inline-block;
@@ -286,9 +287,8 @@ header#banner {
         color: rgba(255, 255, 255, 1.00);
         font-size: 35px;
         line-height: 60px;
-        // margin-left: -60px;
       }
-
+      @include transition(width .3s);
     }
     .bar {
       width: 100px;
@@ -301,6 +301,15 @@ header#banner {
       width: calc(50% - 50px + 5px);
       height: 60px;
       background-color: #384854;
+      @include transition(width .3s);
+      &:after {
+        position: absolute;
+        display: inline-block;
+        content: 'by Hsuan';
+        color: white;
+        top: 20px;
+        right: 22px;
+      }
     }
   }
   
@@ -325,6 +334,9 @@ header#banner {
       top: 17px;
       left: 20px;
     }
+
+    @include transition(margin-top .3s, opacity .3s);
+    @include opacity(1);
   }
 }
 
@@ -336,7 +348,7 @@ header#banner {
   width: $sidemenuWidth;
   height: 100%;
   background-color: #384854;
-  @include transition(width, .3s);
+  @include transition(width .3s);
 
   @include range-width(0, 1030px) {
     display: none;
@@ -355,7 +367,7 @@ header#banner {
         display: inline-block;
       }
       .title {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bold;
         color: white;
         text-align: left;
@@ -453,102 +465,6 @@ header#banner {
   }
 }
 
-#container {
-  display: inline-block;
-  width: calc(100% - #{$sidemenuWidth});
-  margin-top: $bannerHeight;
-  margin-left: $sidemenuWidth;
-  @include range-width(0, 1030px) {
-    margin-left: 0;
-    width: 100%;
-    margin-bottom: $mobileSidemenuHeight;
-    margin-top: $bannerHeight2;
-  } 
-
-  .box {
-    position: relative;
-    display: block;
-
-    width: $boxWidth;
-    background-color: white;
-    padding: 15px;
-    @include border-radius(5px);
-    margin: 0 auto;
-    margin-bottom: 10px;
-
-    &:first-child {
-      margin-top: 40px;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
-    .title {
-      display: block;
-      text-align: left;
-      color: rgba(29, 39, 42, 1.00);
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .datetime {
-      position: absolute;
-      display: inline-block;
-      top: 15px;
-      right: 15px;
-      font-size: 12px;
-      color: #989898;
-    }
-
-    .content {
-      display: block;
-      text-align: left;
-      margin-top: 20px;
-
-      &:after {
-        display: inline-block;
-        content: ' ...查看更多';
-        font-size: 12px;
-        margin-top: 5px;
-        color: #799ad2;
-      }
-    }
-
-    @include range-width(1030px, 1310px) {
-      width: $boxWidth2;
-    }
-    @include range-width(440px, 1030px) {
-      width: 100%;
-      margin-left: 0;
-      margin-bottom: 5px;
-      &:first-child {
-        margin-top: 10px;
-      }
-    } 
-    @include range-width(0, 440px) {
-      width: 100%;
-      margin-left: 0;
-      margin-bottom: 5px;
-      &:first-child {
-        margin-top: 10px;
-      }
-      .title {
-        font-size: 18px;
-      }
-      .content {
-        font-size: 15px;
-      }
-      .datetime {
-        position: relative;
-        display: block;
-        font-size: 10px;
-        text-align: left;
-        margin-left: 15px;
-      }
-    }
-  }
-}
-
 #search {
   position: fixed;
   display: inline-block;
@@ -615,293 +531,4 @@ header#banner {
     }
   }
 }
-
-
-// #chk-sidemenu {
-//   display: none;
-//   z-index: -99999999999;
-
-//   &:checked {
-//     // ~ #bg-cover {
-//     //   @include range-width(0, 925px) {
-//     //     display: inline-block;
-//     //   }
-//     // }
-//     ~ #sidemenu {
-//       width: 80px;
-//       overflow: hidden;
-//       .back {
-//         display: inline-block;
-//       }
-      
-//       .layer {
-//         .info {
-//           margin-top: 70px;
-//           .title {
-//             display: none;
-//           }
-//           .avatar {
-//             width: 50px;
-//             height: 50px;
-//             float: left;
-//             margin-left: 15px;
-//           }
-//         }
-//         .reply {
-//           width: 50px;
-//           height: 50px;
-//           margin-left: 15px;
-//           &:before {
-//             line-height: 50px;
-//             margin-left: 18px;
-//           }
-//           &:after {
-//             display: none;
-//           }
-//         }
-//         .menu {
-
-//           a {
-//             margin-left: 32px;
-//             margin-bottom: 37px;
-//             font-size: 20px;
-//             color: transparent;
-//             &:before {
-//               color: white;
-//               margin-right: 40px;
-//             }
-
-//             &:hover {
-//               color: red;
-//               &:before {
-//                 color: #eaa332;
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//     ~ #container {
-//       margin-left: 90px;
-//     }
-//   }
-// }
-
-// #bg-cover {
-//   position: fixed;
-//   display: none;
-//   width: 100%;
-//   height: 100%;
-//   z-index: 9;
-//   background-color: #0a0a0ac9;
-// }
-
-// #sidemenu {
-//   position: fixed;
-//   display: inline-block;
-//   top: 30px;
-//   left: 0;
-//   width: 300px;
-//   height: 100%;
-//   background-color: #384854;
-//   @include box-shadow(3px 1px 3px #e0e0e0);
-//   @include transition(left, .3s);
-
-//   @include range-width(0, 925px) {
-//     z-index: 10;
-//   }
-
-//   > * {
-//     display: inline-block;
-//   }
-
-//   .back {
-//     position: relative;
-//     display: none;
-//     &:before {
-//       position: absolute;
-//       top: 30px;
-//       right: -13px;
-//       color: white;
-//       font-size: 25px;
-//       font-weight: bold;
-//     }
-//   }
-//   .layer {
-//     width: 250px;
-//     height: 100%;
-
-//     > * {
-//       display: inline-block;
-//       width: 100%;
-//       margin-bottom: 30px;
-//     }
-//     .info {
-//       margin-top: 20px;
-//       @include clearfix();
-
-//       > * {
-//         display: inline-block;
-//         float: left;
-//       }
-//       .title {
-//         position: relative;
-//         font-size: 25px;
-//         font-weight: bold;
-//         line-height: 40px;
-//         color: rgba(238, 240, 242, 1.00);
-//         margin-left: 20px;
-
-//         &:before {
-//           position: absolute;
-//           top: 0;
-//           left: -30px;
-//           line-height: 42px;
-//         }
-
-//         &:hover {
-//           cursor: pointer;
-//         }
-//       }
-
-//       .avatar {
-//         width: 40px;
-//         height: 40px;
-//         border: 2px solid #e0e0e0;
-//         @include border-radius(30px);
-//         overflow: hidden;
-//         float: right;
-//         text-align: right;
-//         img {
-//           width: 100%;
-//           height: 100%;
-//         }
-//       }
-//     }
-
-//     .reply {
-//       width: 150px;
-//       height: 55px;
-//       text-decoration: none;
-//       float: left;
-//       color: black;
-//       font-size: 22px;
-//       font-weight: bold;
-//       line-height: 50px;
-//       background-color: #eaa332;
-//       @include border-radius(30px);
-
-//       &:before {
-//         font-size: 18px;
-//         line-height: 55px;
-//         float: left;
-//         margin-left: 30px;
-//       }
-
-//       &:after {
-//         display: inline-block;
-//         content: 'reply';
-//       }
-//     }
-
-//     .menu {
-//       a {
-//         display: block;
-//         text-decoration: none;
-//         color: #d6daec;
-//         margin-bottom: 30px;
-//         text-align: left;
-//         margin-left: 20px;
-//         font-size: 16px;
-//         &.active {
-//           color: #eaa332;
-//         }
-//         &:first-child {
-//           margin-top: 20px;
-//         }
-//         &:hover {
-//           color: #eaa332;
-//         }
-//         &:before {
-//           display: inline-block;
-//           margin-right: 10px;
-//           line-height: 20px;
-//         }
-//         &:after {
-//           display: inline-block;
-//           content: '(' attr(data-cnt) ')';
-//         }
-//         &:first-child {
-//           &:after {
-//             display: none;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// $boxMaxWidth: 900px;
-// #container {
-//   display: inline-block;
-//   width: calc(100% - 300px);
-//   height: 100%;
-//   margin-left: 300px;
-//   margin-top: 30px;
-//   overflow: hidden;
-//   @include transition(left, .3s);
-//   @include range-width(0, 925px) {
-//     width: 100%;
-//     margin-left: 0;
-//   }
-//   .center {
-//     position: relative;
-//     display: inline-block;
-//     width: $boxMaxWidth;
-//     @include range-width(0, 1200px) {
-//       width: 600px;
-//     }
-
-//     .box {
-//       position: relative;
-//       display: block;
-//       margin-top: 18px;
-//       padding: 20px;
-//       background-color: rgba(254, 254, 254, 1.00);
-
-//       @include box-shadow(0 1px 0 #e0e0e0, 0 1px 1px rgba(0,0,0,0.1));
-//       &:first-child {
-//         margin-top: 50px;
-//       }
-
-//       .title {
-//         display: block;
-//         font-size: 20px;
-//         font-weight: bold;
-//         color: rgba(28, 38, 41, 1.00);
-//         text-align: left;
-//       }
-
-//       .datetime {
-//         position: absolute;
-//         top: 20px;
-//         right: 20px;
-
-//         &:before {
-//           content: '-- ';
-//         }
-//       }
-
-//       .content {
-//         display: block;
-//         text-align: left;
-//         margin-top: 20px;
-//       }
-//     }
-//   }
-// }
-
-
-
-
 

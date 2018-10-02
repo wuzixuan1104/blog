@@ -6,5 +6,5 @@
  */
  
 $(function () {
-
+  $("#cover-photo").imgLiquid();
 });

@@ -6,35 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
 
     <title></title>
-
-    <link href="css/public.css" rel="stylesheet" type="text/css" />
     <link href="css/icon.css" rel="stylesheet" type="text/css" />
+    <link href="css/public.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
 
     <script src="js/jquery_v1.10.2/jquery-1.10.2.min.js" language="javascript" type="text/javascript" ></script>
+    <script src="js/imgLiquid-min.js"></script>
     <script src="js/public.js" language="javascript" type="text/javascript" ></script>
 
   </head>
   <body lang="zh-tw">
     <header id="banner"></header>
-
     <form id="search">
       <button type="submit" class="icon-s"></button>
       <input type="text" name="keyword" id="keyword" placeholder="搜尋 Chestnuter ...">
     </form>
-
     <input id="chk-sidemenu" type="checkbox">
     <input id="chk-mobSidemenu" type="checkbox">
-
     <div id="sidemenu">
       <label class="back icon-r" for="chk-sidemenu"></label>
       <div class="layer">
         <div class="info">
-          <label class="icon-l title" for="chk-sidemenu">CHESTNUTER</label>
+          <label class="icon-l title" for="chk-sidemenu">Hsuan's Blog</label>
           <label class="avatar"><img src="img/me.png"></label>
         </div>
-
         <a class="icon-edit-pencil reply" href="#"></a>
-
         <div class="menu">
           <a class="icon-home3 active" href="#">網站首頁</a>
           <a class="icon-tools" href="#" data-cnt="19">開發心得</a>
@@ -43,7 +39,6 @@
         </div>
       </div>
     </div>
-
     <div id="mobSidemenu">
       <div class="menu"> 
         <div class="detail">
@@ -51,14 +46,7 @@
           <div class="svg">
             <span class="first"></span>
             <svg class="bar" height="50px" width="100px" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 0 
-                       L 25 0
-                       A 25 25 0 0 0 50 25 
-                       A 25 25 0 0 0 75 0
-                       L 100 0
-                       L 100 50
-                       L 0 50
-                      " fill="#35444e"/>
+              <path d="M0 0 L 25 0 A 25 25 0 0 0 50 25 A 25 25 0 0 0 75 0 L 100 0 L 100 50 L 0 50" fill="#35444e"/>
             </svg>
             <span class="last"></span>
           </div>
@@ -69,7 +57,6 @@
             <a class="icon-file-text2" href="#" data-cnt="2">心情隨筆</a>
           </div>
         </div>
-
         <label class="open icon-list" for="chk-mobSidemenu"></label>
         <svg class="bar" height="60px" width="100px" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 0 L 15 0 A 35 35 0 0 0 50 35 A 35 35 0 0 0 85 0 L 100 0 L 100 60 L 0 60" fill="#384854"/>
@@ -78,45 +65,24 @@
       </div>
       <a class="icon-edit-pencil reply" href="#"></a>
     </div>
-
     <label id="bg-cover" for="chk-mobSidemenu"></label>
 
     <div id="container">
-      <div class="box">
-        <label class="title">這是我設計的部落格</label>
-        <label class="datetime">2018-09-25 11:24:33</label>
-        <div class="content">很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈</div>
+      <div class="intro">
+        <div id="cover-photo"><img src="img/intro8.jpg"></div>
+        <div class="tab"></div>
       </div>
-
-      <div class="box">
-        <label class="title">這是我設計的部落格</label>
-        <label class="datetime">2018-09-25 11:24:33</label>
-        <div class="content">很美吧！這是我東看看西看看都出來的！哇哈哈哈哈</div>
-      </div>
-
-      <div class="box">
-        <label class="title">這是我設計的部落格</label>
-        <label class="datetime">2018-09-25 11:24:33</label>
-        <div class="content">很美吧！這是我東看看西看看都出來的！哇哈哈哈哈</div>
-      </div>
-
-      <div class="box">
-        <label class="title">這是我設計的部落格</label>
-        <label class="datetime">2018-09-25 11:24:33</label>
-        <div class="content">很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈</div>
-      </div>
-
-      <div class="box">
-        <label class="title">這是我設計的部落格</label>
-        <label class="datetime">2018-09-25 11:24:33</label>
-        <div class="content">很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈</div>
-      </div>
-
-      <div class="box">
-        <label class="title">這是我設計的部落格</label>
-        <label class="datetime">2018-09-25 11:24:33</label>
-        <div class="content">很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈很美吧！這是我東看看西看看都出來的！哇哈哈哈哈</div>
-      </div>
+      ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>
+      ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>
+      ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>
+      ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>
+      ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>
+      ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>
+      ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>
+      ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>
+      ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>ad<br>
     </div>
+
+    
   </body>
 </html>
