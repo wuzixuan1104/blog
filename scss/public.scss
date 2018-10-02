@@ -43,16 +43,24 @@ $boxWidth2: 700px;
 
 $sidemenuMobileLeft: -300px;
 
-$mobileSidemenuHeight: 50px;
+$mobileSidemenuHeight: 60px;
+
+$bannerHeight: 30px;
+$bannerHeight2: 20px;
+
 header#banner {
   position: fixed;
   display: inline-block;
   top: 0;
   left: 0;
   width: 100%;
-  height: 30px;
+  height: $bannerHeight;
   background-color: rgba(212, 219, 223, 1.00);
   z-index: 999;
+
+  @include range-width(0, 1030px) {
+    height: $bannerHeight;
+  }
 }
 
 #chk-sidemenu {
@@ -144,11 +152,11 @@ header#banner {
     > * {
       display: inline-block;
       float: left;
-      
+      border: none;
     }
     .main {
       width: calc(50% - 50px);
-      height: 50px;
+      height: 60px;
       background-color: #384854;
     }
     .bar {
@@ -156,13 +164,11 @@ header#banner {
     }
     .slogan {
       width: calc(50% - 50px);
-      height: 50px;
+      height: 60px;
       background-color: #384854;
     }
   }
-  // width: 100%;
-  // z-index: 10;
-  // background-color: #384854;
+  
   @include range-width(0, 1030px) {
     display: inline-block;
   }
@@ -170,19 +176,19 @@ header#banner {
   .reply {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     text-decoration: none;
     color: black;
     background-color: #eaa332;
-    margin-top: -75px;
+    margin-top: -88px;
     @include border-radius(50px);
     @include box-shadow(0 0 2px 1px rgba(0,0,0,0.2));
     &:before {
       position: absolute;
       font-size: 20px;
-      top: 12px;
-      left: 18px;
+      top: 17px;
+      left: 20px;
     }
   }
 }
@@ -315,12 +321,13 @@ header#banner {
 #container {
   display: inline-block;
   width: calc(100% - #{$sidemenuWidth});
-  margin-top: 30px;
+  margin-top: $bannerHeight;
   margin-left: $sidemenuWidth;
   @include range-width(0, 1030px) {
     margin-left: 0;
     width: 100%;
     margin-bottom: $mobileSidemenuHeight;
+    margin-top: $bannerHeight2;
   } 
 
   .box {
