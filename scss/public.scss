@@ -253,15 +253,16 @@ header#banner {
             display: inline-block;
             margin-right: 20px;
           }
-          &:last-child {
+          
+          &:nth-child(n+2) {
             &:after {
-              display: block;
-              content: '';
-              width: 60%;
-              border: 0.5px solid #3a5763;
-              margin-top: 20px;
+              display: inline-block;
+              content: '(' attr(data-cnt) ')';
+              margin-left: 5px;
+              color: #7b8692;
             }
           }
+          
           &.active {
             color: #eaa332;
           }
@@ -443,6 +444,15 @@ header#banner {
 
         &:before {
           margin-right: 15px;
+        }
+
+        &:nth-child(n+2) {
+          &:after {
+            display: inline-block;
+            content: '(' attr(data-cnt) ')';
+            margin-left: 5px;
+            color: #7b8692;
+          }
         }
 
         &:hover {

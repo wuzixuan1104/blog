@@ -51,12 +51,24 @@ html {
     padding-top: $bannerHeight2;
   } 
 
+  > * {
+    display: block;
+    margin-bottom: 20px;
+    width: calc(100% - 100px);
+    margin-left: 50px;
+    @include range-width(0, 1030px) {
+      width: calc(100% - 20px);
+      margin-left: 10px;
+    }
+  }
+
   .intro {
     position: relative;
     display: inline-block;
     width: 100%;
     height: 280px;
     overflow: hidden;
+    margin-left: 0;
 
     #cover-photo {
       width: 100%;
@@ -64,22 +76,60 @@ html {
       img {
         width: 100%;
       }
-
       // background-attachment: fixed;
       // background-position: center 100%;
       // background-size: cover;
       // background-repeat: no-repeat;
     }
-    .tab {
+    .slogan {
       position: absolute;
       display: inline-block;
       bottom: 0;
       left: 0;
       width: 100%;
       height: 40px;
+      line-height: 40px;
+      // text-align: left;
+      padding-left: 20px;
+      color: white;
       background-color: rgba(0,0,0,0.3);
     }
   }
   
+  .title {
+    text-align: left; 
+    font-size: 18px;
+    font-weight: bold;
+    color: #919191;
+    @include text-shadow(1px 1px 1px rgba(255,255,255,0.65));
+  }
+
+  .about {
+    background-color: white;
+    padding: 20px;
+    line-height: 30px;
+    text-align: left;
+    overflow: hidden;
+    @include border-radius(5px);
+    @include box-shadow(0 1px 2px rgba(0,0,0,0.2), 0 -1px 1px rgba(0,0,0,0.05));
+  }
+
+  .calendar {
+    height: 242px;
+    background-color: white;
+    @include border-radius(5px);
+    @include box-shadow(0 1px 2px rgba(0,0,0,0.2), 0 -1px 1px rgba(0,0,0,0.05));
+
+    div {
+      display: inline-block;
+      a {
+        span {
+          display: none;
+        }
+      }
+    }
+
+    margin-bottom: 100px;
+  }
 }
 
