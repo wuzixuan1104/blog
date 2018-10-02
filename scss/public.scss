@@ -53,6 +53,7 @@ header#banner {
 
   @include range-width(0, 1030px) {
     height: $bannerHeight2;
+    @include box-shadow(none);
   }
 }
 
@@ -122,8 +123,7 @@ header#banner {
 
     ~ #container {
       @include range-width(1030px) {
-        width: calc(100% - 80px);
-        margin-left: 80px;
+        padding-left: 80px;
       }
     }
   }

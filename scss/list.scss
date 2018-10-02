@@ -42,14 +42,14 @@ $boxWidth2: 700px !global;
 
 #container {
   display: inline-block;
-  width: calc(100% - #{$sidemenuWidth});
-  margin-top: $bannerHeight;
-  margin-left: $sidemenuWidth;
+  width: 100%;
+  padding-top: $bannerHeight;
+  padding-left: $sidemenuWidth;
   @include range-width(0, 1030px) {
-    margin-left: 0;
+    padding-left: 0;
     width: 100%;
-    margin-bottom: $mobileSidemenuHeight;
-    margin-top: 0;
+    padding-bottom: $mobileSidemenuHeight;
+    padding-top: 0;
   } 
 
   .box {
@@ -108,6 +108,8 @@ $boxWidth2: 700px !global;
       width: 100%;
       margin-left: 0;
       margin-bottom: 5px;
+      @include border-radius(0);
+
       &:first-child {
         margin-top: $bannerHeight2;
       }
@@ -116,6 +118,8 @@ $boxWidth2: 700px !global;
       width: 100%;
       margin-left: 0;
       margin-bottom: 5px;
+      @include border-radius(0);
+
       &:first-child {
         margin-top: $bannerHeight2;
       }
