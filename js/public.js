@@ -7,4 +7,8 @@
  
 $(function () {
   $("#cover-photo").imgLiquid();
+
+  $('#search').click(function() {
+    $(this).toggle('active');
+  });
 });

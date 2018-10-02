@@ -491,7 +491,10 @@ header#banner {
     right: -30px;
     background-color: #545a5f;
   }
-
+  &.active {
+    right: -30px;
+    background-color: #545a5f;
+  }
   button {
     position: absolute;
     top: 2px;
