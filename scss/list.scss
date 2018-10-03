@@ -74,41 +74,46 @@ $boxWidth2: 700px !global;
       display: block;
       text-align: left;
       color: rgba(29, 39, 42, 1.00);
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-left: 76px;
     }
 
     .type {
       position: absolute;
       display: inline-block;
       top: 15px;
-      right: 15px;
+      left: 15px;
       color: white;
-      width: 50px;
-      height: 40px;
-      font-size: 15px;
-      line-height: 40px;
+      width: 55px;
+      height: 25px;
+      font-size: 13px;
+      line-height: 25px;
+      overflow: hidden;
       @include border-radius(30px);
-      @include box-shadow(0px 3px 1px 1px rgba(64, 63, 63, 0.18));
+      @include box-shadow(2px 2px 1px 0px rgba(64,63,63,0.18));
+
       background-color: rgb(101, 101, 101);
-      // &.red {
-      //   background-color: #e29fc1;
-      // }
-      // &.green {
-      //   background-color: #89b78d;
-      // }
-      // &.blue {
-      //   background-color: #81aace;
-      // }
-      // &.orange {
-      //   background-color: #e6ba8b;
-      // }
+      &.red {
+        background-color: #e88f8f;
+      }
+      &.green {
+        background-color: #89b78d;
+      }
+      &.blue {
+        background-color: #81aace;
+      }
+      &.orange {
+        background-color: #ecb982;
+      }
     }
 
     .datetime {
       position: absolute;
-      // display: inline-block;
-      display: none;
+      display: inline-block;
       top: 15px;
       right: 15px;
       font-size: 12px;
@@ -119,7 +124,6 @@ $boxWidth2: 700px !global;
       display: block;
       text-align: left;
       margin-top: 20px;
-      padding-right: 100px;
       overflow: hidden;
       text-overflow: ellipsis;
 
@@ -150,7 +154,7 @@ $boxWidth2: 700px !global;
       margin-left: 0;
       margin-bottom: 5px;
       @include border-radius(0);
-
+      position: relative;
       &:first-child {
         margin-top: $bannerHeight2;
       }
@@ -160,13 +164,10 @@ $boxWidth2: 700px !global;
 
       .content {
         font-size: 15px;
+        margin-top: 12px;
       }
       .datetime {
-        position: relative;
-        display: block;
-        font-size: 10px;
-        text-align: left;
-        margin-left: 15px;
+        display: none;
       }
     }
   }
