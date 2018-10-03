@@ -42,8 +42,8 @@ html {
   width: 100%;
   padding-top: $bannerHeight;
   padding-left: $sidemenuWidth;
-  @include transition(padding-left .3s);
 
+  @include transition(padding-left .3s);
   @include range-width(0, 1030px) {
     padding-left: 0;
     width: 100%;
@@ -54,14 +54,13 @@ html {
   > * {
     display: block;
     margin-bottom: 20px;
-    width: calc(100% - 100px);
-    margin-left: 50px;
+    width: calc(100% - 80px);
+    margin-left: 40px;
     @include range-width(0, 1030px) {
       width: calc(100% - 20px);
       margin-left: 10px;
     }
   }
-
   .intro {
     position: relative;
     display: inline-block;
@@ -89,8 +88,6 @@ html {
       width: 100%;
       height: 40px;
       line-height: 40px;
-      // text-align: left;
-      padding-left: 20px;
       color: white;
       background-color: rgba(0,0,0,0.3);
     }
@@ -106,7 +103,7 @@ html {
 
   .about {
     background-color: white;
-    padding: 20px;
+    padding: 12px;
     line-height: 30px;
     text-align: left;
     overflow: hidden;
@@ -115,14 +112,39 @@ html {
   }
 
   .calendar {
-    height: 242px;
-    background-color: white;
-    @include border-radius(5px);
-    @include box-shadow(0 1px 2px rgba(0,0,0,0.2), 0 -1px 1px rgba(0,0,0,0.05));
+    height: 234px;
+    overflow: hidden;
+    @include clearfix();
+    $aTagWidth: (242px - 8px - 24px) / 7;
 
     div {
       display: inline-block;
+      height: 100%;
+      width: $aTagWidth;
+      float: left;
+      margin-right: 4px;
+
       a {
+        display: inline-block;
+        height: $aTagWidth;
+        width: $aTagWidth;
+        background-color: #d2d2d2;
+        text-decoration: none;
+        margin-bottom: 4px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+        &.active {
+          background-color: rgba(210, 224, 157, 1.00);
+        }
+        &:before {
+          display: inline-block;
+          content: attr(data-cnt);
+          line-height: $aTagWidth;
+          color: white;
+          font-size: 12px;
+        }
         span {
           display: none;
         }
