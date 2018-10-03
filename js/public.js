@@ -9,6 +9,9 @@ $(function () {
   if($("#cover-photo").length > 0)
     $("#cover-photo").imgLiquid();
 
+  if($('#latest').length > 0)
+    $('#latest .box .pic').imgLiquid();
+
   $('#search').click(function() {
     $(this).toggle('active');
   });

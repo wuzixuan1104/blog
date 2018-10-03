@@ -42,6 +42,7 @@ html {
   width: 100%;
   padding-top: $bannerHeight;
   padding-left: $sidemenuWidth;
+  margin-bottom: 30px;
 
   @include transition(padding-left .3s);
   @include range-width(0, 1030px) {
@@ -102,13 +103,28 @@ html {
   }
 
   .about {
+    position: relative;
     background-color: white;
     padding: 12px;
+    padding-bottom: 50px;  
     line-height: 30px;
     text-align: left;
     overflow: hidden;
     @include border-radius(5px);
     @include box-shadow(0 1px 2px rgba(0,0,0,0.2), 0 -1px 1px rgba(0,0,0,0.05));
+      
+    .upd-date {
+      position: absolute;
+      display: block;
+      bottom: 10px;
+      right: 15px;
+      color: #b3b2b2;
+      font-size: 10px;
+      font-style: italic;
+      &:before {
+        content: '最後編輯日期：';
+      }
+    }
   }
 
   .calendar {
@@ -125,6 +141,7 @@ html {
       margin-right: 4px;
 
       a {
+        position: relative;
         display: inline-block;
         height: $aTagWidth;
         width: $aTagWidth;
@@ -145,13 +162,140 @@ html {
           color: white;
           font-size: 12px;
         }
+
         span {
+          position: absolute;
+          display: none;
+          bottom: -25px;
+          left: 30px;
+          width: 150px;
+          height: 25px;
+          line-height: 25px;
+          background-color: black;
+          color: white;
+          font-size: 12px;
+          @include border-radius(10px);
+        }
+
+        &:hover {
+          span {
+            display: inline-block;
+            z-index: 10;
+          }
+        }
+      }
+    }
+  }
+
+  #latest {
+    text-align: left;
+    height: 218px;
+
+    &.empty {
+      display: inline-block;
+      height: 70px;
+      margin-left: 0;
+      background-color: white; 
+      @include border-radius(5px);
+      @include box-shadow(0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.1));
+      &:before {
+        display: inline-block;
+        width: 100%;
+        content: '目前尚無任何文章。';
+        text-align: center;
+        line-height: 70px;
+        color: #b4b4b4;
+        font-weight: bold;
+      }
+    }
+
+    @include clearfix();
+    .box {
+      display: inline-block;
+      float: left;
+      width: calc( (100% - 60px) / 4);
+      height: 218px;
+      background-color: white;
+      margin-right: 20px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: rgba(90, 90, 90, 1.00);
+      overflow: hidden;
+
+      &:nth-child(4) {
+        margin-right: 0;
+      }
+      &:nth-child(n + 5) {
+        display: none;
+      }
+      @include border-radius(5px);
+      @include box-shadow(0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.1));
+
+      > * {
+        display: block;
+        width: 100%;
+      }
+      .pic {
+        height: 130px;
+        border-bottom: 1px solid rgba(199, 199, 199, 0.3);
+        img {
+          height: 100%;
+        }
+      }
+
+      b {
+        margin-top: 10px;
+        padding: 0 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      span {
+        margin-top: 7px;
+        padding: 0px 15px;
+        font-size: 12px;
+        line-height: 22px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: rgba(90, 90, 90, .7);
+      }
+      
+    }
+    
+    @include range-width(1030px, 1200px) {
+      .box {
+        width: calc((100% - 40px) / 3);
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+        &:nth-child(n + 4) {
           display: none;
         }
       }
     }
-
-    margin-bottom: 100px;
+    @include range-width(320px, 1031px) {
+      .box {
+        width: calc((100% - 10px) / 2);
+        height: 100%;
+        margin-right: 10px;
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+        &:nth-child(n + 3) {
+          display: none;
+        }
+      }
+    }
+    @include range-width(0, 321px) {
+      .box {
+        width: 100%;
+        height: 100%;
+        margin-right: 0;
+        &:nth-child(n + 2) {
+          display: none;
+        }
+      }
+    }
   }
 }
 
