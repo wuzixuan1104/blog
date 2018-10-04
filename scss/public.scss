@@ -548,14 +548,12 @@ header#banner {
 #page {
   display: block;
   margin: 0 auto;
-  margin-top: 16px;
-  text-align: right;
-  max-width: 240px;
+  max-width: 300px;
+  margin-top: 50px;
+
   ul {
     padding: 0;
-    background-color: white;
     @include border-radius(2px);
-    @include box-shadow(0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.1));
     @include clearfix();
 
     > li {
@@ -567,11 +565,12 @@ header#banner {
       text-align: center;
       font-size: 14px;
       line-height: 40px;
-
+      margin-left: 10px;
+      @include border-radius(40px);
       &.active {
         background-color: #384854;
         a {
-          color: #ec9b1f;
+          color: #eaa332;
         }
       }
 

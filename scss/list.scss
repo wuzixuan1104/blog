@@ -45,23 +45,23 @@ $boxWidth2: 700px !global;
   width: 100%;
   padding-top: $bannerHeight;
   padding-left: $sidemenuWidth;
+  padding-bottom: 36px;
   @include range-width(0, 1030px) {
     padding-left: 0;
     width: 100%;
-    padding-bottom: $mobileSidemenuHeight;
+    padding-bottom: 88px;
     padding-top: 0;
   } 
 
   .box {
     position: relative;
     display: block;
-    // height: 100px;
     width: $boxWidth;
     background-color: white;
     padding: 15px;
-    @include border-radius(5px);
     margin: 0 auto;
     margin-bottom: 10px;
+    @include border-radius(5px);
 
     &:first-child {
       margin-top: 40px;
@@ -97,16 +97,16 @@ $boxWidth2: 700px !global;
       @include box-shadow(2px 2px 1px 0px rgba(64,63,63,0.18));
 
       background-color: rgb(101, 101, 101);
-      &.red {
+      &.ios {
         background-color: #e88f8f;
       }
-      &.green {
+      &.f2e {
         background-color: #89b78d;
       }
       &.blue {
         background-color: #81aace;
       }
-      &.orange {
+      &.full {
         background-color: #ecb982;
       }
     }
