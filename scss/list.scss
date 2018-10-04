@@ -58,7 +58,7 @@ $boxWidth2: 700px !global;
     display: block;
     width: $boxWidth;
     background-color: white;
-    padding: 15px;
+    padding: 20px 30px;
     margin: 0 auto;
     margin-bottom: 10px;
     @include border-radius(5px);
@@ -79,14 +79,14 @@ $boxWidth2: 700px !global;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      padding-left: 76px;
+      padding-left: 70px;
     }
 
     .type {
       position: absolute;
       display: inline-block;
-      top: 15px;
-      left: 15px;
+      top: 20px;
+      left: 26px;
       color: white;
       width: 55px;
       height: 25px;
@@ -114,8 +114,8 @@ $boxWidth2: 700px !global;
     .datetime {
       position: absolute;
       display: inline-block;
-      top: 15px;
-      right: 15px;
+      top: 20px;
+      right: 30px;
       font-size: 12px;
       color: #989898;
     }
@@ -123,7 +123,7 @@ $boxWidth2: 700px !global;
     .content {
       display: block;
       text-align: left;
-      margin-top: 20px;
+      margin-top: 10px;
       overflow: hidden;
       text-overflow: ellipsis;
 
@@ -151,6 +151,7 @@ $boxWidth2: 700px !global;
     } 
     @include range-width(0, 440px) {
       width: 100%;
+      padding: 15px 20px;
       margin-left: 0;
       margin-bottom: 5px;
       @include border-radius(0);
@@ -161,10 +162,13 @@ $boxWidth2: 700px !global;
       .title {
         font-size: 18px;
       }
-
+      .type {
+        top: 15px;
+        left: 20px;
+      }
       .content {
         font-size: 15px;
-        margin-top: 12px;
+        margin-top: 8px;
       }
       .datetime {
         display: none;
