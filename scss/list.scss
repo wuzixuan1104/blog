@@ -62,6 +62,7 @@ $boxWidth2: 700px !global;
     margin: 0 auto;
     margin-bottom: 10px;
     @include border-radius(5px);
+    border: 1px solid #a2a2a23d;
 
     &:first-child {
       margin-top: 40px;
