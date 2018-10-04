@@ -149,7 +149,7 @@ $boxWidth2: 700px !global;
       @include border-radius(0);
       position: relative;
       &:first-child {
-        margin-top: $bannerHeight2;
+        margin-top: $bannerHeight2 - 1px;
       }
       .title {
         font-size: 18px;
