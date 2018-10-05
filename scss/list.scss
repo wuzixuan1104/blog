@@ -63,6 +63,7 @@ $boxWidth2: 700px !global;
     margin-bottom: 10px;
     @include border-radius(5px);
     border: 1px solid #a2a2a23d;
+    text-decoration: none;
 
     &:first-child {
       margin-top: 40px;
@@ -118,7 +119,8 @@ $boxWidth2: 700px !global;
       margin-top: 10px;
       overflow: hidden;
       text-overflow: ellipsis;
-
+      color: #4c4c4c;
+      
       &:after {
         display: inline-block;
         content: ' ...查看更多';
