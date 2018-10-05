@@ -12,6 +12,15 @@ $(function () {
   if($('#latest').length > 0)
     $('#latest .box .pic').imgLiquid();
 
+  if($('.artical.bg').length > 0) {
+    $('.artical.bg').imgLiquid();
+  }
+
+  if($('.recommend > a > figure').length > 0) {
+    $('.recommend > a > figure').imgLiquid();
+  }
+
+
   $('#search').click(function() {
     $(this).toggle('active');
   });
