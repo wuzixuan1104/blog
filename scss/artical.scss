@@ -57,7 +57,7 @@ $boxWidth2: 700px !global;
     display: block;
     width: $boxWidth;
     margin: 0 auto;
-
+    margin-bottom: 20px;
     .bg {
       display: inline-block;
       width: 100%;
@@ -230,17 +230,16 @@ $boxWidth2: 700px !global;
           }
           
         }
-        @include range-width(320px, 1031px) {
+        @include range-width(500px, 1031px) {
           header {
             margin-left: 20px;
           }
           div.recommend {
             display: block;
-            width: 100%;
-            text-align: center;
-            margin-left: 15px;
+            width: calc(100% - 30px);
+
             a {
-              width: calc((100% - 60px) / 3);
+              width: calc((100% - 30px) / 3);
               + a {
                 margin-left: 15px;
               } 
@@ -248,18 +247,17 @@ $boxWidth2: 700px !global;
           }
         }
 
-        @include range-width(0, 321px) {
+        @include range-width(0, 501px) {
           header {
             margin-left: 20px;
           }
 
           div.recommend {
             display: block;
-            width: 100%;
+            width: calc(100% - 30px);
             text-align: center;
-            margin-left: 15px;
             a {
-              width: calc((100% - 60px) / 2);
+              width: calc((100% - 15px) / 2);
               + a {
                 margin-left: 15px;
               } 
@@ -290,6 +288,7 @@ $boxWidth2: 700px !global;
         padding: 20px 18px;
       }
     }
+
   }
 }
 
