@@ -6,27 +6,18 @@
  */
  
 $(function () {
-  if($("#cover-photo").length > 0)
-    $("#cover-photo").imgLiquid();
+  currentUrl = $(location).attr('href').split('/').pop();
 
-  if($('#latest').length > 0)
-    $('#latest .box .pic').imgLiquid();
-
-  if($('.artical.bg').length > 0) {
-    $('.artical.bg').imgLiquid();
-  }
-
-  if($('.recommend > a > figure').length > 0) {
-    $('.recommend > a > figure').imgLiquid();
-  }
-
-
-  $('#search').click(function() {
-    $(this).toggle('active');
+  $('#web-pages').find('a').each(function() {
+    if($(this).attr('href') == currentUrl)
+      $(this).addClass('active').siblings().removeClass('active');
   });
 
-  $('.items > a , .menu > a').click(function() {
-    console.log('test');
-    $(this).toggle('active').siblings().removeClass('active');
+  if (typeof $.fn.imgLiquid !== 'undefined') {
+    $("#cover-photo, #latest .box .pic, .artical.bg, .recommend > a > figure").imgLiquid();
+  }
+
+  $('#search').click(function() {
+    $(this).toggleClass('active');
   });
 });
