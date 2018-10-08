@@ -209,7 +209,6 @@ html {
                 margin-top: -8px;
                 a {
                   @include transform(scale(.85));
-                  margin-right: -10px;
 
                   &:nth-child(n+4) {
                     display: none;
