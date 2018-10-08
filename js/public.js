@@ -14,7 +14,7 @@ $(function () {
   });
 
   if (typeof $.fn.imgLiquid !== 'undefined') {
-    $("#cover-photo, #latest .box .pic, .artical.bg, .recommend > a > figure").imgLiquid();
+    $(".main .bg div, #cover-photo, #latest .box .pic, .artical.bg, .recommend > a > figure").imgLiquid();
   }
 
   $('#search').click(function() {
