@@ -60,6 +60,9 @@ html {
     .bg {
       width: 100%;
       height: 200px;
+      @include range-width(0, 1030px) {
+        height: 180px;
+      }
       display: inline-block;
       margin: 0 auto;
       overflow: hidden;
@@ -76,12 +79,6 @@ html {
           width: 100%;
         }
       }
-    }
-    .bg2 {
-      display: inline-block;
-      width: 100%;
-      height: 240px;
-      background-color: #e6e6e6;
     }
 
     artical {
@@ -134,6 +131,7 @@ html {
               height: 15px;
               background-color: rgba(225, 123, 116, 1.00);
               @include border-radius(50px);
+              @include transition(background-color .3s);
             }
             &:after {
               display: inline-block;
@@ -156,6 +154,8 @@ html {
               font-size: 22px;
             }
             .tag {
+              margin-left: -4px;
+
               a {
                 display: inline-block;
                 color: white;
@@ -192,29 +192,61 @@ html {
             }
           }
         }
-      }
-      // i {
-      //   position: absolute;
-      //   display: inline-block;
-      //   // width: 11px;
-      //   height: 100%;
-      //   top: 0;
-      //   border: 1px solid #75757582;
-      //   left: 30%;
-      //   z-index: -3;
-      // }
 
-      // section {
-      //   .card {
-      //     display: inline-block;
-      //     time {
-      //       font-size: 12px;
-      //       font-weight: bold;
-      //       letter-spacing: 5px;
-      //       color: rgba(122, 131, 142, 1.00);
-      //     }
-      //   }
-      // }
+        @include range-width(0, 1030px) {
+          margin-top: 64px;
+          .item {
+            position: relative;
+            .content {
+              position: absolute;
+              top: 40px;
+              left: 24px;
+              width: calc(100% - 20px);
+              h3 {
+                font-size: 20px;
+              }
+              .tag {
+                margin-top: -8px;
+                a {
+                  @include transform(scale(.85));
+                  margin-right: -10px;
+
+                  &:nth-child(n+4) {
+                    display: none;
+                  }
+                }
+              }
+            }
+            .time {
+              position: absolute;
+              top: 0px;
+              left: 16px;
+              color: rgb(171, 171, 171);
+            }
+            .marker {
+              position: absolute;
+              top: 0px;
+              left: 15px;
+
+            }
+            &.period {
+              margin-bottom: -6px;
+              margin-top: 18px;
+              padding-left: 22px;
+              h2 {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    
+    }
+    @include range-width(1029px, 1310px) {
+      width: $boxWidth2;
+    }
+    @include range-width(0, 1030px) {
+      width: 100%;
     }
   }
 }
