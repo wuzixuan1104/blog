@@ -94,7 +94,6 @@ html {
         width: 100%;
         margin: 0 auto;
         padding-left: 0;
-        margin-top: 100px;
         .item {
           display: inline-block;
           width: 100%;
@@ -194,7 +193,6 @@ html {
         }
 
         @include range-width(0, 1030px) {
-          margin-top: 64px;
           .item {
             position: relative;
             .content {
