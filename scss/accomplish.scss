@@ -195,6 +195,7 @@ html {
         @include range-width(0, 1030px) {
           .item {
             position: relative;
+            margin-top: -20px;
             .content {
               position: absolute;
               top: 40px;
