@@ -94,7 +94,11 @@ html {
         width: 100%;
         margin: 0 auto;
         padding-left: 0;
+        padding-top: 80px;
+        overflow: hidden;
+
         .item {
+          position: relative;
           display: inline-block;
           width: 100%;
           height: 180px;
@@ -105,41 +109,63 @@ html {
             display: inline-block;
             float: left;
           }
-          &:hover {
-            .marker {
-              &:before {
-                background-color: white;
-                border: 3px solid rgba(225, 123, 116, 1.00);
-              }
-            }          
-          }
+       
           .time {
-            width: 250px;
+            width: 174px;
             font-size: 12px;
             font-weight: bold;
+            padding-left: 32px;
             letter-spacing: 5px;
             color: rgba(122, 131, 142, 1.00);
           }
           .marker {
-            width: 15px;
-            &:before {
-              display: inline-block;
-              content: '';
-              width: 15px;
-              height: 15px;
+            position: relative;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            margin-top: -8px;
+            background-color: #cccccc;
+            @include transition(background-color 3s, opacity 5s);
+
+            &.active {
               background-color: rgba(225, 123, 116, 1.00);
-              @include border-radius(50px);
-              @include transition(background-color .3s);
+              @include opacity(1);
             }
+            
+            @include border-radius(50px);
+            @include box-shadow(0 0 4px rgba(0,0,0,0.14), 0 2px 4px rgba(0,0,0,0.28));
+            
+            &.dev {
+              &:before {
+                color: white;
+                line-height: 30px;
+                content: '\e91e';
+                font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal;
+                @include font-smoothing(antialiased);
+              }
+            }
+            &.mood {
+              &:before {
+                color: white;
+                line-height: 30px;
+                content: '\e927';
+                font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal;
+                @include font-smoothing(antialiased);
+              }
+            }
+          
             &:after {
+              position: absolute;
+              top: 35px;
+              left: 13px;
               display: inline-block;
               content: '';
-              height: 136px;
-              border: 2px solid rgba(206, 213, 217, 1.00);
+              height: 120px;
+              border: 2px solid rgba(206, 213, 217, 0.59);
             }
           }
           .content {
-            width: calc(100% - 250px - 15px);
+            width: calc(100% - 200px - 30px);
             padding: 0 30px;
             > * {
               display: block;
@@ -181,7 +207,6 @@ html {
               a {
                 text-decoration: none;
                 font-size: 14px;
-                // background-color: #e17b74;
                 color: #e17b74;
                 text-align: center;
                 height: 26px;
@@ -204,28 +229,60 @@ html {
           }
 
           &.period {
+            position: relative;
             display: block;
-            height: 88px;
-            margin-bottom: 12px;
-            padding-left: 36px;
-            margin-top: 46px;
+            height: 118px;
+            line-height: 78px;
+            padding-left: 176px;
+            margin-bottom: 52px;
+            margin-top: -34px;
+            .top {
+              position: absolute;
+              top: 0;
+              left: 178px;
+              display: inline-block;
+              width: 20px;
+              border: 2px solid rgba(206, 213, 217, 0.59);
+            }
+            .bottom {
+              position: absolute;
+              bottom: 0;
+              left: 178px;
+              display: inline-block;
+              width: 20px;
+              height: 4px;
+              background-color: rgba(206, 213, 217, 0.59);
+
+              &:after {
+                content: '';
+                bottom: 0;
+                left: 178px;
+                display: inline-block;
+                width: 2px;
+                height: 24px;
+                border: 2px solid rgba(206, 213, 217, 0.59);
+              }
+            }
             h2 {
-              font-size: 20px;
-              letter-spacing: 4px;
-              color: rgba(225, 123, 116, 0.6705882352941176);
+              font-size: 24px;
+              letter-spacing: 2px;
+              color: rgba(220, 83, 83, 0.7);
             }
           }
         }
 
         @include range-width(0, 1030px) {
+          padding-top: 54px;
           .item {
             position: relative;
             margin-top: 3px;
             .content {
               position: absolute;
               top: 40px;
-              left: 24px;
+              right: -12px;
               width: calc(100% - 20px);
+
+            
               h3 {
                 font-size: 20px;
               }
@@ -243,7 +300,7 @@ html {
             .time {
               position: absolute;
               top: 0px;
-              left: 16px;
+              left: 10px;
               color: rgb(171, 171, 171);
             }
             .marker {
@@ -251,15 +308,25 @@ html {
               top: 0px;
               left: 15px;
               &:after {
-                height: 160px;
+                height: 145px;
               }
             }
             &.period {
-              margin-bottom: -32px;
-              margin-top: 24px;
-              padding-left: 22px;
+              margin-bottom: 32px;
+              margin-top: -8px;
+              padding-left: 19px;
+              height: 86px;
+              line-height: 56px;
+              .top {
+                top: 0;
+                left: 19px;
+              }
               h2 {
                 font-size: 18px;
+              }
+              .bottom {
+                bottom: -4px;
+                left: 19px;
               }
             }
           }
