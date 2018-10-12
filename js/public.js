@@ -6,20 +6,5 @@
  */
  
 $(function () {
-  currentUrl = $(location).attr('href').split('/').pop();
-
-  $('#timeline .item .marker').addClass('active');
-
-  $('#web-pages').find('a').each(function() {
-    if($(this).attr('href') == currentUrl)
-      $(this).addClass('active').siblings().removeClass('active');
-  });
-
-  if (typeof $.fn.imgLiquid !== 'undefined') {
-    $(".main .bg div, #cover-photo, #latest .box .pic, .artical.bg, .recommend > a > figure").imgLiquid();
-  }
-
-  $('#search').click(function() {
-    $(this).toggleClass('active');
-  });
+ 
 });
