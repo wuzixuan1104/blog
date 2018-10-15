@@ -6,5 +6,14 @@
  */
  
 $(function () {
- 
+  currentUrl = $(location).attr('href').split('/').pop();
+
+  $('#menu').find('a').each(function() {
+    if($(this).attr('href') == currentUrl)
+      $(this).addClass('active').siblings().removeClass('active');
+  });
+
+  if (typeof $.fn.imgLiquid !== 'undefined') {
+    $('figure.bg').imgLiquid();
+  }
 });
