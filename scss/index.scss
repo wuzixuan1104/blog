@@ -15,7 +15,7 @@
   }
 }
 
-main {
+#main {
 
   h1 {
     display: none;
@@ -63,6 +63,7 @@ main {
       padding: 20px 0;
       @include text-shadow(1px 1px 1px rgba(255,255,255,0.65));
     }
+
     .about {
       display: inline-block;
       width: 100%;
@@ -86,15 +87,12 @@ main {
           //30個div
           width: calc(100% / 30);
         }
-
         @include range-width(1000px, 1300px) {
           width: calc(100% / 24);
         }
-
         @include range-width(700px, 1000px) {
           width: calc(100% / 20);
         }
-
         @include range-width(300px, 700px) {
           width: calc(100% / 10);
         }
@@ -126,6 +124,23 @@ main {
       display: inline-block;
       width: 100%;
       @include clearfix();
+
+      &:empty {
+        display: inline-block;
+        height: 70px;
+        background-color: white; 
+        @include border-radius(5px);
+        @include box-shadow(0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.1));
+        &:before {
+          display: inline-block;
+          width: 100%;
+          content: '目前尚無任何文章。';
+          text-align: center;
+          line-height: 70px;
+          color: #b4b4b4;
+          font-weight: bold;
+        }
+      }
 
       a {
         display: inline-block;

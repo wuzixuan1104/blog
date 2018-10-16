@@ -1,0 +1,144 @@
+/**
+ * @author      OA Wu <comdan66@gmail.com>
+ * @copyright   Copyright (c) 2015 - 2018, OAF2E
+ * @license     http://opensource.org/licenses/MIT  MIT License
+ * @link        https://www.ioa.tw/
+ */
+
+@import "_oa";
+
+* {
+  &, &:after, &:before {
+    vertical-align: top;
+    @include box-sizing(border-box);
+    @include font-smoothing(antialiased);
+  }
+}
+
+#main {
+  .container {
+    display: inline-block;
+    width: 100%;
+    padding: 0 50px;
+    padding-top: 40px;
+
+    a {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100px;
+      text-decoration: none;
+      color: black;
+      background-color: white;
+      border: 1px solid rgba(128, 128, 128, 0.15);
+      padding: 20px 30px;
+      padding-right: 60px;
+      @include border-radius(5px);
+      
+      + a {
+        margin-top: 12px;
+      }
+
+      > * {
+        display: block;
+        text-align: left;
+      }
+      b {
+        font-size: 18px;
+        color: rgb(29, 39, 42);
+        margin-bottom: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:before {
+          display: inline-block;
+          content: attr(data-tip);
+          width: 55px;
+          height: 25px;
+          line-height: 25px;
+          font-size: 13px;
+          font-weight: 0px;
+          color: white;
+          text-align: center;
+          margin-right: 15px;
+          @include border-radius(20px);
+          @include box-shadow(1px 1px 1px 1px rgba(195, 194, 194, 0.38));
+        }
+      }
+      span {
+        color: rgb(76, 76, 76);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      } 
+
+      &:after {
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        right: 0;
+        content: '\e315';
+        width: 20px;
+        height: 98px;
+        line-height: 98px;
+        color: white;
+        font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal;
+        @include font-smoothing(antialiased);
+        @include border-right-radius(5px);
+        @include transition(width .3s);
+      }
+
+      &:hover {
+        &:after {
+          width: 40px;
+        }
+      }
+
+      &.pink {
+        b {
+          &:before {
+            background-color: rgb(232, 143, 143);
+          }
+        }
+        &:after {
+          background-color: rgb(232, 143, 143);
+        }
+      }
+      &.blue {
+        b {
+          &:before {
+            background-color: rgb(129, 170, 206);
+          }
+        }
+        &:after {
+          background-color: rgb(129, 170, 206);
+        }
+      }
+      &.green {
+        b {
+          &:before {
+            background-color: rgb(137, 183, 141);
+          }
+        }
+        &:after {
+          background-color: rgb(137, 183, 141);
+        }
+      }
+      &.orange {
+        b {
+          &:before {
+            background-color: rgb(236, 185, 130);
+          }
+        }
+        &:after {
+          background-color: rgb(236, 185, 130);
+        }
+      }
+    }
+  }
+}
+
+
+
+
