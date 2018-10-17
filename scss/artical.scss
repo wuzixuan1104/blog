@@ -9,12 +9,307 @@
 }
 
 #main {
-  width: 0 auto;
+  width: auto;
 
+  @include range-width(0, 1030px) {
+    padding-left: 0;
+  }
   .container {
     display: block;
     text-align: center;
-    padding-top: 40px;
-    width: 100%;
+    width: $boxWidth;
+
+    .bg {
+      display: inline-block;
+      margin: 0 auto;
+      height: 240px;
+      width: 100%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    artical {
+      display: inline-block;
+      width: 100%;
+      background-color: white;
+      margin: 0 auto;
+      &.arti {
+        padding: 20px 30px;
+        @include box-shadow(0 -1px 0 #e0e0e0, 0 0 0px rgba(0,0,0,0.12), 0 0px 4px rgba(0,0,0,0.1));
+
+        header {
+          display: inline-block;
+          width: 100%;
+          text-align: left;
+
+          &.bold {
+            font-weight: bold;
+          } 
+          > * {
+            display: block;
+            text-align: left;
+          }
+
+          .tip {
+            @include clearfix();
+            a {
+              display: inline-block;
+              float: left;
+              text-decoration: none;
+              color: white;
+              background-color: rgb(82, 82, 82);
+              padding: 5px 8px;
+              font-size: 12px;
+              height: 26px;
+              line-height: 18px;
+              @include border-radius(30px);
+
+              + a {
+                margin-left: 10px;
+              }
+            }
+          }
+
+          h1 {
+            margin: 15px auto;
+            font-size: 22px;
+          }
+        }
+
+        .info {
+          display: block;
+          > * {
+            display: inline-block;
+            float: right;
+          }
+          time {
+            &:after {
+              display: inline-block;
+              content: attr(data-time);
+              color: rgba(185, 185, 185, 0.77);
+              font-size: 14px;
+              font-style: italic;
+            }
+          }
+        }
+
+        .s {
+          display: inline-block;
+          width: 100%;
+          figure {
+            margin: 10px auto;
+            width: 100%;
+            overflow: hidden; 
+            img {
+              width: 100%;
+            }
+            figcaption {
+              display: inline-block;
+              width: 100%;
+              height: 28px;
+              font-size: 14px;
+              line-height: 28px;
+              text-align: left;
+              margin-top: 10px;
+              &:before {
+                display: inline-block;
+                font-size: 22px;
+                color: rgb(127, 124, 124);
+              }
+            }
+          }
+
+          p {
+            display: inline-block;
+            width: 100%;
+            margin: 10px auto;
+            text-align: left;
+            line-height: 25px;
+
+            a {
+              display: inline-block;
+              text-decoration: none;
+              color: rgb(121, 169, 247);
+            }
+          }
+
+          ul {
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+
+            li {
+              margin-bottom: 10px;
+              color: rgb(128, 128, 128);
+              span {
+                display: block;
+                font-size: 15px;
+              }
+
+              a{
+                display: block;
+                text-decoration: none;
+                font-size: 12px;
+
+                &:before {
+                  display: inline-block;
+                  content: '-';
+                  margin-right: 5px;
+                  color: gray;
+                }
+                &:after {
+                  display: inline-block;
+                  content: attr(href);
+                  color: rgb(121, 169, 247);
+                  font-style: italic;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.hot {
+        display: inline-block;
+        width: 100%;
+        background-color: transparent;
+        text-align: left;
+        padding: 20px 0;
+        word-break: break-all;
+        header {
+          display: inline-block;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
+
+        .boxes {
+          display: inline-block;
+          width: 100%;
+          @include clearfix();
+
+          &:empty {
+            display: inline-block;
+            height: 70px;
+            background-color: white; 
+            border: 1px solid rgba(128, 128, 128, 0.22);
+            &:before {
+              display: inline-block;
+              width: 100%;
+              content: '目前尚無任何推薦文章。';
+              text-align: center;
+              line-height: 70px;
+              color: #b4b4b4;
+              font-size: 15px;
+            }
+          }
+
+          > a {
+            display: inline-block;
+            float: left;
+            width: calc((100% - 60px) / 4);
+            height: 225px;
+            background-color: white;
+            text-decoration: none;
+            color: rgba(65,65,65,0.75);
+            @include box-shadow(0 -1px 0 #e0e0e0, 0 0 0px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.1));
+
+            + a {
+              margin-left: 20px;
+            }
+
+            .bg {
+              display: inline-block;
+              margin: 0 auto;
+              width: 100%;
+              height: 130px;
+              overflow: hidden;
+              img {
+                width: 100%;
+              }
+            }
+
+            b {
+              display: inline-block;
+              width: 100%;
+              height: 30px;
+              line-height: 30px;
+              margin-top: 8px; 
+              padding: 0px 16px;
+              color: rgba(82,82,82,0.9);
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
+            span {
+              display: inline-block;
+              font-size: 10px;
+              width: 100%;
+              height: 40px;
+              line-height: 20px;
+              margin: 0 auto;
+              padding: 0px 15px;
+              overflow: hidden;
+            }
+
+            @include range-width(635px, 1200px) {
+              width: calc((100% - 40px) / 3);
+              &:nth-child(n+4) {
+                display: none;
+              }
+            }
+
+            @include range-width(0, 635px) {
+              width: calc((100% - 20px) / 2);
+              &:nth-child(n+3) {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    @include range-width(1030px, 1200px) {
+      width: $boxWidth2;
+    }
+    @include range-width(0, 1030px) {
+      width: 100%;
+      padding-bottom: 60px;
+      .bg {
+        height: 200px;
+      }
+      artical {
+        &.arti {
+          padding: 15px;
+          header {
+            h1 {
+              font-size: 20px;
+            }
+            .tip a {
+              height: 21px;
+              line-height: 13px;
+            }
+          }
+          .info time:after{
+            font-size: 12px;
+          }
+          p {
+            font-size: 15px;
+          }
+          .s {
+            ul li span {
+              font-size: 13px;
+            }
+          }
+        }
+
+        &.hot {
+          padding: 20px 10px;
+        }
+      }
+    }
   }
 }

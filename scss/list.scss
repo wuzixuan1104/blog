@@ -115,6 +115,17 @@
         &:after {
           display: none;
         }
+       
+        b {
+          font-size: 17px;
+          &:before {
+            width: 48px;
+            height: 24px;
+          }
+        }
+        span {
+          font-size: 15px;
+        }
       }
 
       &:hover {
