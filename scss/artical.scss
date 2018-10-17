@@ -1,0 +1,20 @@
+@import "_oa";
+
+* {
+  &, &:after, &:before {
+    vertical-align: top;
+    @include box-sizing(border-box);
+    @include font-smoothing(antialiased);
+  }
+}
+
+#main {
+  width: 0 auto;
+
+  .container {
+    display: block;
+    text-align: center;
+    padding-top: 40px;
+    width: 100%;
+  }
+}
