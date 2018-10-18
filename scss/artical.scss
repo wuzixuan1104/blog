@@ -60,15 +60,23 @@
               float: left;
               text-decoration: none;
               color: white;
-              background-color: rgb(82, 82, 82);
+              background-color: rgb(195, 195, 195);
               padding: 5px 8px;
               font-size: 12px;
               height: 26px;
               line-height: 18px;
               @include border-radius(30px);
-
               + a {
                 margin-left: 10px;
+              }
+
+              &:hover {
+                background-color: rgb(236, 236, 236);
+                color: rgb(171, 171, 171);
+              }
+
+              &:first-child {
+                background-color: rgb(82, 82, 82);
               }
             }
           }
@@ -297,6 +305,7 @@
             .tip a {
               height: 21px;
               line-height: 13px;
+
             }
           }
           .info time:after{

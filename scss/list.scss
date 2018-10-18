@@ -26,10 +26,81 @@
   .container {
     display: block;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 14px;
 
     @include range-width(0, 1030px) {
       padding-top: 25px;
+    }
+
+    #search {
+      display: inline-block;
+      width: $boxWidth;
+      height: 50px;
+      background-color: rgba(179, 179, 179, 0.18);
+      margin-bottom: 12px;
+      padding: 3px;
+      @include box-shadow(inset 1px 1px 1px rgba(162, 162, 162, 0.5), 1px 1px 1px rgba(255, 255, 255, 0.51));
+      @include transition(background-color .3s);
+      @include border-radius(5px);
+      @include clearfix();
+      > * {
+        display: inline-block;
+        float: left;
+        height: 100%;
+      }
+      button {
+        width: 60px;
+        background-color: transparent;
+        color: rgba(109, 109, 109, 0.67);
+        border: 0;
+        outline: none;
+        padding: 0;
+        &:before {
+          font-size: 22px;
+        }
+      }
+      input[type="text"] {
+        width: calc(100% - 60px);
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        outline: none;
+        padding: 0;
+        color: rgb(124, 128, 134);
+
+        @include input-placeholder {
+          font-weight: normal;
+          color: rgba(124, 128, 134, .6);
+          font-size: 14px;
+          font-weight: bold;
+          font-style: italic;
+        }
+      }
+
+      &:hover {
+        background-color: rgb(255, 255, 255);
+        @include box-shadow(0px 0px 4px rgba(128, 128, 128, 0.58));
+
+        button {
+          &:before {
+            color: rgb(102, 119, 134);
+          }
+        }
+        input[type="text"] {
+          color: rgb(53, 68, 78);
+          @include input-placeholder {
+            color: rgb(102, 119, 134);
+          }
+        }
+       }
+
+      @include range-width(1030px, 1200px) {
+        width: $boxWidth2;
+      }
+      @include range-width(0, 1030px) {
+        width: 100%;
+        margin-bottom: 5px;
+      }
     }
 
     > a {
