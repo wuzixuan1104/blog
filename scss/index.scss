@@ -15,73 +15,27 @@
   }
 }
 
-html {
-  min-height: 100%;
+#main {
 
-  body {
-    position: relative;
-
-    display: inline-block;
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-
-    color: rgba(90, 90, 90, 1.00);
-    text-align: center;
-    font-size: medium;
-    font-family: Hack, Roboto, RobotoDraft, Helvetica, Arial, sans-serif, "微軟正黑體", "Microsoft JhengHei";
-    
-    background-color: rgba(238, 240, 242, 1.00);
-    @include font-smoothing(antialiased);
+  h1 {
+    display: none;
   }
-}
-
-#container {
-  display: inline-block;
-  width: 100%;
-  padding-top: $bannerHeight;
-  padding-left: $sidemenuWidth;
-  margin-bottom: 30px;
-
-  @include transition(padding-left .3s);
-  @include range-width(0, 1030px) {
-    padding-left: 0;
-    width: 100%;
-    padding-bottom: $mobileSidemenuHeight;
-    padding-top: $bannerHeight2;
-  } 
-
-  > * {
-    display: block;
-    margin-bottom: 20px;
-    width: calc(100% - 80px);
-    margin-left: 40px;
-    @include range-width(0, 1030px) {
-      width: calc(100% - 20px);
-      margin-left: 10px;
-    }
-  }
-  .intro {
+  header {
     position: relative;
     display: inline-block;
     width: 100%;
-    height: 280px;
-    overflow: hidden;
-    margin-left: 0;
-
-    #cover-photo {
+    figure {
+      display: inline-block;
       width: 100%;
-      height: 100%;
+      height: 280px;
+      overflow: hidden;
+      margin: 0 auto;
       img {
         width: 100%;
       }
-      // background-attachment: fixed;
-      // background-position: center 100%;
-      // background-size: cover;
-      // background-repeat: no-repeat;
     }
-    .slogan {
+
+    .bottom {
       position: absolute;
       display: inline-block;
       bottom: 0;
@@ -89,213 +43,223 @@ html {
       width: 100%;
       height: 40px;
       line-height: 40px;
-      color: white;
       background-color: rgba(0,0,0,0.3);
+      color: white;
     }
-  }
-  
-  .title {
-    text-align: left; 
-    font-size: 18px;
-    font-weight: bold;
-    color: #919191;
-    @include text-shadow(1px 1px 1px rgba(255,255,255,0.65));
-  }
-
-  .about {
-    position: relative;
-    background-color: white;
-    padding: 12px 20px;
-    padding-bottom: 50px;  
-    line-height: 30px;
-    text-align: left;
-    overflow: hidden;
-    @include border-radius(5px);
-    @include box-shadow(0 1px 2px rgba(0,0,0,0.2), 0 -1px 1px rgba(0,0,0,0.05));
-      
-    .upd-date {
-      position: absolute;
-      display: block;
-      bottom: 10px;
-      right: 22px;
-      color: #b3b2b2;
-      font-size: 10px;
-      font-style: italic;
-      &:before {
-        content: '最後編輯日期：';
+    @include range-width(0, 1030px) {
+      figure {
+        height: 200px;
+      }
+      .bottom {
+        height: 36px;
+        font-size: 15px;
       }
     }
   }
+  
+  .m {
+    display: inline-block;
+    width: 100%;
+    padding: 0 40px;
 
-  .calendar {
-    height: 234px;
-    overflow: hidden;
-    @include clearfix();
-    $aTagWidth: (242px - 8px - 24px) / 7;
-
-    div {
+    .title {
       display: inline-block;
-      height: 100%;
-      width: $aTagWidth;
-      float: left;
-      margin-right: 4px;
+      width: 100%;
+      text-align: left;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgb(145, 145, 145);
+      padding: 20px 0;
+      @include text-shadow(1px 1px 1px rgba(255,255,255,0.65));
+    }
 
-      a {
-        position: relative;
+    .about {
+      display: inline-block;
+      width: 100%;
+      text-align: left;
+      line-height: 30px;
+      padding: 15px 25px;
+      background-color: white;
+      @include border-radius(5px);
+      @include box-shadow(0 1px 2px rgba(0,0,0,0.2), 0 -1px 1px rgba(0,0,0,0.05));
+    }
+
+    .calendar {
+      display: inline-block;
+      width: 100%;
+      @include clearfix();
+      div {
         display: inline-block;
-        height: $aTagWidth;
-        width: $aTagWidth;
-        background-color: #d2d2d2;
-        text-decoration: none;
-        margin-bottom: 4px;
+        float: left;
+        height: 210px;
+        @include range-width(1300px, 1499px) {
+          //30個div
+          width: calc(100% / 30);
+        }
+        @include range-width(1000px, 1300px) {
+          width: calc(100% / 24);
+        }
+        @include range-width(700px, 1000px) {
+          width: calc(100% / 20);
+        }
+        @include range-width(300px, 700px) {
+          width: calc(100% / 10);
+        }
 
-        &:last-child {
-          margin-bottom: 0;
-        }
-        &.active {
-          background-color: rgba(210, 224, 157, 1.00);
-        }
-        &:before {
+        a {
+          position: relative;
           display: inline-block;
-          content: attr(data-cnt);
-          line-height: $aTagWidth;
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
+          border: 2px solid rgba(238, 240, 242, 1.00);
+          background-color: rgb(210, 210, 210);
+          text-decoration: none;
           color: white;
-          font-size: 12px;
-        }
-
-        span {
-          position: absolute;
-          display: none;
-          bottom: -25px;
-          left: 30px;
-          width: 150px;
-          height: 25px;
-          line-height: 25px;
-          background-color: black;
-          color: white;
-          font-size: 12px;
-          @include border-radius(10px);
-        }
-
-        &:hover {
-          span {
+          &:before {
             display: inline-block;
-            z-index: 10;
+            content: attr(data-cnt);
+            text-align: center;
+            font-size: 12px;            
+          }
+          &[data-cnt]:not([data-cnt="0"]) {
+            background-color: rgb(210, 224, 157);
           }
         }
       }
     }
-  }
 
-  #latest {
-    text-align: left;
-    height: 218px;
-
-    &.empty {
+    .hot {
       display: inline-block;
-      height: 70px;
-      margin-left: 0;
-      background-color: white; 
-      @include border-radius(5px);
-      @include box-shadow(0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.1));
-      &:before {
+      width: 100%;
+      @include clearfix();
+
+      &:empty {
         display: inline-block;
-        width: 100%;
-        content: '目前尚無任何文章。';
-        text-align: center;
-        line-height: 70px;
-        color: #b4b4b4;
-        font-weight: bold;
-      }
-    }
-
-    @include clearfix();
-    .box {
-      display: inline-block;
-      float: left;
-      width: calc( (100% - 60px) / 4);
-      height: 218px;
-      background-color: white;
-      margin-right: 20px;
-      margin-bottom: 10px;
-      text-decoration: none;
-      color: rgba(90, 90, 90, 1.00);
-      overflow: hidden;
-
-      &:nth-child(4) {
-        margin-right: 0;
-      }
-      &:nth-child(n + 5) {
-        display: none;
-      }
-      @include border-radius(5px);
-      @include box-shadow(0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.1));
-
-      > * {
-        display: block;
-        width: 100%;
-      }
-      .pic {
-        height: 130px;
-        border-bottom: 1px solid rgba(199, 199, 199, 0.3);
-        img {
-          height: 100%;
+        height: 70px;
+        background-color: white; 
+        @include border-radius(5px);
+        @include box-shadow(0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.1));
+        &:before {
+          display: inline-block;
+          width: 100%;
+          content: '目前尚無任何文章。';
+          text-align: center;
+          line-height: 70px;
+          color: #b4b4b4;
+          font-weight: bold;
         }
       }
 
-      b {
-        margin-top: 10px;
-        padding: 0 15px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+      a {
+        display: inline-block;
+        float: left;
+        width: calc((100% - 60px) / 4);
+        height: 225px;
+        text-decoration: none;
+        background-color: white;
+        @include box-shadow(0 0px 0 #e0e0e0, 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.1));
+
+        .bg {
+          display: inline-block;
+          margin: 0 auto;
+          width: 100%;
+          height: 130px;
+          overflow: hidden;
+          img {
+            width: 100%;
+          }
+        }
+
+        b {
+          display: inline-block;
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
+          margin-top: 8px;
+          padding: 0 16px;
+          color: rgba(82, 82, 82, 0.9);
+          text-align: left;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+        }
+
+        span {
+          display: inline-block;
+          font-size: 10px;
+          margin-top: 4px;
+          margin-bottom: 12px;
+          height: 40px;
+          line-height: 20px;
+          padding: 0 16px;
+          overflow: hidden;
+          color: rgba(65,65,65,0.75);
+          text-align: left;
+        }
+        + a {
+          margin-left: 20px;
+        }
+
+        @include range-width(635px, 1060px) {
+          width: calc((100% - 40px) / 3);
+          &:nth-child(n+4) {
+            display: none;
+          }
+        }
+
+        @include range-width(0, 635px) {
+          width: calc((100% - 20px) / 2);
+          &:nth-child(n+3) {
+            display: none;
+          }
+        }
       }
-      span {
-        margin-top: 7px;
-        padding: 0px 15px;
-        font-size: 12px;
-        line-height: 22px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: rgba(90, 90, 90, .7);
-      }
-      
     }
-    
-    @include range-width(1030px, 1200px) {
-      .box {
-        width: calc((100% - 40px) / 3);
-        &:nth-child(3n) {
-          margin-right: 0;
-        }
-        &:nth-child(n + 4) {
-          display: none;
-        }
+
+    @include range-width(0, 1030px) {
+      padding: 0 10px;
+      .title {
+        font-size: 16px;
+      }
+      .about {
+        font-size: 15px;
+      }
+      .hot a b {
+        font-size: 15px;
       }
     }
-    @include range-width(320px, 1031px) {
-      .box {
-        width: calc((100% - 10px) / 2);
-        height: 100%;
-        margin-right: 10px;
-        &:nth-child(2n) {
-          margin-right: 0;
-        }
-        &:nth-child(n + 3) {
-          display: none;
-        }
-      }
-    }
-    @include range-width(0, 321px) {
-      .box {
-        width: 100%;
-        height: 100%;
-        margin-right: 0;
-        &:nth-child(n + 2) {
-          display: none;
-        }
-      }
-    }
+
+
+
+  }
+  
+
+  @include range-width(635px, 1030px) {
+    padding-left: 0;
+  }
+  @include range-width(0, 635px) {
+    padding-left: 0;
+    padding-bottom: 100px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

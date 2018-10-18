@@ -1,7 +1,7 @@
 require 'compass/import-once/activate'
 
 # 網域(domain)後面的目錄
-http_path = "/blog"
+http_path = "/blog_v2"
 
 
 # 字體目錄與網址下的字體目錄

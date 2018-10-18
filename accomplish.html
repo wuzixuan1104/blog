@@ -5,7 +5,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
 
-    <title></title>
+    <title>首頁 - Hsuan's Blog</title>
     <link href="css/icon.css" rel="stylesheet" type="text/css" />
     <link href="css/public.css" rel="stylesheet" type="text/css" />
     <link href="css/accomplish.css" rel="stylesheet" type="text/css" />
@@ -13,178 +13,108 @@
     <script src="js/jquery_v1.10.2/jquery-1.10.2.min.js" language="javascript" type="text/javascript" ></script>
     <script src="js/imgLiquid-min.js"></script>
     <script src="js/public.js" language="javascript" type="text/javascript" ></script>
-
   </head>
   <body lang="zh-tw">
-    <header id="banner"></header>
+    <header id="header"></header>
 
-   <!--  <form id="search">
-      <button type="submit" class="icon-s"></button>
-      <input type="text" name="keyword" id="keyword" placeholder="搜尋 Chestnuter ...">
-    </form> -->
+    <input id="chb-menu" type="checkbox">
+    <div id="menu">
+      <label id="back" for="chb-menu" class="icon-r"></label>
+      <header>
+        <label for="chb-menu" class="icon-l">Hsuan's Blog</label>
+        <div><img src="img/me.png"></div>
+      </header>
+      <a href="https://github.com/wuzixuan1104/" class="icon-gi yellow-btn">GitHub</a>
 
-    <input id="chk-sidemenu" type="checkbox">
-    <input id="chk-mobSidemenu" type="checkbox">
-
-    <div id="sidemenu">
-      <label class="back icon-r" for="chk-sidemenu"></label>
-      <div class="layer">
-        <div class="info">
-          <label class="icon-l title" for="chk-sidemenu">Hsuan's Blog</label>
-          <label class="avatar"><img src="img/me.png"></label>
+      <div class="links">
+        <a href="index.html" class="icon-home3 active">網站首頁</a>
+        <a href="dev.html" class="icon-tools" data-cnt="10">開發心得</a>
+        <a href="mood.html" class="icon-file-text2" data-cnt="2">生活點滴</a>
+        <a href="accomplish.html" class="icon-medal">成就紀錄</a>
+      </div>
+    </div>
+    
+    <input id="chb-mobmenu" type="checkbox">
+    <div id="mobMenu">
+      <div class="block">
+        <label class="l icon-list" for="chb-mobmenu"></label>
+        <span>
+          <svg height="60px" width="100px" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L 15 0 A 35 35 0 0 0 50 35 A 35 35 0 0 0 85 0 L 100 0 L 100 60 L 0 60" fill="#384854"/></svg>
+          <a href="" class="icon-gi"></a>
+        </span>
+        <label class="r"></label>
+      </div>
+      <div class="pop">
+        <label class="avatar"><img src="img/me.png"></label>
+        <div class="svg">
+          <label class="l"></label>
+          <svg class="btn" height="50px" width="100px" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L 25 0 A 25 25 0 0 0 50 25 A 25 25 0 0 0 75 0 L 100 0 L 100 50 L 0 50" fill="#35444e"/></svg>
+          <label class="r"></label>
         </div>
-        <a class="icon-edit-pencil reply" href="#"></a>
-        <div id="web-pages" class="menu">
-          <a class="icon-home3" href="index.html">網站首頁</a>
-          <a class="icon-tools" href="list.html" data-cnt="19">開發心得</a>
-          <a class="icon-medal" href="accomplish.html" data-cnt="1">成就紀錄</a>
-          <a class="icon-file-text2" href="mood.html" data-cnt="2">心情隨筆</a>
+        <div class="links">
+          <a href="index.html" class="icon-home3 active">網站首頁</a>
+          <a href="dev.html" class="icon-tools" data-cnt="10">開發心得</a>
+          <a href="mood.html" class="icon-file-text2" data-cnt="2">生活點滴</a>
+          <a href="accomplish.html" class="icon-medal">成就紀錄</a>
         </div>
       </div>
     </div>
+    <label id="cover" for="chb-mobmenu"></label>
 
-    <div id="mobSidemenu">
-      <div class="menu"> 
-        <div class="detail">
-          <label class="avatar"><img src="img/me.png"></label>
-          <div class="svg">
-            <span class="first"></span>
-            <svg class="bar" height="50px" width="100px" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 0 L 25 0 A 25 25 0 0 0 50 25 A 25 25 0 0 0 75 0 L 100 0 L 100 50 L 0 50" fill="#35444e"/>
-            </svg>
-            <span class="last"></span>
-          </div>
-          <div class="items">
-            <a class="icon-home3 active" href="index.html">網站首頁</a>
-            <a class="icon-tools" href="list.html" data-cnt="19">開發心得</a>
-            <a class="icon-medal" href="accomplish.html" data-cnt="1">成就紀錄</a>
-            <a class="icon-file-text2" href="mood.html" data-cnt="2">心情隨筆</a>
-          </div>
-        </div>
-        <label class="open icon-list" for="chk-mobSidemenu"></label>
-        <svg class="bar" height="60px" width="100px" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0 L 15 0 A 35 35 0 0 0 50 35 A 35 35 0 0 0 85 0 L 100 0 L 100 60 L 0 60" fill="#384854"/>
-        </svg>
-        <label class="slogan"></label>
-      </div>
-      <a class="icon-edit-pencil reply" href="#"></a>
-    </div>
-    <label id="bg-cover" for="chk-mobSidemenu"></label>
-    <div id="container">
-      <div class="main">
-        <figure class="bg">
-          <div><img src="img/maple.jpg"></div>
-        </figure>
-        <!-- <div class="bg2"><img src="img/maple.jpg"></div> -->
-        <artical>
-         <!--  <i></i>-->
-            <ul id="timeline">
-              <!-- <li class="item period">
-                <h2>MARCH 2018</h2>
-              </li> -->
-              <li class="item">
-                <div class="time">MARCH 10</div>
-                <div class="marker dev"></div>
-                <div class="content">
-                  <h3>Event Title</h3>
-                  <span class="tag">
-                    <a href="">前端</a>
-                    <a href="">HTML</a>
-                    <a href="">jQuery</a>
-                  </span>
-                  <p>了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉</p>
-                  <div class="more"><a href="#">more</a></div>
-                </div>
-              </li>
-
-              <li class="item">
-                <div class="time">MARCH 9</div>
-                <div class="marker dev"></div>
-                <div class="content">
-                  <h3>Event Title</h3>
-                  <span class="tag">
-                    <a href="">前端</a>
-                    <a href="">HTML</a>
-                    <a href="">jQuery</a>
-                  </span>
-                  <p>了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉</p>
-                  <div class="more"><a href="#">more</a></div>
-                </div>
-              </li>
-
-              <li class="item period">
-                <span class="top"></span>
-                <h2>February 2018</h2>
-                <span class="bottom"></span>
-              </li>
-
-              <li class="item">
-                <div class="time">MARCH 09</div>
-                <div class="marker mood"></div>
-                <div class="content">
-                  <h3>Event Title</h3>
-                  <span class="tag">
-                    <a href="">前端</a>
-                    <a href="">jQuery</a>
-                  </span>
-                  <p>了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉</p>
-                  <div class="more"><a href="#">more</a></div>
-                </div>
-              </li>
-
-              <li class="item">
-                <div class="time">MARCH 9</div>
-                <div class="marker dev"></div>
-                <div class="content">
-                  <h3>Event Title</h3>
-                  <span class="tag">
-                    <a href="">前端</a>
-                    <a href="">HTML</a>
-                    <a href="">jQuery</a>
-                  </span>
-                  <p>了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉</p>
-                  <div class="more"><a href="#">more</a></div>
-                </div>
-              </li>
-
-              <li class="item">
-                <div class="time">MARCH 9</div>
-                <div class="marker dev"></div>
-                <div class="content">
-                  <h3>Event Title</h3>
-                  <span class="tag">
-                    <a href="">前端</a>
-                    <a href="">HTML</a>
-                    <a href="">jQuery</a>
-                  </span>
-                  <p>了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉</p>
-                  <div class="more"><a href="#">more</a></div>
-                </div>
-              </li>
-
-              <li class="item period">
-                <span class="top"></span>
-                <h2>January 2018</h2>
-                <span class="bottom"></span>
-              </li>
-
-              <li class="item">
-                <div class="time">MARCH 9</div>
-                <div class="marker dev"></div>
-                <div class="content">
-                  <h3>Event Title</h3>
-                  <span class="tag">
-                    <a href="">前端</a>
-                    <a href="">HTML</a>
-                    <a href="">jQuery</a>
-                  </span>
-                  <p>了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉</p>
-                  <div class="more"><a href="#">more</a></div>
-                </div>
-              </li>
-            </ul>
+    <main id="main">
+      <div class="container">
+        <figure><div class="bg"><img src="img/maple.jpg"></div></figure>
+        <artical id="timeline">
+          <session class="item">
+            <time data-time="MARCH 10" date="2018-05-10"></time>
+            <i class="dev"></i>
+            <div class="content">
+              <h3>Event TitleEvent TitleEvent TitleEvent TitleEvent TitleEvent Title</h3>
+              <!-- <h3>123</h3> -->
+              <span class="tag">
+                <a href="">前端</a>
+                <a href="">HTML</a>
+                <a href="">jQuery</a>
+              </span>
+              <p>了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉了拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉了拉拉拉拉拉</p>
+              <a class="more" href=""></a>
+            </div>
+          </session>
+          <session class="item">
+            <time data-time="MARCH 10" date="2018-05-10"></time>
+            <i class="dev"></i>
+            <div class="content">
+              <h3>Event Title</h3>
+              <span class="tag">
+                <a href="">前端</a>
+                <a href="">HTML</a>
+                <a href="">jQuery</a>
+              </span>
+              <p>ddddddddddddd</p>
+              <a class="more" href=""></a>
+            </div>
+          </session>
+          <session class="period">
+            <header>February 2018</header>
+          </session>
+          <session class="item">
+            <time data-time="MARCH 10" date="2018-05-10"></time>
+            <i class="dev"></i>
+            <div class="content">
+              <h3>Event Title</h3>
+              <span class="tag">
+                <a href="">前端</a>
+                <a href="">HTML</a>
+                <a href="">jQuery</a>
+              </span>
+              <p>ddddddddddddd</p>
+              <a class="more" href=""></a>
+            </div>
+          </session>
         </artical>
       </div>
-    </div>
+    </main>
   </body>
 </html>
+
+

@@ -1,10 +1,3 @@
-/**
- * @author      OA Wu <comdan66@gmail.com>
- * @copyright   Copyright (c) 2015 - 2018, OAF2E
- * @license     http://opensource.org/licenses/MIT  MIT License
- * @link        https://www.ioa.tw/
- */
-
 @import "_oa";
 
 * {
@@ -15,285 +8,323 @@
   }
 }
 
-html {
-  min-height: 100%;
+#main {
+  width: auto;
 
-  body {
-    position: relative;
-
-    display: inline-block;
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-
-    color: rgba(90, 90, 90, 1.00);
-    text-align: center;
-    font-size: medium;
-    font-family: Hack, Roboto, RobotoDraft, Helvetica, Arial, sans-serif, "微軟正黑體", "Microsoft JhengHei";
-    
-    background-color: rgba(238, 240, 242, 1.00);
-    @include font-smoothing(antialiased);
-  }
-}
-
-#container {
-  display: inline-block;
-  width: 100%;
-  padding-top: $bannerHeight;
-  padding-left: $sidemenuWidth;
-  padding-bottom: 36px;
   @include range-width(0, 1030px) {
     padding-left: 0;
-    width: 100%;
-    padding-bottom: 63px;
-    padding-top: 0;
-  } 
-
-  .main {
+  }
+  .container {
     display: block;
+    text-align: center;
     width: $boxWidth;
-    margin: 0 auto;
-    margin-bottom: 20px;
+
     .bg {
       display: inline-block;
-      width: 100%;
-      height: 200px;
       margin: 0 auto;
+      height: 240px;
+      width: 100%;
       overflow: hidden;
+
       img {
         width: 100%;
       }
     }
 
-
     artical {
       display: inline-block;
       width: 100%;
       background-color: white;
-      border: 1px solid #67666630;
-      padding: 20px 30px;
+      margin: 0 auto;
+      &.arti {
+        padding: 20px 30px;
+        @include box-shadow(0 -1px 0 #e0e0e0, 0 0 0px rgba(0,0,0,0.12), 0 0px 4px rgba(0,0,0,0.1));
 
-      + artical {
-        border-top: none;
-      }
-
-      &:last-child {
-        background-color: transparent;
-        border: none;
-        padding: 20px 0; 
-        section {
-          margin: 0 auto;
-          padding: 0;
-        }
-      }
-      h1 {
-        display: block;
-        margin: 20px auto;
-        font-size: 22px;
-        text-align: left;
-        word-wrap: break-word;
-      }
-
-      .tags {
-        display: block;
-        text-align: left;
-        a {
+        header {
           display: inline-block;
-          text-decoration: none;
-          color: white;
-          background-color: #525252;
-          font-size: 12px;
-          padding: 4px 10px;
-          height: 24px;
-          line-height: 16px;
-          @include border-radius(20px);
-        }
-      }
-
-      section {
-        display: block;
-        text-align: left;
-
-        > * {
-          display: inline-block;
-          text-align: left;
-          margin: 0 auto;
-        }
-        p {
-          line-height: 25px;
-          margin-bottom: 10px;
-        }
-        figure {
           width: 100%;
-          margin-top: 10px;
-          margin-bottom: 20px;
-          img {
-            width: 100%;
+          text-align: left;
+
+          &.bold {
+            font-weight: bold;
+          } 
+          > * {
+            display: block;
+            text-align: left;
+          }
+
+          .tip {
+            @include clearfix();
+            a {
+              display: inline-block;
+              float: left;
+              text-decoration: none;
+              color: white;
+              background-color: rgb(195, 195, 195);
+              padding: 5px 8px;
+              font-size: 12px;
+              height: 26px;
+              line-height: 18px;
+              @include border-radius(30px);
+              + a {
+                margin-left: 10px;
+              }
+
+              &:hover {
+                background-color: rgb(236, 236, 236);
+                color: rgb(171, 171, 171);
+              }
+
+              &:first-child {
+                background-color: rgb(82, 82, 82);
+              }
+            }
+          }
+
+          h1 {
+            margin: 15px auto;
+            font-size: 22px;
           }
         }
 
-        header {
+        .info {
           display: block;
-          font-weight: bold;
-          margin-bottom: 20px;
+          > * {
+            display: inline-block;
+            float: right;
+          }
+          time {
+            &:after {
+              display: inline-block;
+              content: attr(data-time);
+              color: rgba(185, 185, 185, 0.77);
+              font-size: 14px;
+              font-style: italic;
+            }
+          }
         }
 
-        ul {
+        .s {
           display: inline-block;
-          text-align: left;
-
-          li {
-            margin-bottom: 10px;
-            a {
-              color: gray;
-              text-decoration: none;
-              font-size: 15px;
-
-              &:after {
-                display: block;
-                content: attr(href);
-                margin-top: 3px;
-                color: #7dbaff;
+          width: 100%;
+          figure {
+            margin: 10px auto;
+            width: 100%;
+            overflow: hidden; 
+            img {
+              width: 100%;
+            }
+            figcaption {
+              display: inline-block;
+              width: 100%;
+              height: 28px;
+              font-size: 14px;
+              line-height: 28px;
+              text-align: left;
+              margin-top: 10px;
+              &:before {
+                display: inline-block;
+                font-size: 22px;
+                color: rgb(127, 124, 124);
+              }
+              @include range-width(0, 1030px) {
                 font-size: 12px;
-                font-style: italic;
+              }
+            }
+          }
+
+          p {
+            display: inline-block;
+            width: 100%;
+            margin: 10px auto;
+            text-align: left;
+            line-height: 25px;
+
+            a {
+              display: inline-block;
+              text-decoration: none;
+              color: rgb(121, 169, 247);
+            }
+          }
+
+          ul {
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+
+            li {
+              margin-bottom: 10px;
+              color: rgb(128, 128, 128);
+              span {
+                display: block;
+                font-size: 15px;
+              }
+
+              a{
+                display: block;
+                text-decoration: none;
+                font-size: 12px;
+
+                &:before {
+                  display: inline-block;
+                  content: '-';
+                  margin-right: 5px;
+                  color: gray;
+                }
+                &:after {
+                  display: inline-block;
+                  content: attr(href);
+                  color: rgb(121, 169, 247);
+                  font-style: italic;
+                }
               }
             }
           }
         }
-        div.recommend {
+      }
+
+      &.hot {
+        display: inline-block;
+        width: 100%;
+        background-color: transparent;
+        text-align: left;
+        padding: 20px 0;
+        word-break: break-all;
+        header {
+          display: inline-block;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
+
+        .boxes {
           display: inline-block;
           width: 100%;
           @include clearfix();
 
-          a {
+          &:empty {
+            display: inline-block;
+            height: 70px;
+            background-color: white; 
+            border: 1px solid rgba(128, 128, 128, 0.22);
+            &:before {
+              display: inline-block;
+              width: 100%;
+              content: '目前尚無任何推薦文章。';
+              text-align: center;
+              line-height: 70px;
+              color: #b4b4b4;
+              font-size: 15px;
+            }
+          }
+
+          > a {
             display: inline-block;
             float: left;
-            width: calc((#{$boxWidth} - 40px) / 3);
-            height: 200px;
+            width: calc((100% - 60px) / 4);
+            height: 225px;
             background-color: white;
-            border: 1px solid #67666630;
-            padding: 0;
             text-decoration: none;
-            color: gray;
+            color: rgba(65,65,65,0.75);
+            @include box-shadow(0 -1px 0 #e0e0e0, 0 0 0px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.1));
 
             + a {
-              margin-left:20px;
+              margin-left: 20px;
             }
 
-            > * {
-              display: block;
-            }
-
-            figure {
-              height: 120px;
-              width: 100%;
-              text-align: left;
-              border-bottom: 1px solid #67666630;
+            .bg {
+              display: inline-block;
               margin: 0 auto;
+              width: 100%;
+              height: 130px;
+              overflow: hidden;
               img {
                 width: 100%;
               }
             }
 
             b {
-              font-size: 15px;
-              padding: 15px;
-              padding-bottom: 10px;
-              color: rgba(65,65,65,0.9);
+              display: inline-block;
+              width: 100%;
+              height: 30px;
+              line-height: 30px;
+              margin-top: 8px; 
+              padding: 0px 16px;
+              color: rgba(82,82,82,0.9);
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+              @include range-width(0, 1030px) {
+                font-size: 15px;
+              }
             }
+
             span {
-              padding: 15px;
-              padding-top: 0;
-              height: 80px;
+              display: inline-block;
+              font-size: 10px;
+              width: 100%;
+              height: 40px;
+              line-height: 20px;
+              margin: 0 auto;
+              padding: 0px 15px;
               overflow: hidden;
-              font-size: 12px;
-              text-overflow: ellipsis;
-              white-space: nowrap;
             }
 
-
-          }
-
-        }
-        @include range-width(1030px, 1200px) {
-          div.recommend {
-            a {
-              width: calc((#{$boxWidth2} - 40px) / 3);
-            }
-          }
-          
-        }
-        @include range-width(500px, 1031px) {
-          header {
-            margin-left: 20px;
-          }
-          div.recommend {
-            display: block;
-            width: calc(100% - 30px);
-
-            a {
-              width: calc((100% - 30px) / 3);
-              + a {
-                margin-left: 15px;
-              } 
-            }
-          }
-        }
-
-        @include range-width(0, 501px) {
-          header {
-            margin-left: 20px;
-          }
-
-          div.recommend {
-            display: block;
-            width: calc(100% - 30px);
-            text-align: center;
-            a {
-              width: calc((100% - 15px) / 2);
-              + a {
-                margin-left: 15px;
-              } 
-              &:nth-child(n + 3) {
+            @include range-width(635px, 1200px) {
+              width: calc((100% - 40px) / 3);
+              &:nth-child(n+4) {
                 display: none;
               }
             }
-          } 
+
+            @include range-width(0, 635px) {
+              width: calc((100% - 20px) / 2);
+              &:nth-child(n+3) {
+                display: none;
+              }
+            }
+          }
         }
       }
     }
-
-    @include range-width(1029px, 1310px) {
+    @include range-width(1030px, 1200px) {
       width: $boxWidth2;
     }
     @include range-width(0, 1030px) {
       width: 100%;
-      .top {
-        h1 {
-          font-size: 20px;
-        }
-        p {
-          font-size: 15px;
-        }
-        padding: 20px 18px;
+      padding-bottom: 60px;
+      .bg {
+        height: 170px;
       }
-      .bottom {
-        padding: 20px 18px;
+      artical {
+        &.arti {
+          padding: 15px;
+          header {
+            h1 {
+              font-size: 20px;
+            }
+            .tip a {
+              height: 21px;
+              line-height: 13px;
+
+            }
+          }
+          .info time:after{
+            font-size: 12px;
+          }
+          p {
+            font-size: 15px;
+          }
+          .s {
+            ul li span {
+              font-size: 13px;
+            }
+          }
+        }
+
+        &.hot {
+          padding: 20px 10px;
+        }
       }
     }
-
   }
 }
-
-
-
-
-
-
-
-
-
