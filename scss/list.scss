@@ -57,6 +57,7 @@
         padding: 0;
         &:before {
           font-size: 18px;
+          font-weight: bold;
         }
       }
       input[type="text"] {
@@ -109,12 +110,12 @@
       position: relative;
       display: block;
       width: $boxWidth;
-      height: 100px;
+      height: 90px;
       text-decoration: none;
       color: black;
       background-color: white;
       border: 1px solid rgba(128, 128, 128, 0.15);
-      padding: 20px 30px;
+      padding: 16px 30px;
       padding-right: 60px;
       @include border-radius(5px);
 
@@ -168,8 +169,8 @@
         right: 0;
         content: '\e315';
         width: 20px;
-        height: 98px;
-        line-height: 98px;
+        height: 88px;
+        line-height: 88px;
         color: white;
         font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal;
         @include font-smoothing(antialiased);
