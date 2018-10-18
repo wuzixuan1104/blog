@@ -65,10 +65,10 @@
               font-size: 12px;
               height: 26px;
               line-height: 26px;
+              margin-right: 4px;
+              margin-top: 4px;
               @include border-radius(30px);
-              + a {
-                margin-left: 10px;
-              }
+              @include transform(scale(.9));
 
               &:hover {
                 background-color: rgb(236, 236, 236);
