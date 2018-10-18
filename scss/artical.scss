@@ -119,6 +119,9 @@
                 font-size: 22px;
                 color: rgb(127, 124, 124);
               }
+              @include range-width(0, 1030px) {
+                font-size: 12px;
+              }
             }
           }
 
@@ -242,6 +245,9 @@
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+              @include range-width(0, 1030px) {
+                font-size: 15px;
+              }
             }
 
             span {
@@ -279,7 +285,7 @@
       width: 100%;
       padding-bottom: 60px;
       .bg {
-        height: 200px;
+        height: 170px;
       }
       artical {
         &.arti {

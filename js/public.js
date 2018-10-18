@@ -14,6 +14,6 @@ $(function () {
   });
 
   if (typeof $.fn.imgLiquid !== 'undefined') {
-    $('figure.bg').imgLiquid();
+    $('figure.bg, div.bg').imgLiquid();
   }
 });
