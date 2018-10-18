@@ -363,7 +363,7 @@ html {
     z-index: 1;
     @include border-radius(15px);
     @include opacity(0);
-    @include transition(bottom .5s cubic-bezier(.26,.23,.68,1), opacity .3s);
+    @include transition(bottom .3s cubic-bezier(.26,.23,.68,1), opacity .3s);
 
     .avatar {
       display: inline-block;
