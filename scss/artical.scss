@@ -38,6 +38,7 @@
       margin: 0 auto;
       &.arti {
         padding: 20px 30px;
+        padding-top: 14px;
         @include box-shadow(0 -1px 0 #e0e0e0, 0 0 0px rgba(0,0,0,0.12), 0 0px 4px rgba(0,0,0,0.1));
 
         header {
@@ -68,7 +69,7 @@
               margin-right: 4px;
               margin-top: 4px;
               @include border-radius(30px);
-              @include transform(scale(.9));
+              @include transform(scale(.95));
 
               &:hover {
                 background-color: rgb(236, 236, 236);
