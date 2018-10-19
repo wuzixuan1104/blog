@@ -1,7 +1,17 @@
 .DS_Store
 sftp-config*
 
-cmd/.sass-cache/*
-cmd/package-lock.json
-cmd/node_modules/*
-cmd/npm-debug.log
+!app/*/.htaccess
+
+/env.php
+
+composer.lock
+
+/.release/*
+/doc/*
+/vendor/*
+/log/*
+/tmp/*
+/storage/*
+/session/*
+/cache/*
