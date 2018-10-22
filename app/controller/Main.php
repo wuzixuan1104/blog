@@ -2,6 +2,10 @@
 
 class Main extends Controller {
   public function index() {
-    return View::create('site/Main/index.php');
+    $asset = Asset::create()
+                  ->addCSS('/asset/css/site/Main/index.css');
+
+    return View::create('site/Main/index.php')
+               ->with('asset', $asset);
   }
 }

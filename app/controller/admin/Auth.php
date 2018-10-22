@@ -15,7 +15,6 @@ class Auth extends Controller {
 
   public function login() {
     $flash = Session::getFlashData('flash');
-
     $asset = Asset::create()
                   ->addCSS('/asset/css/icon-admin-login.css')
                   ->addCSS('/asset/css/admin/login.css')

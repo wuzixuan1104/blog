@@ -30,4 +30,12 @@ Router::dir('admin', 'Admin', function() {
   Router::get('crontabs/(id:num)')->controller('Crontab@show');
   Router::post('crontabs/(id:num)/read')->controller('Crontab@read');
 
+  Router::get('articals')->controller('Artical@index');
+  Router::get('articals/add')->controller('Artical@add');
+  Router::post('articals/create')->controller('Artical@create');
+  Router::get('articals/(id:num)/edit')->controller('Artical@edit');
+  Router::gut('articals/(id:num)')->controller('Artical@update');
+  Router::get('articals/(id:num)')->controller('Artical@show');
+  Router::del('articals/(id:num)')->controller('Artical@delete');
+
 });
