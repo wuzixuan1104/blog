@@ -152,6 +152,8 @@
           color: white;
           text-align: center;
           margin-right: 15px;
+          background-color: rgb(138, 135, 135);
+
           @include border-radius(20px);
           @include box-shadow(1px 1px 1px 1px rgba(195, 194, 194, 0.38));
         }
@@ -211,6 +213,7 @@
           @include opacity(1);
         }
       }
+
 
       &.pink {
         b {
