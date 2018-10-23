@@ -4,7 +4,7 @@ namespace M;
 
 defined('MAPLE') || exit('此檔案不允許讀取！');
 
-class Artical extends Model {
+class Article extends Model {
   // static $hasOne = [];
 
   // static $hasMany = [];
@@ -25,7 +25,7 @@ class Artical extends Model {
   const ENABLE_NO  = 'no';
   const ENABLE_YES = 'yes';
   const ENABLE = [
-    self::ENABLE_NO  => '下架', 
-    self::ENABLE_YES => '上架',
+    self::ENABLE_NO  => '關閉', 
+    self::ENABLE_YES => '啟用',
   ];
 }

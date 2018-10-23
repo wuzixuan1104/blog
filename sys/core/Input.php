@@ -340,7 +340,7 @@ class Input {
   public static function transposedAllFilesArray($filesList) {
     $news = [];
     if ($filesList)
-      foreach ($filesList as $key => $files)
+      foreach ($filesList as $key => &$files)
         if (!is_array($files['name']))
           $files['size'] == 0 || $news[$key] = $files;
         else

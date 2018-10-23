@@ -30,12 +30,15 @@ Router::dir('admin', 'Admin', function() {
   Router::get('crontabs/(id:num)')->controller('Crontab@show');
   Router::post('crontabs/(id:num)/read')->controller('Crontab@read');
 
-  Router::get('articals')->controller('Artical@index');
-  Router::get('articals/add')->controller('Artical@add');
-  Router::post('articals/create')->controller('Artical@create');
-  Router::get('articals/(id:num)/edit')->controller('Artical@edit');
-  Router::gut('articals/(id:num)')->controller('Artical@update');
-  Router::get('articals/(id:num)')->controller('Artical@show');
-  Router::del('articals/(id:num)')->controller('Artical@delete');
+  Router::get('articles')->controller('Article@index');
+  Router::get('articles/add')->controller('Article@add');
+  Router::post('articles/create')->controller('Article@create');
+  Router::get('articles/(id:num)/edit')->controller('Article@edit');
+  Router::put('articles/(id:num)')->controller('Article@update');
+  Router::get('articles/(id:num)')->controller('Article@show');
+  Router::del('articles/(id:num)')->controller('Article@delete');
+  Router::post('articles/(id:num)enable/')->controller('Article@enable');
 
+  Router::post('ckeditor/image/upload')->controller('CkeditorImg@upload');
+  Router::post('ckeditor/image/browse')->controller('CkeditorImg@browse');
 });

@@ -60,6 +60,27 @@
             '排程紀錄' => 'AdminCrontabIndex | icon-62 | data-cntlabel=crontab-isRead | data-cnt=' . \M\Crontab::count('isRead = ?', \M\Crontab::IS_READ_NO),
           ]
         ], $currentUrl); ?>
+
+  <?php echo AdminLayout::menu([
+          '文章設定 | icon-22' => [
+            '主要列表' => 'AdminArticleIndex | icon-59',
+            '指定標籤' => 'AdminArticleIndex | icon-49',
+            '參考資料' => 'AdminArticleIndex | icon-46 | data-cntlabel=backup-isRead | data-cnt=' . \M\Backup::count('isRead = ?', \M\Backup::IS_READ_NO),
+          ]
+        ], $currentUrl); ?>
+
+  <?php echo AdminLayout::menu([
+          '標籤設定 | icon-42' => [
+            '標籤內容' => 'AdminArticleIndex | icon-49',
+          ]
+        ], $currentUrl); ?>
+
+  <?php echo AdminLayout::menu([
+          '搜尋設定 | icon-13' => [
+            '搜尋內容' => 'AdminArticleIndex | icon-29',
+          ]
+        ], $currentUrl); ?>
+
       </div>
     </div>
 

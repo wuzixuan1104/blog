@@ -483,9 +483,9 @@ $(function () {
 
   if (typeof $.fn.ckeditor !== 'undefined') {
     $('textarea.ckeditor').ckeditor ({
-      filebrowserUploadUrl: '',
-      filebrowserImageBrowseUrl: '',
-      skin: 'oa',
+      filebrowserUploadUrl: '/admin/ckeditor/image/upload',
+      filebrowserImageBrowseUrl: '/admin/ckeditor/image/browse',
+      skin: 'oa', 
       height: 300,
       resize_enabled: false,
       removePlugins: 'elementspath',
