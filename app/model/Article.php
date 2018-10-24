@@ -7,7 +7,10 @@ defined('MAPLE') || exit('此檔案不允許讀取！');
 class Article extends Model {
   // static $hasOne = [];
 
-  // static $hasMany = [];
+  static $hasMany = [
+    'tags' => 'ArticleTag',
+    'refs' => 'ArticleRef',
+  ];
 
   // static $belongToOne = [];
 

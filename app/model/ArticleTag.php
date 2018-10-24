@@ -11,6 +11,7 @@ class ArticleTag extends Model {
 
   static $belongToOne = [
     'article' => 'Article',
+    'tag' => 'Tag',
   ];
 
   // static $belongToMany = [];

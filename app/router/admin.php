@@ -37,7 +37,21 @@ Router::dir('admin', 'Admin', function() {
   Router::put('articles/(id:num)')->controller('Article@update');
   Router::get('articles/(id:num)')->controller('Article@show');
   Router::del('articles/(id:num)')->controller('Article@delete');
-  Router::post('articles/(id:num)enable/')->controller('Article@enable');
+  Router::post('articles/(id:num)/enable')->controller('Article@enable');
+
+  Router::get('article/(articleId:num)/tags')->controller('ArticleTag@index');
+  Router::get('article/(articleId:num)/tags/add')->controller('ArticleTag@add');
+  Router::post('articles/(articleId:num)/tags/create')->controller('ArticleTag@create');
+  Router::get('articles/(articleId:num)/tags/(id:num)/edit')->controller('ArticleTag@edit');
+  Router::put('articles/(articleId:num)/tags/(id:num)')->controller('ArticleTag@update');
+  Router::del('articles/(articleId:num)/tags/(id:num)')->controller('ArticleTag@delete');
+
+  Router::get('article/(articleId:num)/refs')->controller('ArticleRef@index');
+  Router::get('article/(articleId:num)/refs/add')->controller('ArticleRef@add');
+  Router::post('articles/(articleId:num)/refs/create')->controller('ArticleRef@create');
+  Router::get('articles/(articleId:num)/refs/(id:num)/edit')->controller('ArticleRef@edit');
+  Router::put('articles/(articleId:num)/refs/(id:num)')->controller('ArticleRef@update');
+  Router::del('articles/(articleId:num)/refs/(id:num)')->controller('ArticleRef@delete');
 
   Router::post('ckeditor/image/upload')->controller('CkeditorImg@upload');
   Router::get('ckeditor/image/browse')->controller('CkeditorImg@browse');

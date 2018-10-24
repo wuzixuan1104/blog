@@ -46,9 +46,14 @@ echo $list->table(function($obj) {
     ->content($obj->title)
     ->order('title');
 
-  // ListItems::create('標籤')
-  //   ->content(array_map(function($role) { return \M\Article::ROLE[$role->role]; }, $obj))
-  //   ->width(200);
+
+  ListText::create('分類標籤')
+   ->content(Url::toRouterHyperlink('AdminArticleTagIndex', $obj->id)->text(\M\ArticleTag::count('articleId = ?', $obj->id) . '個')->target('_blank'))
+    ->width(80);
+
+  ListText::create('參考資料')
+   ->content(Url::toRouterHyperlink('AdminArticleTagIndex', $obj->id)->text(\M\ArticleTag::count('articleId = ?', $obj->id) . '筆')->target('_blank'))
+    ->width(80);
 
   ListText::create('瀏覽數')
     ->content(number_format(count($obj->cntPv)) . '次')
@@ -63,9 +68,9 @@ echo $list->table(function($obj) {
     ->width(150);
 
   ListCtrl::create()
-    ->addShow('AdminAdminShow', $obj)
-    ->addEdit('AdminAdminEdit', $obj)
-    ->addDelete('AdminAdminDelete', $obj);
+    ->addShow('AdminArticleShow', $obj)
+    ->addEdit('AdminArticleEdit', $obj)
+    ->addDelete('AdminArticleDelete', $obj);
 });
 
 echo $list->pages();

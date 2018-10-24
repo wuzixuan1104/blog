@@ -8,7 +8,7 @@ class Article extends AdminCrudController {
 
     wtfTo('AdminArticleIndex');
 
-    if (in_array(Router::methodName(), ['show', 'edit', 'update']))
+    if (in_array(Router::methodName(), ['show', 'edit', 'update', 'delete', 'enable']))
       if (!$this->obj = \M\Article::one('id = ?', Router::params('id')))
         error('找不到資料！');
 
@@ -88,15 +88,41 @@ class Article extends AdminCrudController {
   }
   
   public function show() {
-    
+    $show = AdminShow::create($this->obj)
+                     ->setBackUrl(Url::toRouter('AdminArticleIndex'), '回列表');
+    \M\AdminAction::read('查看文章詳細內容');
+
+    return $this->view->with('show', $show);
   }
   
   public function delete() {
-   
+    wtfTo('AdminArticleIndex');
+    
+    transaction(function() {
+      \M\AdminAction::write('刪除文章', '刪除文章「' . $this->obj->title . '(' . $this->obj->id . ')' . '」');
+      return $this->obj->delete();
+    });
+
+    Url::refreshWithSuccessFlash(Url::toRouter('AdminArticleIndex'), '刪除成功！');
   }
 
   public function enable() {
+    wtf(function() {
+      return ['messages' => func_get_args()];
+    });
 
+    $params = Input::post();
+    
+    validator(function() use (&$params) {
+      Validator::need($params, 'enable', '開關')->inEnum(\M\Article::ENABLE);
+    });
+    
+    transaction(function() use (&$params) {
+      \M\AdminAction::write('調整文章狀態', '設定文章「' . $this->obj->title . '(' . $this->obj->id . ')」的開啟狀態，將其設為「' . \M\Article::ENABLE[$params['enable']] . '」');
+      return $this->obj->columnsUpdate($params) && $this->obj->save();
+    });
+
+    return $params;
   }
 
 }
