@@ -9,7 +9,9 @@ class ArticleTag extends Model {
 
   // static $hasMany = [];
 
-  // static $belongToOne = [];
+  static $belongToOne = [
+    'article' => 'Article',
+  ];
 
   // static $belongToMany = [];
 
@@ -20,4 +22,11 @@ class ArticleTag extends Model {
     self::MAIN_YES  => '是', 
     self::MAIN_NO => '否',
   ];
+
+  public static function multiCreate($articleId, $tagIds) {
+    foreach($tagIds as $t) 
+      if(!ArticleTag::create(['articleId' => $articleId, 'tagId' => $t]))
+        return false;
+    return true;
+  }
 }

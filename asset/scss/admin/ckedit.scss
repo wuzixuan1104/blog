@@ -56,13 +56,29 @@ main {
     margin-top: 20px;
     overflow: hidden;
     @include box-shadow(1px 1px 1px 1px rgba(130, 127, 127, 0.23));
+
     + div {
       margin-left: 20px;
     }
-
-    &:nth-child(4n + 1) {
-      margin-left: 0;
+    
+    @include range-width(1100px) {
+      &:nth-child(4n + 1) {
+        margin-left: 0;
+      }
     }
+    @include range-width(700px, 1100px) {
+      width: calc( (100% - 40px) / 3);
+      &:nth-child(3n + 1) {
+        margin-left: 0;
+      }
+    }
+    @include range-width(0, 700px) {
+      width: calc( (100% - 20px) / 2);
+      &:nth-child(2n + 1) {
+        margin-left: 0;
+      }
+    }
+
     &:hover {
       cursor: pointer;
     }

@@ -9,9 +9,18 @@ class ArticleRef extends Model {
 
   // static $hasMany = [];
 
-  // static $belongToOne = [];
+  static $belongToOne = [
+    'article' => 'Article',
+  ];
 
   // static $belongToMany = [];
 
   // static $uploaders = [];
+
+  public static function multiCreate($articleId, $refs) {
+    foreach($refs['title'] as $k => $title) 
+      if(!ArticleRef::create(['articleId' => $articleId, 'name' => $title, 'url' => $refs['href'][$k]]))
+        return false;
+    return true;
+  }
 }

@@ -20,6 +20,12 @@ echo $form->form(function() {
     ->need()
     ->focus();
 
+  FormTextarea::create('標籤', 'tags')
+    ->placeholder('格式：#tag');
+
+  FormTextarea::create('參考資料', 'references')
+    ->placeholder('格式：DEMO - https://www.blog.tw (換行)');
+
   FormTextarea::create('敘述', 'desc')
     ->placeholder('請輸入簡短敘述');
 

@@ -40,5 +40,5 @@ Router::dir('admin', 'Admin', function() {
   Router::post('articles/(id:num)enable/')->controller('Article@enable');
 
   Router::post('ckeditor/image/upload')->controller('CkeditorImg@upload');
-  Router::post('ckeditor/image/browse')->controller('CkeditorImg@browse');
+  Router::get('ckeditor/image/browse')->controller('CkeditorImg@browse');
 });

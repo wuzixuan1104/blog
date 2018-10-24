@@ -8,8 +8,11 @@ class CkeditorImg extends AdminCrudController {
   
   public function upload() {
     $funcNum = $_GET['CKEditorFuncNum'];
-    $files = Input::file(filename)();
+    wtf(function() use ($funcNum) {
+      return "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction ($funcNum, '', '上傳失敗！');</script>";
+    });
 
+    $files = Input::file();
     validator(function() use (&$files) {
       Validator::need($files, 'upload', '上傳圖片檔')->isUploadFile();
     });
@@ -22,6 +25,7 @@ class CkeditorImg extends AdminCrudController {
 
   public function browse() {
     $asset = Asset::create()
+                  ->addJS('/asset/js/res/jquery-1.10.2.min.js')
                   ->addJS('/asset/js/admin/ckedit.js')
                   ->addCSS('/asset/css/admin/ckedit.css');
 
