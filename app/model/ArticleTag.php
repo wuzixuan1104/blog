@@ -37,7 +37,7 @@ class ArticleTag extends Model {
         continue;
 
       if (false === ($key = array_search($t, $names))) {
-        if(!$newTag = \M\Tag::create(['type' => $params['type'], 'name' => $t, 'color' => 'other']))
+        if(!$newTag = \M\Tag::create(['name' => $t, 'color' => 'other']))
           return false;
 
         $tmp[$k] = $r[] = $newTag->id;

@@ -65,11 +65,11 @@
           ],
 
           '標籤設定 | icon-42' => [
-            // '標籤內容' => 'AdminArticleIndex | icon-49',
+            '標籤內容' => 'AdminTagIndex | icon-49',
           ],
 
           '搜尋設定 | icon-13' => [
-            // '搜尋內容' => 'AdminArticleIndex | icon-29',
+            '搜尋內容' => 'AdminSearchIndex | icon-29',
           ]
 
         ], $currentUrl); ?>

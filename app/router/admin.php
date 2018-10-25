@@ -59,6 +59,8 @@ Router::dir('admin', 'Admin', function() {
   Router::get('tags/(id:num)')->controller('Tag@show');
   Router::del('tags/(id:num)')->controller('Tag@delete');
 
+  Router::get('searches')->controller('Search@index');
+
   Router::post('ckeditor/image/upload')->controller('CkeditorImg@upload');
   Router::get('ckeditor/image/browse')->controller('CkeditorImg@browse');
 });
