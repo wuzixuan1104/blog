@@ -18,9 +18,11 @@ echo $list->search(function() {
     ->sql('title LIKE ?');
 
   SearchSelect::create('類型')
+    ->sql('type = ?')
     ->items(\M\Article::TYPE);
 
   SearchSelect::create('開關')
+    ->sql('enable = ?')
     ->items(\M\Article::ENABLE);
 
 });

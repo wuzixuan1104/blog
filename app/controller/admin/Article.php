@@ -36,6 +36,7 @@ class Article extends AdminCrudController {
   public function create() {
     wtfTo('AdminArticleAdd');
     $params = Input::post();
+    $params['content'] = Input::post('content', false);
    
     validator(function() use (&$params, &$extras) {
       Validator::need($params, 'enable', '開關')->inEnum(\M\Article::ENABLE);
@@ -44,24 +45,14 @@ class Article extends AdminCrudController {
       Validator::maybe($params, 'tags', '標籤')->isText();
       Validator::maybe($params, 'references', '參考資料')->isText();
       Validator::need($params, 'desc', '敘述')->isText();
-      Validator::need($params, 'content', '內容')->isText();
+      Validator::need($params, 'content', '內容')->isStr()->trim();
 
       $extras = [];
-      if(isset($params['tags'])) {
-        preg_match_all("/#\s*(?P<name>[^#\n]+)/", $params['tags'], $matches);
-
-        ($tags = \M\Tag::all()) && ($ids = arrayColumn($tags, 'id')) && ($names = arrayColumn($tags, 'name'));
-        foreach($matches['name'] as $k => $t) {
-          if(false === ($key = array_search(trim($t), $names)))
-            error('尚未新增 #' . $t . ' 請至標籤設定新增');
-          $extras['tags'][$k] = $ids[$key];
-        }
-      }
-
-      if(isset($params['references'])) {
-        preg_match_all("/\s*(?P<title>[^-]+)\s*-\s*(?P<href>[^\n]+)/", $params['references'], $matches);
-        $matches['title'] && ($extras['references']['title'] = $matches['title']) && ($extras['references']['href'] = $matches['href']);
-      }
+      if($params['tags']) 
+        ($extras['tags'] = \M\ArticleTag::checkFormat($params)) || error('標籤格式有誤');
+        
+      if($params['references']) 
+        ($extras['references'] = \M\ArticleRef::checkFormat($params)) || error('參考資料格式有誤');
     });
       
     transaction(function() use ($params, $extras) {
@@ -80,11 +71,63 @@ class Article extends AdminCrudController {
   }
   
   public function edit() {
-   
+    $form = AdminForm::create($this->obj)
+                     ->setActionUrl(Url::toRouter('AdminArticleUpdate', $this->obj))
+                     ->setBackUrl(Url::toRouter('AdminArticleIndex'));
+    
+    \M\AdminAction::read('準備修改文章', '準備修改文章「' . $this->obj->title . '(' . $this->obj->id . ')' . '」');
+  
+    return $this->view->with('form', $form);
   }
   
   public function update() {
+    wtfTo('AdminArticleEdit', $this->obj);
+
+    $params = Input::post();
+    $params['content'] = Input::post('content', false);
+
+    validator(function() use (&$params, &$extras) {
+      Validator::need($params, 'enable', '開關')->inEnum(\M\Article::ENABLE);
+      Validator::need($params, 'type', '類型')->inEnum(\M\Article::TYPE);
+      Validator::need($params, 'title', '標題')->isVarchar(190);
+      Validator::maybe($params, 'tags', '標籤')->isText();
+      Validator::maybe($params, 'references', '參考資料')->isText();
+      Validator::need($params, 'desc', '敘述')->isText();
+      Validator::need($params, 'content', '內容')->isStr()->trim();
+
+      $extras = ['tags' => [], 'references' => []];
+      if($params['tags']) 
+        ($extras['tags'] = \M\ArticleTag::checkFormat($params)) || error('標籤格式有誤');
+        
+      if($params['references']) 
+        ($extras['references'] = \M\ArticleRef::checkFormat($params)) || error('參考資料格式有誤');
+    });
+
+    transaction(function() use (&$params, &$extras) {
+      if (!($this->obj->columnsUpdate($params) && $this->obj->save()))
+        return false;
+
+      $oris = arrayColumn($this->obj->tags, 'tagId');
+      $dels = array_diff($oris, $extras['tags']);
+      $adds = array_diff($extras['tags'], $oris);
     
+      foreach ($dels as $del)
+        if ($artiTag = \M\ArticleTag::one('articleId = ? and tagId = ?', $this->obj->id, $del))
+          if (!$artiTag->delete())
+            return false;
+
+      foreach ($adds as $add)
+        if (!\M\ArticleTag::create(['articleId' => $this->obj->id, 'tagId' => $add]))
+          return false;
+
+      if(\M\ArticleRef::deleteAll('articleId = ?', $this->obj->id) && $extras['references'] && !(\M\ArticleRef::multiCreate($this->obj->id, $extras['references']))) 
+        return false;
+
+      \M\AdminAction::write('修改文章', '修改文章「' . $this->obj->title . '(' . $this->obj->id . ')' . '」');
+      return true;
+    });
+    
+    Url::refreshWithSuccessFlash(Url::toRouter('AdminArticleIndex'), '修改成功！');
   }
   
   public function show() {

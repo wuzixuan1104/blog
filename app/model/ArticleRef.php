@@ -17,6 +17,16 @@ class ArticleRef extends Model {
 
   // static $uploaders = [];
 
+  public static function checkFormat($params) {
+    preg_match_all("/\s*(?P<title>[^-]+)\s*-\s*(?P<href>[^\n]+)/", $params['references'], $matches);
+    if(!($matches['title'] && $matches['href']))
+      return false;
+
+    $tmp = [];
+    ($tmp['title'] = $matches['title']) && ($tmp['href'] = $matches['href']);
+    return $tmp;
+  }
+
   public static function multiCreate($articleId, $refs) {
     foreach($refs['title'] as $k => $title) 
       if(!ArticleRef::create(['articleId' => $articleId, 'name' => $title, 'url' => $refs['href'][$k]]))

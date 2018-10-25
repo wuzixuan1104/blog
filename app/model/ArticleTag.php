@@ -24,6 +24,30 @@ class ArticleTag extends Model {
     self::MAIN_NO => '否',
   ];
 
+  public static function checkFormat($params) {
+    preg_match_all("/#\s*(?P<name>[^#\n]+)/", $params['tags'], $matches);
+    if (!$matches['name'])
+      return false;
+
+    ($tags = \M\Tag::all()) && ($ids = arrayColumn($tags, 'id')) && ($names = arrayColumn($tags, 'name'));
+    
+    $tmp = $r = [];
+    foreach($matches['name'] as $k => $t) {
+      if(in_array(($t = trim($t)), $r))
+        continue;
+
+      if (false === ($key = array_search($t, $names))) {
+        if(!$newTag = \M\Tag::create(['type' => $params['type'], 'name' => $t, 'color' => 'other']))
+          return false;
+
+        $tmp[$k] = $r[] = $newTag->id;
+      } else {
+        $tmp[$k] = $r[] = $ids[$key];
+      }
+    }
+    return $tmp;
+  }
+
   public static function multiCreate($articleId, $tagIds) {
     foreach($tagIds as $t) 
       if(!ArticleTag::create(['articleId' => $articleId, 'tagId' => $t]))
