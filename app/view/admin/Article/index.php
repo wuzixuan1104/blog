@@ -54,7 +54,7 @@ echo $list->table(function($obj) {
     ->width(80);
 
   ListText::create('參考資料')
-   ->content(Url::toRouterHyperlink('AdminArticleTagIndex', $obj->id)->text(\M\ArticleTag::count('articleId = ?', $obj->id) . '筆')->target('_blank'))
+   ->content(Url::toRouterHyperlink('AdminArticleRefIndex', $obj->id)->text(\M\ArticleRef::count('articleId = ?', $obj->id) . '筆')->target('_blank'))
     ->width(80);
 
   ListText::create('瀏覽數')

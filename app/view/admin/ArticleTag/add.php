@@ -1,9 +1,6 @@
 <?php defined('MAPLE') || exit('此檔案不允許讀取！');
 
-use AdminFormInput as FormInput;
 use AdminFormSelect as FormSelect;
-use AdminFormSwitcher as FormSwitcher;
-use AdminFormTextarea as FormTextarea;
 
 echo $form->back();
 

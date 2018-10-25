@@ -15,7 +15,7 @@ class ArticleTag extends AdminCrudController {
 
     wtfTo('AdminArticleTagIndex', $this->parent);
 
-    $this->view->with('title', ['文章列表', $this->parent->title])
+    $this->view->with('title', ['標籤列表', $this->parent->title])
                ->with('currentUrl', Url::toRouter('AdminArticleIndex'))
                ->with('parent', $this->parent);
   }

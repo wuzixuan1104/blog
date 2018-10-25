@@ -62,8 +62,6 @@
 
           '文章設定 | icon-22' => [
             '主要列表' => 'AdminArticleIndex | icon-59',
-            // '指定標籤' => 'AdminArticleTagIndex | icon-49',
-            // '參考資料' => 'AdminArticleRefIndex | icon-46 | data-cntlabel=backup-isRead | data-cnt=' . \M\Backup::count('isRead = ?', \M\Backup::IS_READ_NO),
           ],
 
           '標籤設定 | icon-42' => [
