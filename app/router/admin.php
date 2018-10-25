@@ -42,8 +42,6 @@ Router::dir('admin', 'Admin', function() {
   Router::get('article/(articleId:num)/tags')->controller('ArticleTag@index');
   Router::get('article/(articleId:num)/tags/add')->controller('ArticleTag@add');
   Router::post('articles/(articleId:num)/tags/create')->controller('ArticleTag@create');
-  Router::get('articles/(articleId:num)/tags/(id:num)/edit')->controller('ArticleTag@edit');
-  Router::put('articles/(articleId:num)/tags/(id:num)')->controller('ArticleTag@update');
   Router::del('articles/(articleId:num)/tags/(id:num)')->controller('ArticleTag@delete');
 
   Router::get('article/(articleId:num)/refs')->controller('ArticleRef@index');
@@ -52,6 +50,14 @@ Router::dir('admin', 'Admin', function() {
   Router::get('articles/(articleId:num)/refs/(id:num)/edit')->controller('ArticleRef@edit');
   Router::put('articles/(articleId:num)/refs/(id:num)')->controller('ArticleRef@update');
   Router::del('articles/(articleId:num)/refs/(id:num)')->controller('ArticleRef@delete');
+
+  Router::get('tags')->controller('Tag@index');
+  Router::get('tags/add')->controller('Tag@add');
+  Router::post('tags/create')->controller('Tag@create');
+  Router::get('tags/(id:num)/edit')->controller('Tag@edit');
+  Router::put('tags/(id:num)')->controller('Tag@update');
+  Router::get('tags/(id:num)')->controller('Tag@show');
+  Router::del('tags/(id:num)')->controller('Tag@delete');
 
   Router::post('ckeditor/image/upload')->controller('CkeditorImg@upload');
   Router::get('ckeditor/image/browse')->controller('CkeditorImg@browse');

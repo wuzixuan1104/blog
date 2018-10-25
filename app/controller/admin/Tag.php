@@ -1,6 +1,6 @@
 <?php defined('MAPLE') || exit('此檔案不允許讀取！');
 
-class Article extends AdminCrudController {
+class Tag extends AdminCrudController {
   
   public function __construct() {
     parent::__construct();
@@ -25,8 +25,8 @@ class Article extends AdminCrudController {
   
   public function add() {
     $form = AdminForm::create()
-                     ->setActionUrl(Url::toRouter('AdminArticleCreate'))
-                     ->setBackUrl(Url::toRouter('AdminArticleIndex'));
+                     ->setActionUrl(Url::toRouter('AdminTagCreate'))
+                     ->setBackUrl(Url::toRouter('AdminTagIndex'));
 
     \M\AdminAction::read('準備新增文章');
     return $this->view->with('form', $form);
