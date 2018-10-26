@@ -58,11 +58,11 @@ echo $list->table(function($obj) {
     ->width(80);
 
   ListText::create('瀏覽數')
-    ->content(number_format(count($obj->cntPv)) . '次')
+    ->content(number_format($obj->cntPv) . '次')
     ->width(100);
 
   ListText::create('搜尋數')
-    ->content(number_format(count($obj->cntSearch)) . '次')
+    ->content(number_format($obj->cntSearch) . '次')
     ->width(100);
 
   ListText::create('新增時間')

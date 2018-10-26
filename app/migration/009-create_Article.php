@@ -7,6 +7,7 @@ return [
     `desc`       varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '簡短敘述',
     `title`      varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '標題',
     `content`    text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '內容',
+    `cover`      varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '封面',
     `cntPv`      int(11) unsigned NOT NULL DEFAULT 0 COMMENT '瀏覽數',
     `cntSearch`  int(11) unsigned NOT NULL DEFAULT 0 COMMENT '搜尋數',
     `enable`     enum('no', 'yes') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no' COMMENT '上架',

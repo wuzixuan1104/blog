@@ -4,6 +4,7 @@ use AdminShowText as ShowText;
 use AdminShowTextarea as ShowTextarea;
 use AdminShowCkeditor as ShowCkeditor;
 use AdminShowItems as ShowItems;
+use AdminShowImage as ShowImage;
 
 echo $show->back();
 
@@ -23,6 +24,9 @@ echo $show->panel(function($obj, &$title) {
   
   ShowItems::create('標籤')
     ->content(array_map(function($v) { return $v->tag->name; }, $obj->tags));
+
+  ShowImage::create('封面')
+    ->content($obj->cover);
 
   ShowTextarea::create('敘述')
     ->content($obj->desc);

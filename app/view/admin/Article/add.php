@@ -4,6 +4,7 @@ use AdminFormInput as FormInput;
 use AdminFormSelect as FormSelect;
 use AdminFormSwitcher as FormSwitcher;
 use AdminFormTextarea as FormTextarea;
+use AdminFormImage as FormImage;
 
 echo $form->back();
 
@@ -26,9 +27,15 @@ echo $form->form(function() {
   FormTextarea::create('參考資料', 'references')
     ->placeholder('格式：DEMO - https://www.blog.tw (換行)');
 
+  FormImage::create('封面', 'cover')
+    ->accept('image/*');
+
   FormTextarea::create('敘述', 'desc')
+    ->need()
     ->placeholder('請輸入簡短敘述');
 
   FormTextarea::create('內容', 'content')
+    ->need()
     ->type('ckeditor');
+
 });

@@ -4,34 +4,18 @@ namespace M;
 
 defined('MAPLE') || exit('此檔案不允許讀取！');
 
-class Article extends Model {
+class Me extends Model {
   // static $hasOne = [];
 
-  static $hasMany = [
-    'tags' => 'ArticleTag',
-    'refs' => 'ArticleRef',
-  ];
+  // static $hasMany = [];
 
   // static $belongToOne = [];
 
   // static $belongToMany = [];
 
   static $uploaders = [
-    'cover' => 'ArticleCoverImageUploader',
-  ];
-
-  const TYPE_DEV  = 'dev';
-  const TYPE_LIFE = 'life';
-  const TYPE = [
-    self::TYPE_DEV  => '開發心得', 
-    self::TYPE_LIFE => '生活點滴',
-  ];
-
-  const ENABLE_NO  = 'no';
-  const ENABLE_YES = 'yes';
-  const ENABLE = [
-    self::ENABLE_NO  => '關閉', 
-    self::ENABLE_YES => '啟用',
+    'avatar' => 'MeAvatarImageUploader',
+    'cover' => 'MeCoverImageUploader',
   ];
 
   public function putFiles($files) {
@@ -42,7 +26,15 @@ class Article extends Model {
   }
 }
 
-class ArticleCoverImageUploader extends ImageUploader {
+class MeAvatarImageUploader extends ImageUploader {
+  public function versions() {
+    return [
+      'w100' => ['resize' => [100, 100, 'width']],
+    ];
+  }
+}
+
+class MeCoverImageUploader extends ImageUploader {
   public function versions() {
     return [
       'w100' => ['resize' => [100, 100, 'width']],

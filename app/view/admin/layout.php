@@ -60,6 +60,10 @@
             '排程紀錄' => 'AdminCrontabIndex | icon-62 | data-cntlabel=crontab-isRead | data-cnt=' . \M\Crontab::count('isRead = ?', \M\Crontab::IS_READ_NO),
           ],
 
+          '我的設定 | icon-16' => [
+            '我的列表' => 'AdminMeIndex | icon-41',
+          ],
+
           '文章設定 | icon-22' => [
             '主要列表' => 'AdminArticleIndex | icon-59',
           ],

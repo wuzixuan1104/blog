@@ -34,10 +34,12 @@ class Article extends AdminCrudController {
   
   public function create() {
     wtfTo('AdminArticleAdd');
+
+    $files  = Input::file();
     $params = Input::post();
     $params['content'] = Input::post('content', false);
    
-    validator(function() use (&$params, &$extras) {
+    validator(function() use (&$params, &$files, &$extras) {
       Validator::need($params, 'enable', '開關')->inEnum(\M\Article::ENABLE);
       Validator::need($params, 'type', '類型')->inEnum(\M\Article::TYPE);
       Validator::need($params, 'title', '標題')->isVarchar(190);
@@ -45,6 +47,7 @@ class Article extends AdminCrudController {
       Validator::maybe($params, 'references', '參考資料')->isText();
       Validator::need($params, 'desc', '敘述')->isText();
       Validator::need($params, 'content', '內容')->isStr()->trim();
+      Validator::maybe($files,  'cover', '封面')->isUploadFile(config('upload', 'picture'));
 
       $extras = [];
       if($params['tags']) 
@@ -54,8 +57,11 @@ class Article extends AdminCrudController {
         ($extras['references'] = \M\ArticleRef::checkFormat($params)) || error('參考資料格式有誤');
     });
       
-    transaction(function() use ($params, $extras) {
+    transaction(function() use ($params, $files, $extras) {
       if(!$obj = \M\Article::create($params))
+        return false;
+
+      if(!$obj->putFiles($files))
         return false;
 
       if(isset($extras['tags']) && $extras['tags'] && !(\M\ArticleTag::multiCreate($obj->id, $extras['tags']))) 
@@ -82,10 +88,11 @@ class Article extends AdminCrudController {
   public function update() {
     wtfTo('AdminArticleEdit', $this->obj);
 
+    $files  = Input::file();
     $params = Input::post();
     $params['content'] = Input::post('content', false);
 
-    validator(function() use (&$params, &$extras) {
+    validator(function() use (&$params, &$files, &$extras) {
       Validator::need($params, 'enable', '開關')->inEnum(\M\Article::ENABLE);
       Validator::need($params, 'type', '類型')->inEnum(\M\Article::TYPE);
       Validator::need($params, 'title', '標題')->isVarchar(190);
@@ -93,7 +100,8 @@ class Article extends AdminCrudController {
       Validator::maybe($params, 'references', '參考資料')->isText();
       Validator::need($params, 'desc', '敘述')->isText();
       Validator::need($params, 'content', '內容')->isStr()->trim();
-
+      Validator::maybe($files,  'cover', '封面')->isUploadFile(config('upload', 'picture'));
+     
       $extras = ['tags' => [], 'references' => []];
       if($params['tags']) 
         ($extras['tags'] = \M\ArticleTag::checkFormat($params)) || error('標籤格式有誤');
@@ -102,8 +110,11 @@ class Article extends AdminCrudController {
         ($extras['references'] = \M\ArticleRef::checkFormat($params)) || error('參考資料格式有誤');
     });
 
-    transaction(function() use (&$params, &$extras) {
+    transaction(function() use (&$params, &$files, &$extras) {
       if (!($this->obj->columnsUpdate($params) && $this->obj->save()))
+        return false;
+
+      if (!$this->obj->putFiles($files))
         return false;
 
       $oris = arrayColumn($this->obj->tags, 'tagId');

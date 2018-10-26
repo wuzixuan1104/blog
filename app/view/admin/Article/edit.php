@@ -2,6 +2,7 @@
 
 use AdminFormInput as FormInput;
 use AdminFormSelect as FormSelect;
+use AdminFormImage as FormImage;
 use AdminFormSwitcher as FormSwitcher;
 use AdminFormTextarea as FormTextarea;
 
@@ -30,6 +31,10 @@ echo $form->form(function($obj) {
   FormTextarea::create('參考資料', 'references')
     ->placeholder('格式：DEMO - https://www.blog.tw (換行)')
     ->val(implode("\r\n", array_map(function($ref) { return $ref->name . ' - ' . $ref->url; }, $obj->refs)));
+
+  FormImage::create('封面', 'cover')
+    ->accept('image/*')
+    ->val($obj->cover);
 
   FormTextarea::create('敘述', 'desc')
     ->placeholder('請輸入簡短敘述')
