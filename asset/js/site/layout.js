@@ -9,7 +9,7 @@ $(function () {
   currentUrl = $(location).attr('href').split('/').pop();
 
   $('#menu').find('a').each(function() {
-    if($(this).attr('href') == currentUrl)
+    if($(this).attr('href').split('/').pop() == currentUrl)
       $(this).addClass('active').siblings().removeClass('active');
   });
 

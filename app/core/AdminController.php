@@ -57,5 +57,6 @@ abstract class AdminController extends Controller {
                       ->with('currentUrl', null)
                       ->with('theme', $theme)
                       ->withReference('asset', $this->asset);
+
   }
 }

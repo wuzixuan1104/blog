@@ -16,9 +16,11 @@ class Me extends AdminCrudController {
   }
 
   public function index() {
+    
     $list = AdminList::create('\M\Me');
 
     \M\AdminAction::read('讀取我的列表');
+
     return $this->view->with('list', $list);
   }
   

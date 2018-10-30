@@ -1,11 +1,16 @@
 <?php defined('MAPLE') || exit('此檔案不允許讀取！');
 
-class Accomplish extends Controller {
-  public function index() {
-    // $asset = Asset::create()
-    //               ->addCSS('/asset/css/site/Main/index.css');
+class Accomplish extends SiteController {
+  public function __construct() {
+    parent::__construct();
 
-    // return View::create('site/Main/index.php')
-    //            ->with('asset', $asset);
+    $this->view->with('title', '成就紀錄 - Hsuan\'s Blog');
+  }
+
+  public function index() {
+    $asset = $this->asset->addCSS('/asset/css/site/Accomplish/index.css');
+
+    return $this->view->setPath('site/accomplish.php')
+               ->with('asset', $asset);
   }
 }

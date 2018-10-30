@@ -1,8 +1,12 @@
 <?php defined('MAPLE') || exit('此檔案不允許讀取！');
 
 Router::get('')->controller('Main@index');
-Router::get('article/(id:num)')->controller('Article@detail');
-Router::get('articles/(type:any)')->controller('Article@index');
+
+Router::get('lives')->controller('Life@index');
+Router::get('live/(id:num)')->controller('Life@detail');
+
+Router::get('devs')->controller('Dev@index');
+Router::get('dev/(id:num)')->controller('Dev@detail');
 
 Router::get('accomplish')->controller('Accomplish@index');
 

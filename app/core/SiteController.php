@@ -12,6 +12,7 @@ abstract class SiteController extends Controller {
     $this->asset = Asset::create(1)
          ->addCSS('/asset/css/res/jquery.datetimepicker.css')
          ->addCSS('/asset/css/icon-site.css')
+         ->addCSS('/asset/css/site/public.css')
          ->addJS('/asset/js/res/jquery-1.10.2.min.js')
          ->addJS('/asset/js/res/jquery_ui_v1.12.1.js')
          ->addJS('/asset/js/res/jquery_ujs.js')
@@ -27,13 +28,11 @@ abstract class SiteController extends Controller {
          ->addJS('/asset/js/res/ckeditor_d2015_05_18/plugins/dropler/dropler.js')
          ->addJS('/asset/js/site/layout.js');
 
-    $this->view = View::maybe(Router::className() . '/' . Router::methodName() . '.php')
-                          ->withReference('asset', $this->asset);
-    // $this->view = View::maybe('admin/' . Router::className() . '/' . Router::methodName() . '.php')
-    //                   ->appendTo(View::create('admin/layout.php'), 'content')
-    //                   ->with('flash', $this->flash)
-    //                   ->with('currentUrl', null)
-    //                   ->with('theme', $theme)
-    //                   ->withReference('asset', $this->asset);
+    $this->view = View::maybe('site/' . Router::className() . '/' . Router::methodName() . '.php')
+                          ->appendTo(View::create('site/layout.php'), 'content')
+                          ->withReference('asset', $this->asset)
+                          ->with('me', \M\Me::one())
+                          ->with('devCnt', \M\Article::count('type = ?', \M\Article::TYPE_DEV))
+                          ->with('lifeCnt', \M\Article::count('type = ?', \M\Article::TYPE_LIFE));
   }
 }
