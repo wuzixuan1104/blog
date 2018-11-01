@@ -26,6 +26,10 @@
 #main .container #search:hover input[type="text"]::-webkit-input-placeholder { color: #667786; }
 @media screen and (max-width: 1199px) and (min-width: 1030px) { #main .container #search { width: 700px; } }
 @media screen and (max-width: 1029px) and (min-width: 0) { #main .container #search { width: 100%; margin-bottom: 5px; } }
+#main .container #backBtn { position: relative; display: block; background-color: #d3dde8; padding-left: 40px; margin-bottom: 10px; height: 40px; border: 1px solid #c0d3e8; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+#main .container #backBtn:before { position: absolute; top: 0px; left: 20px; display: inline-block; height: 40px; line-height: 40px; color: #5c8298; }
+#main .container #backBtn input { display: block; font-size: 13px; font-weight: bold; line-height: 40px; margin-bottom: 10px; color: #5c8298; background-color: transparent; border: 0; padding: 0; outline: none; }
+#main .container #backBtn input:hover { cursor: pointer; }
 #main .container .lists { display: inline-block; }
 #main .container .lists:empty { display: inline-block; height: 100px; width: 900px; background-color: white; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 0 #e0e0e0, 0 0 1px rgba(0, 0, 0, 0.12); -webkit-box-shadow: 0 1px 0 #e0e0e0, 0 0 1px rgba(0, 0, 0, 0.12); box-shadow: 0 1px 0 #e0e0e0, 0 0 1px rgba(0, 0, 0, 0.12); }
 #main .container .lists:empty:before { display: inline-block; width: 100%; content: '查無任何相關文章。'; text-align: center; line-height: 100px; color: #b4b4b4; font-size: 15px; }

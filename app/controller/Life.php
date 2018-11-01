@@ -6,12 +6,18 @@ class Life extends SiteController {
   }
 
   public function index() {
+    $where = Where::create(['enable = ? and type = ?', \M\Article::ENABLE_YES, \M\Article::TYPE_LIFE]);
+    
+    $q = Input::get('keyword');
+    $q && $where->and('title LIKE ?', '%' . $q . '%');
+    $q && $this->view->with('keyword', $q) && \M\SearchLog::create(['keyword' => $q]);
+ 
     $asset = $this->asset->addCSS('/asset/css/site/Article/list.css');
 
     return $this->view->setPath('site/articles.php')
                       ->with('title', '生活點滴 - Hsuan\'s Blog')
                       ->with('asset', $asset)
-                      ->with('objs', \M\Article::all(['where' => ['enable = ? and type = ?', \M\Article::ENABLE_YES, \M\Article::TYPE_LIFE], 'order' => 'createAt DESC']));
+                      ->with('objs', \M\Article::all(['where' => $where, 'order' => 'createAt DESC']));
   }
 
   public function show() {
