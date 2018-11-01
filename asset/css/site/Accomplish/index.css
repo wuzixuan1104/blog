@@ -8,13 +8,13 @@
 #main .container figure .bg img { width: 100%; }
 @media screen and (max-width: 1029px) and (min-width: 0) { #main .container figure { height: 170px; } }
 #main .container #timeline { display: inline-block; width: 100%; padding: 40px 60px; }
-#main .container #timeline .period { position: relative; display: inline-block; width: 100%; height: 120px; margin-top: -3px; }
+#main .container #timeline .period { position: relative; display: inline-block; width: 100%; height: 106px; margin-top: -3px; }
 #main .container #timeline .period header { display: inline-block; width: 100%; font-size: 24px; font-weight: bold; letter-spacing: 2px; color: rgba(220, 83, 83, 0.7); text-align: left; padding-top: 40px; padding-bottom: 20px; padding-left: 142px; }
 #main .container #timeline .period:before { position: absolute; display: inline-block; content: ''; top: 0; left: 144px; width: 22px; height: 4px; background-color: rgba(206, 213, 217, 0.59); }
 @media screen and (max-width: 1029px) and (min-width: 0) { #main .container #timeline .period { height: 100px; }
   #main .container #timeline .period:before { top: -1px; left: 4px; }
   #main .container #timeline .period header { padding-left: 4px; font-size: 18px; } }
-#main .container #timeline .item { display: inline-block; width: 100%; height: 170px; *zoom: 1; }
+#main .container #timeline .item { display: inline-block; width: 100%; height: 145px; *zoom: 1; }
 #main .container #timeline .item:after { display: table; content: ""; line-height: 0; clear: both; }
 #main .container #timeline .item > * { display: inline-block; float: left; }
 #main .container #timeline .item time { text-align: left; width: 140px; }
@@ -22,7 +22,8 @@
 #main .container #timeline .item i { width: 30px; }
 #main .container #timeline .item i:before { display: inline-block; width: 30px; height: 30px; line-height: 30px; background-color: #e17b74; color: white; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.28); -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.28); box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.28); }
 #main .container #timeline .item i.dev:before { content: '\e91e'; font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal; -moz-osx-font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; -ms-font-smoothing: antialiased; -o-font-smoothing: antialiased; }
-#main .container #timeline .item i:after { display: inline-block; content: ''; height: 132px; width: 4px; background-color: rgba(206, 213, 217, 0.59); margin: 5px 0; }
+#main .container #timeline .item i.life:before { content: '\e927'; font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal; -moz-osx-font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; -ms-font-smoothing: antialiased; -o-font-smoothing: antialiased; }
+#main .container #timeline .item i:after { display: inline-block; content: ''; height: 107px; width: 4px; background-color: rgba(206, 213, 217, 0.59); margin: 5px 0; }
 #main .container #timeline .item .content { height: 100%; width: calc(100% - 140px - 30px); padding-left: 30px; text-align: left; overflow: hidden; }
 #main .container #timeline .item .content h3 { display: block; width: 100%; margin: 5px auto; font-size: 22px; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #main .container #timeline .item .content .tag { display: inline-block; width: 100%; margin: 5px 0; *zoom: 1; }

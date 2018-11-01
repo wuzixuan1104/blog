@@ -11,6 +11,7 @@ class Accomplish extends SiteController {
     $asset = $this->asset->addCSS('/asset/css/site/Accomplish/index.css');
 
     return $this->view->setPath('site/accomplish.php')
-               ->with('asset', $asset);
+               ->with('asset', $asset)
+               ->with('objs', \M\Article::all(['where' => ['enable = ?', \M\Article::ENABLE_YES], 'order' => 'createAt DESC']));
   }
 }

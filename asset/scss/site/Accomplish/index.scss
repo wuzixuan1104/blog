@@ -53,7 +53,7 @@
         position: relative;
         display: inline-block;
         width: 100%;
-        height: 120px;
+        height: 106px;
         margin-top: -3px;
         header {
           display: inline-block;
@@ -95,7 +95,7 @@
       .item {
         display: inline-block;
         width: 100%;
-        height: 170px;
+        height: 145px;
         @include clearfix();
 
         > * {
@@ -134,11 +134,18 @@
               @include font-smoothing(antialiased);
             }
           }
+          &.life {
+            &:before {
+              content: '\e927';
+              font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal;
+              @include font-smoothing(antialiased);
+            }
+          }
 
           &:after {
             display: inline-block;
             content: '';
-            height: 132px;
+            height: 107px;
             width: 4px;
             background-color: rgba(206,213,217,0.59);
             margin: 5px 0;

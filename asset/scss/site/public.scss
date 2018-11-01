@@ -459,7 +459,7 @@ html {
 }
 
 #page {
-  display: inline-block;
+  display: block;
   margin-top: 40px;
 
   @include range-width(0, 1030px) {

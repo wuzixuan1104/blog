@@ -108,152 +108,188 @@
       }
     }
 
-    > a {
-      position: relative;
-      display: block;
-      width: $boxWidth;
-      height: 90px;
-      text-decoration: none;
-      color: black;
-      background-color: white;
-      border: 1px solid rgba(128, 128, 128, 0.15);
-      padding: 16px 30px;
-      padding-right: 60px;
-      @include border-radius(5px);
+    .lists {
+      display: inline-block;
 
-      + a {
-        margin-top: 12px;
-        @include range-width(0, 1030px) {
-          margin-top: 5px;
-        }
-      }
-
-      > * {
-        display: block;
-        text-align: left;
-      }
-      b {
-        font-size: 18px;
-        color: rgb(29, 39, 42);
-        height: 27px;
-        margin-bottom: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
+      &:empty {
+        display: inline-block;
+        height: 100px;
+        width: $boxWidth;
+        background-color: white; 
+        @include border-radius(5px);
+        @include box-shadow(0 1px 0 #e0e0e0, 0 0 1px rgba(0, 0, 0, 0.12));
         &:before {
           display: inline-block;
-          content: attr(data-tip);
-          width: 55px;
-          height: 25px;
-          line-height: 25px;
-          font-size: 13px;
-          font-weight: 0px;
-          color: white;
+          width: 100%;
+          content: '查無任何相關文章。';
           text-align: center;
-          margin-right: 15px;
-          background-color: rgb(138, 135, 135);
-
-          @include border-radius(20px);
-          @include box-shadow(1px 1px 1px 1px rgba(195, 194, 194, 0.38));
-        }
-      }
-      span {
-        color: rgb(76, 76, 76);
-        margin: -4px auto;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      } 
-
-      &:after {
-        position: absolute;
-        display: inline-block;
-        top: 0;
-        right: 0;
-        content: '\e315';
-        width: 20px;
-        height: 88px;
-        line-height: 88px;
-        color: white;
-        font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal;
-        @include font-smoothing(antialiased);
-        @include border-right-radius(5px);
-        @include opacity(.7);
-        @include transition(width .3s, opacity .3s);
-      }
-
-      @include range-width(1030px, 1200px) {
-        width: $boxWidth2;
-      }
-      @include range-width(0, 1030px) {
-        width: 100%;
-        height: 80px;
-        padding: 10px 20px;
-        &:after {
-          display: none;
-        }
-       
-        b {
-          font-size: 17px;
-          &:before {
-            width: 48px;
-            height: 24px;
-          }
-        }
-        span {
+          line-height: 100px;
+          color: #b4b4b4;
           font-size: 15px;
         }
       }
 
-      &:hover {
+      > a {
+        position: relative;
+        display: block;
+        width: $boxWidth;
+        height: 90px;
+        text-decoration: none;
+        color: black;
+        background-color: white;
+        border: 1px solid rgba(128, 128, 128, 0.15);
+        padding: 16px 30px;
+        padding-right: 60px;
+        @include border-radius(5px);
+
+        + a {
+          margin-top: 12px;
+          @include range-width(0, 1030px) {
+            margin-top: 5px;
+          }
+        }
+
+        > * {
+          display: block;
+          text-align: left;
+        }
+        b {
+          font-size: 18px;
+          color: rgb(29, 39, 42);
+          height: 27px;
+          margin-bottom: 10px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          &:before {
+            display: inline-block;
+            content: attr(data-tip);
+            width: 55px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 13px;
+            font-weight: 0px;
+            color: white;
+            text-align: center;
+            margin-right: 15px;
+            background-color: rgb(138, 135, 135);
+
+            @include border-radius(20px);
+            @include box-shadow(1px 1px 1px 1px rgba(195, 194, 194, 0.38));
+          }
+        }
+        span {
+          color: rgb(76, 76, 76);
+          margin: -4px auto;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        } 
+
         &:after {
-          width: 40px;
-          font-size: 25px;
-          @include opacity(1);
+          position: absolute;
+          display: inline-block;
+          top: 0;
+          right: 0;
+          content: '\e315';
+          width: 20px;
+          height: 88px;
+          line-height: 88px;
+          color: white;
+          background-color: rgb(138, 135, 135);
+          font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal;
+          @include font-smoothing(antialiased);
+          @include border-right-radius(5px);
+          @include opacity(.7);
+          @include transition(width .3s, opacity .3s);
+        }
+
+        &:hover {
+          &:after {
+            width: 40px;
+            font-size: 25px;
+            @include opacity(1);
+          }
+        }
+
+
+        &.pink {
+          b {
+            &:before {
+              background-color: rgb(232, 143, 143);
+            }
+          }
+          &:after {
+            background-color: rgba(232, 143, 143, 1);
+          }
+        }
+        &.blue {
+          b {
+            &:before {
+              background-color: rgb(129, 170, 206);
+            }
+          }
+          &:after {
+            background-color: rgba(129, 170, 206, 1);
+          }
+        }
+        &.green {
+          b {
+            &:before {
+              background-color: rgb(137, 183, 141);
+            }
+          }
+          &:after {
+            background-color: rgba(137, 183, 141, 1);
+          }
+        }
+        &.orange {
+          b {
+            &:before {
+              background-color: rgb(236, 185, 130);
+            }
+          }
+          &:after {
+            background-color: rgba(236, 185, 130, 1);
+          }
         }
       }
 
-
-      &.pink {
-        b {
-          &:before {
-            background-color: rgb(232, 143, 143);
-          }
+      @include range-width(1030px, 1200px) {
+        width: $boxWidth2;
+        &:empty {
+          width: $boxWidth2;
         }
-        &:after {
-          background-color: rgba(232, 143, 143, 1);
+        a {
+          width: $boxWidth2;
         }
       }
-      &.blue {
-        b {
-          &:before {
-            background-color: rgb(129, 170, 206);
+      @include range-width(0, 1030px) {
+        width: 100%;
+        &:empty {
+          width: 100%;
+        }
+        > a {
+          width: 100%;
+          height: 80px;
+          padding: 10px 20px;
+          &:after {
+            display: none;
+          }
+         
+          b {     
+            font-size: 17px;
+            &:before {
+              width: 48px;
+              height: 24px;
+            }
+          }
+          span {
+            font-size: 15px;
           }
         }
-        &:after {
-          background-color: rgba(129, 170, 206, 1);
-        }
-      }
-      &.green {
-        b {
-          &:before {
-            background-color: rgb(137, 183, 141);
-          }
-        }
-        &:after {
-          background-color: rgba(137, 183, 141, 1);
-        }
-      }
-      &.orange {
-        b {
-          &:before {
-            background-color: rgb(236, 185, 130);
-          }
-        }
-        &:after {
-          background-color: rgba(236, 185, 130, 1);
-        }
+        
       }
     }
   }

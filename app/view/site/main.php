@@ -1,7 +1,7 @@
-<h1>吳姿萱</h1>
+<h1><?php echo $me->name; ?></h1>
 <header>
   <figure class="bg"><img src="<?php echo $me->cover->url(); ?>"></figure>
-  <span class="bottom">我不厲害，我只是個小小菜鳥工程師__</span>
+  <span class="bottom"><?php echo $me->slogan; ?></span>
 </header>
 
 <artical class="m">
@@ -43,26 +43,13 @@
   </div>
 
   <span class="title">熱門文章</span>
-  <div class="hot">
-    <a href="#">
-      <figure class="bg"><img src="<?php echo $me->cover->url(); ?>"></figure>
-      <b data-tip="前端" class="">瀏覽器 Console 上畫 QR 瀏覽器 Console 上畫 QR</b>
-      <span>來用瀏覽器除錯器畫一個屬於個人的彩蛋吧！使用瀏覽</span>
-    </a>
-    <a href="#">
-      <figure class="bg"><img src="<?php echo $me->cover->url(); ?>"></figure>
-      <b data-tip="前端" class="">瀏覽器 Console 上畫 QR</b>
-      <span>來用瀏覽器除錯器畫一個屬於個人的彩蛋吧！使用瀏覽</span>
-    </a>
-    <a href="#">
-      <figure class="bg"><img src="<?php echo $me->cover->url(); ?>"></figure>
-      <b data-tip="前端" class="">瀏覽器 Console 上畫 QR</b>
-      <span>來用瀏覽器除錯器畫一個屬於個人的彩蛋吧！使用瀏覽</span>
-    </a>
-    <a href="#">
-      <figure class="bg"><img src="<?php echo $me->cover->url(); ?>"></figure>
-      <b data-tip="前端" class="">瀏覽器 Console 上畫 QR</b>
-      <span>來用瀏覽器除錯器畫一個屬於個人的彩蛋吧！使用瀏覽</span>
-    </a>
-  </div>
+  <div class="hot"><?php 
+      echo implode('', array_map(function($v) {
+        return '<a href="' . Url::base($v->type . '/' . $v->id ) . '">
+                  <figure class="bg"><img src="' . $v->cover->url() . '"></figure>
+                  <b data-tip="' . ($v->tag ? $v->tag->tag->name : '') . '">' . $v->title . '</b>
+                  <span>' . $v->desc . '</span>
+                </a>';
+      }, \M\Article::all(['where' => ['enable = ?', \M\Article::ENABLE_YES], 'order' => 'cntPv DESC', 'limit' => 4])));
+    ?></div>
 </artical>

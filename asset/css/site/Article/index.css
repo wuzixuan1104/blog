@@ -21,6 +21,7 @@
 #main .container artical.arti .info > * { display: inline-block; float: right; }
 #main .container artical.arti .info time:after { display: inline-block; content: attr(data-time); color: rgba(185, 185, 185, 0.77); font-size: 14px; font-style: italic; }
 #main .container artical.arti .s { display: inline-block; width: 100%; }
+#main .container artical.arti .s img { display: block; width: 100%; padding: 10px 0; }
 #main .container artical.arti .s figure { margin: 10px auto; width: 100%; overflow: hidden; }
 #main .container artical.arti .s figure img { width: 100%; }
 #main .container artical.arti .s figure figcaption { display: inline-block; width: 100%; height: 28px; font-size: 14px; line-height: 28px; text-align: left; margin-top: 10px; }

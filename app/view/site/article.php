@@ -1,35 +1,21 @@
 <div class="container">
-  <figure class="bg"><img src="img/code.jpg"></figure>
+  <figure class="bg"><img src="<?php echo $obj->cover != '' ? $obj->cover->url() : Url::base('asset/img/' . $obj->type . '.jpg'); ?>"></figure>
   <artical class="arti">
     <header>
       <span class="tip">
-        <a href="">前端</a>
-        <a href="">HTML</a>
-        <a href="">SCSS</a>
-        <a href="">前端</a>
-        <a href="">HTML</a>
-        <a href="">SCSS</a>
-        <a href="">前端</a>
-        <a href="">HTML</a>
-        <a href="">SCSS</a><a href="">前端</a>
-        <a href="">HTML</a>
-        <a href="">SCSS</a><a href="">前端</a>
-        <a href="">HTML</a>
-        <a href="">SCSS</a>
+        <?php 
+          echo implode('', array_map(function($v) {
+            return '<a href="">' . ($v->tag ? $v->tag->name : '其他') . '</a>';
+          }, $obj->tags));
+        ?>
       </span>
-      <h1>這是標題喔～～～～～～～</h1>
+      <h1><?php echo $obj->title; ?></h1>
     </header>
     <div class="info">
-      <time data-time="2017.11.28" datetime="2017-11-28 00:00:00"></time>
+      <time data-time="2017.11.28" datetime="<?php echo (String)$obj->createAt; ?>"></time>
     </div>
     <section class="s">
-      <p>內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文</p>
-      <figure>
-        <img alt="這是範例" src="img/example.png">
-        <figcaption class="icon-up">這是圖片補充說明</figcaption>
-      </figure>
-      <p>內文內文內文內文<a href="#">內文內文內文</a>內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文</p>
-      <p>內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文</p>
+      <?php echo $obj->content; ?>
     </section>
   </artical>
 
@@ -37,14 +23,9 @@
     <section class="s">
       <header class="bold">相關參考</header>
       <ul class="source">
-        <li>
-          <span>Live Demo</span>
-          <a href="https://www.google.com" target="_blank"></a>
-        </li>
-        <li>
-          <span>Live Demo</span>
-          <a href="https://www.google.com" target="_blank"></a>
-        </li>
+        <?php echo implode('', array_map(function($v) {
+          return '<li><span>' . $v->name . '</span><a href="' . $v->url . '" target="_blank" ></a></li>';
+        }, $obj->refs)); ?>
       </ul>
     </section>
   </artical>
@@ -52,28 +33,15 @@
   <artical class="hot">
     <section class="s">
       <header>推薦文章</header>
-      <!-- <div class="boxes"></div> -->
-      <div class="boxes">
-        <a href="#">
-          <figure class="bg"><img alt="" src="img/intro.jpg"></figure>
-          <b data-tip="其他">Arduino 新銳展翅創意競賽</b>
-          <span>大三專題中使用了Arduino UNO以及多項 Sensor 組合出</span>
-        </a>
-
-        <a href="#">
-          <figure class="bg"><img alt="" src="img/intro.jpg"></figure>
-          <b data-tip="其他">Arduino 新銳展翅創意競賽</b>
-          <span>大三專題中使用了Arduino UNO以及多項 Sensor 組合出</span>
-        </a>
-
-        <a href="#">
-          <figure class="bg"><img alt="" src="img/intro.jpg"></figure>
-          <b data-tip="其他">Arduino 新銳展翅創意競賽</b>
-          <span>大三專題中使用了Arduino UNO以及多項 Sensor 組合出</span>
-        </a>
-
-        
-      </div>
+      <div class="boxes"><?php 
+          echo implode('', array_map(function($v) use ($obj){
+            return $v->id == $obj->id ? '' : '<a href="' . Url::base($v->type . '/' . $v->id ) . '">
+                      <figure class="bg"><img alt="" src="' . ($v->cover != '' ? $v->cover->url() : Url::base('asset/img/' . $v->type . '.jpg')) . '"></figure>
+                      <b data-tip="' . $v->tag->tag->name . '">' . $v->title . '</b>
+                      <span>' . $v->desc . '</span>
+                    </a>';
+          }, $hots));
+        ?></div>
     </section>
   </artical>
 </div>

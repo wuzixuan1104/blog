@@ -30,7 +30,7 @@
 #main .m .hot a .bg { display: inline-block; margin: 0 auto; width: 100%; height: 130px; overflow: hidden; }
 #main .m .hot a .bg img { width: 100%; }
 #main .m .hot a b { display: inline-block; width: 100%; height: 30px; line-height: 30px; margin-top: 8px; padding: 0 16px; color: rgba(82, 82, 82, 0.9); text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-#main .m .hot a span { display: inline-block; font-size: 10px; margin-top: 4px; margin-bottom: 12px; height: 40px; line-height: 20px; padding: 0 16px; overflow: hidden; color: rgba(65, 65, 65, 0.75); text-align: left; }
+#main .m .hot a span { display: inline-block; width: 100%; font-size: 10px; margin-top: 4px; margin-bottom: 12px; height: 40px; line-height: 20px; padding: 0 16px; overflow: hidden; color: rgba(65, 65, 65, 0.75); text-align: left; }
 #main .m .hot a + a { margin-left: 20px; }
 @media screen and (max-width: 1059px) and (min-width: 635px) { #main .m .hot a { width: calc((100% - 40px) / 3); }
   #main .m .hot a:nth-child(n+4) { display: none; } }

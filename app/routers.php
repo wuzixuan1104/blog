@@ -3,10 +3,10 @@
 Router::get('')->controller('Main@index');
 
 Router::get('lives')->controller('Life@index');
-Router::get('live/(id:num)')->controller('Life@detail');
+Router::get('life/(id:num)')->controller('Life@show');
 
 Router::get('devs')->controller('Dev@index');
-Router::get('dev/(id:num)')->controller('Dev@detail');
+Router::get('dev/(id:num)')->controller('Dev@show');
 
 Router::get('accomplish')->controller('Accomplish@index');
 

@@ -101,13 +101,15 @@ class Article extends AdminCrudController {
       Validator::need($params, 'desc', '敘述')->isText();
       Validator::need($params, 'content', '內容')->isStr()->trim();
       Validator::maybe($files,  'cover', '封面')->isUploadFile(config('upload', 'picture'));
-     
+      
       $extras = ['tags' => [], 'references' => []];
       if($params['tags']) 
         ($extras['tags'] = \M\ArticleTag::checkFormat($params)) || error('標籤格式有誤');
         
       if($params['references']) 
         ($extras['references'] = \M\ArticleRef::checkFormat($params)) || error('參考資料格式有誤');
+      
+
     });
 
     transaction(function() use (&$params, &$files, &$extras) {
@@ -130,8 +132,11 @@ class Article extends AdminCrudController {
         if (!\M\ArticleTag::create(['articleId' => $this->obj->id, 'tagId' => $add]))
           return false;
 
-      if(\M\ArticleRef::deleteAll('articleId = ?', $this->obj->id) && $extras['references'] && !(\M\ArticleRef::multiCreate($this->obj->id, $extras['references']))) 
-        return false;
+      if($extras['references']) {
+        \M\ArticleRef::deleteAll('articleId = ?', $this->obj->id);
+        if(!\M\ArticleRef::multiCreate($this->obj->id, $extras['references']))
+          return false;
+      }
 
       \M\AdminAction::write('修改文章', '修改文章「' . $this->obj->title . '(' . $this->obj->id . ')' . '」');
       return true;
@@ -153,6 +158,15 @@ class Article extends AdminCrudController {
     
     transaction(function() {
       \M\AdminAction::write('刪除文章', '刪除文章「' . $this->obj->title . '(' . $this->obj->id . ')' . '」');
+      
+      if($this->obj->tags)
+        if(!\M\ArticleTag::deleteAll('articleId = ?', $this->obj->id))
+          return false;
+
+      if($this->obj->refs)
+        if(!\M\ArticleRef::deleteAll('articleId = ?', $this->obj->id))
+          return false;
+        
       return $this->obj->delete();
     });
 
