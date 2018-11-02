@@ -8,7 +8,9 @@ abstract class SiteController extends Controller {
 
     Load::sysLib('Asset.php');
     Load::sysLib('Html.php');
-
+    Load::sysLib('Validator.php');
+    Load::sysLib('Session.php');
+    
     $this->asset = Asset::create(1)
          ->addCSS('/asset/css/res/jquery.datetimepicker.css')
          ->addCSS('/asset/css/icon-site.css')

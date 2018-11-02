@@ -37,7 +37,7 @@
           echo implode('', array_map(function($v) use ($obj){
             return $v->id == $obj->id ? '' : '<a href="' . Url::base($v->type . '/' . $v->id ) . '">
                       <figure class="bg"><img alt="" src="' . ($v->cover != '' ? $v->cover->url() : Url::base('asset/img/' . $v->type . '.jpg')) . '"></figure>
-                      <b data-tip="' . $v->tag->tag->name . '">' . $v->title . '</b>
+                      <b data-tip="' . ($v->tag ? $v->tag->tag->name : '其他') . '">' . $v->title . '</b>
                       <span>' . $v->desc . '</span>
                     </a>';
           }, $hots));

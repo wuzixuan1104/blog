@@ -6,18 +6,29 @@ class Dev extends SiteController {
   }
 
   public function index() {
+    wtfto('DevIndex');
+
     $where = Where::create(['enable = ? and type = ?', \M\Article::ENABLE_YES, \M\Article::TYPE_DEV]);
     
-    $q = Input::get('keyword');
-    $q && $where->and('title LIKE ?', '%' . $q . '%');
-    $q && $this->view->with('keyword', $q) && \M\SearchLog::create(['keyword' => $q]);
- 
+    $params = Input::get();
+
+    validator(function() use (&$params) {
+      Validator::maybe($params, 'offset', '位移', 0)->isNum()->trim()->stripTags()->greaterEqual(0);
+      Validator::maybe($params, 'limit',  '長度', 10)->isNum()->trim()->stripTags()->greaterEqual(0);
+      Validator::maybe($params, 'keyword',  '關鍵字')->trim()->stripTags()->isText();
+    });
+
+    if(isset($params['keyword'])) {
+      $where->and('title LIKE ? or `desc` LIKE ?', '%' . $params['keyword'] . '%', '%' . $params['keyword'] . '%');
+      $this->view->with('keyword', $params['keyword']) && \M\SearchLog::create(['keyword' => $params['keyword']]);
+    }
+
     $asset = $this->asset->addCSS('/asset/css/site/Article/list.css');
 
     return $this->view->setPath('site/articles.php')
-                      ->with('title', '開發心得 - Hsuan\'s Blog')
+                      ->with('title', (isset($params['keyword']) ? '搜尋結果' : '開發心得') . ' - Hsuan\'s Blog')
                       ->with('asset', $asset)
-                      ->with('objs', \M\Article::all(['where' => $where, 'order' => 'createAt DESC']));
+                      ->with('objs', \M\Article::all(['where' => $where, 'order' => 'createAt DESC', 'offset' => $params['offset'] * 10, 'limit' => $params['limit']]));
   }
 
   public function show() {

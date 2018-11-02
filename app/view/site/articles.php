@@ -19,10 +19,11 @@
 
   <div id="page">
     <ul>
-      <li class="active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
+      <li><a class="icon-l" href="?limit=10&offset=0"></a></li>
+      <li class="active"><a href="?limit=10&offset=0">1</a></li>
+      <li><a href="?limit=10&offset=1">2</a></li>
+      <li><a href="?limit=10&offset=2">3</a></li>
+      <li><a href="?limit=10&offset=3">4</a></li>
       <li><a class="icon-r" href="#"></a></li>
       <li><a class="icon-rr" href="#"></a></li>
     </ul>

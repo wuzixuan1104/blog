@@ -9,13 +9,13 @@ class Life extends SiteController {
     $where = Where::create(['enable = ? and type = ?', \M\Article::ENABLE_YES, \M\Article::TYPE_LIFE]);
     
     $q = Input::get('keyword');
-    $q && $where->and('title LIKE ?', '%' . $q . '%');
+    $q && $where->and('title LIKE ? or `desc` LIKE ?', '%' . $q . '%', '%' . $q . '%');
     $q && $this->view->with('keyword', $q) && \M\SearchLog::create(['keyword' => $q]);
  
     $asset = $this->asset->addCSS('/asset/css/site/Article/list.css');
 
     return $this->view->setPath('site/articles.php')
-                      ->with('title', '生活點滴 - Hsuan\'s Blog')
+                      ->with('title', ($q ? '搜尋結果' : '生活點滴') . '- Hsuan\'s Blog')
                       ->with('asset', $asset)
                       ->with('objs', \M\Article::all(['where' => $where, 'order' => 'createAt DESC']));
   }

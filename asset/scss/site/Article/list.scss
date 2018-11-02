@@ -249,7 +249,6 @@
           }
         }
 
-
         &.pink {
           b {
             &:before {
@@ -259,6 +258,7 @@
           &:after {
             background-color: rgba(232, 143, 143, 1);
           }
+
         }
         &.blue {
           b {
@@ -269,6 +269,7 @@
           &:after {
             background-color: rgba(129, 170, 206, 1);
           }
+
         }
         &.green {
           b {
@@ -279,6 +280,7 @@
           &:after {
             background-color: rgba(137, 183, 141, 1);
           }
+
         }
         &.orange {
           b {
@@ -289,6 +291,7 @@
           &:after {
             background-color: rgba(236, 185, 130, 1);
           }
+
         }
       }
 
