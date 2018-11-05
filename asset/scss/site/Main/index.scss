@@ -92,6 +92,114 @@
         display: inline-block;
         float: left;
         height: 210px;
+        // @include range-width(1300px, 1499px) {
+        //   //30個div
+        //   width: calc(100% / 30);
+        // }
+        // @include range-width(1000px, 1300px) {
+        //   width: calc(100% / 24);
+        // }
+        // @include range-width(700px, 1000px) {
+        //   width: calc(100% / 20);
+        // }
+        // @include range-width(300px, 700px) {
+        //   width: calc(100% / 10);
+        // }
+
+        a {
+          position: relative;
+          display: inline-block;
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
+          border: 2px solid rgba(238, 240, 242, 1.00);
+          background-color: rgb(210, 210, 210);
+          text-decoration: none;
+          color: white;
+          z-index: 1;
+
+          &:before {
+            display: inline-block;
+            content: attr(data-cnt);
+            text-align: center;
+            font-size: 12px;            
+          }
+          &[data-cnt]:not([data-cnt="0"]) {
+            background-color: rgb(210, 224, 157);
+          }
+
+          > span {
+            position: absolute;
+            display: none;
+            bottom: -25px;
+            left: -60px;
+            width: 170px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            background-color: rgb(25, 25, 25);
+            padding: 0 5px;
+            @include opacity(0);
+            @include border-radius(3px);
+            @include transition(opacity .3s);
+
+            &:before {
+              position: absolute;
+              content: '';
+              bottom: 100%;
+              left: 25px;
+              border: solid transparent;
+              border-bottom-color: rgb(25, 25, 25);
+              border-width: 5px;
+              margin-left: 45px;
+              height: 0;
+              width: 0;
+            }
+          }
+
+          &:hover {
+            z-index: 2;
+            span {
+              display: inline-block;
+              @include opacity(1);
+            }
+          }
+
+          &:nth-last-child(-n + 3) {
+            > span {
+              bottom: 100%;
+              &:before {
+                bottom: -40%;
+                @include transform(rotate(180deg));
+              }
+            }
+          }
+        }
+
+        @for $i from 1 through 3 {
+          &:nth-child(#{$i}) {
+            a {
+              > span {
+                left: 0;
+                &:before {
+                  margin-left: -15px;
+                }
+              }
+            }
+          }
+        }
+        &:nth-last-child(-n+3) {
+          a {
+            > span {
+              right: 0;
+              left: auto;
+              &:before {
+                margin-left: 125px;
+              }
+            }
+          }
+        }
+
         @include range-width(1300px, 1499px) {
           //30個div
           width: calc(100% / 30);
@@ -104,27 +212,6 @@
         }
         @include range-width(300px, 700px) {
           width: calc(100% / 10);
-        }
-
-        a {
-          position: relative;
-          display: inline-block;
-          width: 100%;
-          height: 30px;
-          line-height: 30px;
-          border: 2px solid rgba(238, 240, 242, 1.00);
-          background-color: rgb(210, 210, 210);
-          text-decoration: none;
-          color: white;
-          &:before {
-            display: inline-block;
-            content: attr(data-cnt);
-            text-align: center;
-            font-size: 12px;            
-          }
-          &[data-cnt]:not([data-cnt="0"]) {
-            background-color: rgb(210, 224, 157);
-          }
         }
       }
     }

@@ -24,7 +24,7 @@
                             }, $obj->tags)) .
                           '</span>' : '') .
                           '<p>' . $obj->desc . '</p>
-                          <a class="more" href=""></a>
+                          <a class="more" href="' . Url::base($obj->type . '/' . $obj->id) . '"></a>
                         </div>
                       </session>';
             }, $objs)); ?>

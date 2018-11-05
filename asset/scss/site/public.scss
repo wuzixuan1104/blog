@@ -458,64 +458,42 @@ html {
   @include transition(padding-left .3s);
 }
 
-#page {
+#pagination {
   display: block;
   margin-top: 40px;
 
   @include range-width(0, 1030px) {
     margin-top: 10px;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
   }
 
-  ul {
+  > div {
     display: inline-block;
     padding: 0;
     @include clearfix();
-
-    > li {  
+   
+    > a {
       display: inline-block;
-      float: left;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      text-decoration: none;
+      color: rgb(117, 116, 116);
+      @include border-radius(50px);
 
       &.active {
-        a {
-          background-color: rgb(56, 72, 84);
-          color: rgb(234, 163, 50);
-        }
+        background-color: rgb(56, 72, 84);
+        color: rgb(234, 163, 50);
       }
 
       &:hover {
-        a {
-          background-color: rgb(247, 247, 247);
-        }
-      } 
-
-      > a {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 14px;
-        text-decoration: none;
-        color: rgb(117, 116, 116);
-        @include border-radius(50px);
+        background-color: rgb(247, 247, 247);
       }
 
-      + li {
-         margin-left: 10px;
+      + a {
+        margin-left: 10px;
       }
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

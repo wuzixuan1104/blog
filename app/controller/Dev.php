@@ -1,34 +1,33 @@
 <?php defined('MAPLE') || exit('此檔案不允許讀取！');
 
-class Dev extends SiteController {
+class Dev extends SitePageController {
   public function __construct() {
     parent::__construct();
   }
 
   public function index() {
-    wtfto('DevIndex');
-
     $where = Where::create(['enable = ? and type = ?', \M\Article::ENABLE_YES, \M\Article::TYPE_DEV]);
     
-    $params = Input::get();
+    $q = Input::get('keyword');
+    $q && $where->and('title LIKE ? or `desc` LIKE ?', '%' . $q . '%', '%' . $q . '%');
+    $q && $this->view->with('keyword', $q) && \M\SearchLog::create(['keyword' => $q]);
 
-    validator(function() use (&$params) {
-      Validator::maybe($params, 'offset', '位移', 0)->isNum()->trim()->stripTags()->greaterEqual(0);
-      Validator::maybe($params, 'limit',  '長度', 10)->isNum()->trim()->stripTags()->greaterEqual(0);
-      Validator::maybe($params, 'keyword',  '關鍵字')->trim()->stripTags()->isText();
-    });
+    $total = \M\Article::count($where);
+    $pagesStr = Pagination::info($total);
 
-    if(isset($params['keyword'])) {
-      $where->and('title LIKE ? or `desc` LIKE ?', '%' . $params['keyword'] . '%', '%' . $params['keyword'] . '%');
-      $this->view->with('keyword', $params['keyword']) && \M\SearchLog::create(['keyword' => $params['keyword']]);
-    }
+    $objs  = \M\Article::all([
+     'order'  => 'createAt DESC',
+     'offset' => $pagesStr['offset'],
+     'limit'  => $pagesStr['limit'],
+     'where'  => $where]);
 
     $asset = $this->asset->addCSS('/asset/css/site/Article/list.css');
 
     return $this->view->setPath('site/articles.php')
                       ->with('title', (isset($params['keyword']) ? '搜尋結果' : '開發心得') . ' - Hsuan\'s Blog')
                       ->with('asset', $asset)
-                      ->with('objs', \M\Article::all(['where' => $where, 'order' => 'createAt DESC', 'offset' => $params['offset'] * 10, 'limit' => $params['limit']]));
+                      ->with('objs', $objs)
+                      ->with('pagesStr', $pagesStr['links']);
   }
 
   public function show() {

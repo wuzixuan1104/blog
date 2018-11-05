@@ -1,6 +1,6 @@
 <?php defined('MAPLE') || exit('此檔案不允許讀取！');
 
-class Life extends SiteController {
+class Life extends SitePageController {
   public function __construct() {
     parent::__construct();
   }
@@ -11,13 +11,23 @@ class Life extends SiteController {
     $q = Input::get('keyword');
     $q && $where->and('title LIKE ? or `desc` LIKE ?', '%' . $q . '%', '%' . $q . '%');
     $q && $this->view->with('keyword', $q) && \M\SearchLog::create(['keyword' => $q]);
- 
+
+    $total = \M\Article::count($where);
+    $pagesStr = Pagination::info($total);
+
+    $objs  = \M\Article::all([
+     'order'  => 'createAt DESC',
+     'offset' => $pagesStr['offset'],
+     'limit'  => $pagesStr['limit'],
+     'where'  => $where]);
+
     $asset = $this->asset->addCSS('/asset/css/site/Article/list.css');
 
     return $this->view->setPath('site/articles.php')
                       ->with('title', ($q ? '搜尋結果' : '生活點滴') . '- Hsuan\'s Blog')
                       ->with('asset', $asset)
-                      ->with('objs', \M\Article::all(['where' => $where, 'order' => 'createAt DESC']));
+                      ->with('objs', $objs)
+                      ->with('pagesStr', $pagesStr['links']);
   }
 
   public function show() {
