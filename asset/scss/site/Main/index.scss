@@ -90,21 +90,9 @@
       @include clearfix();
       div {
         display: inline-block;
-        float: left;
+        float: right;
         height: 210px;
-        // @include range-width(1300px, 1499px) {
-        //   //30個div
-        //   width: calc(100% / 30);
-        // }
-        // @include range-width(1000px, 1300px) {
-        //   width: calc(100% / 24);
-        // }
-        // @include range-width(700px, 1000px) {
-        //   width: calc(100% / 20);
-        // }
-        // @include range-width(300px, 700px) {
-        //   width: calc(100% / 10);
-        // }
+        
 
         a {
           position: relative;
@@ -118,14 +106,15 @@
           color: white;
           z-index: 1;
 
-          &:before {
-            display: inline-block;
-            content: attr(data-cnt);
-            text-align: center;
-            font-size: 12px;            
-          }
           &[data-cnt]:not([data-cnt="0"]) {
             background-color: rgb(210, 224, 157);
+
+            &:before {
+              display: inline-block;
+              content: attr(data-cnt);
+              text-align: center;
+              font-size: 12px;            
+            }
           }
 
           > span {
@@ -133,7 +122,7 @@
             display: none;
             bottom: -25px;
             left: -60px;
-            width: 170px;
+            width: 180px;
             height: 25px;
             line-height: 25px;
             font-size: 12px;
@@ -176,8 +165,14 @@
           }
         }
 
-        @for $i from 1 through 3 {
-          &:nth-child(#{$i}) {
+        @include range-width(1300px, 1499px) {
+          //30個div
+          width: calc(100% / 30);
+          &:nth-child(n + 31) {
+            display: none;
+          }
+
+          &:nth-child(n + 28) {
             a {
               > span {
                 left: 0;
@@ -188,31 +183,72 @@
             }
           }
         }
-        &:nth-last-child(-n+3) {
-          a {
-            > span {
-              right: 0;
-              left: auto;
-              &:before {
-                margin-left: 125px;
+        @include range-width(1000px, 1300px) {
+          width: calc(100% / 24);
+          &:nth-child(n + 25) {
+            display: none;
+          }
+
+          &:nth-child(n + 22) {
+            a {
+              > span {
+                left: 0;
+                &:before {
+                  margin-left: -15px;
+                }
               }
             }
           }
         }
-
-        @include range-width(1300px, 1499px) {
-          //30個div
-          width: calc(100% / 30);
-        }
-        @include range-width(1000px, 1300px) {
-          width: calc(100% / 24);
-        }
         @include range-width(700px, 1000px) {
           width: calc(100% / 20);
+          &:nth-child(n + 21) {
+            display: none;
+          }
+
+          &:nth-child(n + 18) {
+            a {
+              > span {
+                left: 0;
+                &:before {
+                  margin-left: -15px;
+                }
+              }
+            }
+          }
         }
         @include range-width(300px, 700px) {
           width: calc(100% / 10);
+          &:nth-child(n + 11) {
+            display: none;
+          }
+
+          &:nth-child(n + 8) {
+            a {
+              > span {
+                left: 0;
+                &:before {
+                  margin-left: -15px;
+                }
+              }
+            }
+          }
         }
+       
+        @for $i from 1 through 3 {
+          &:nth-child(#{$i}) {
+            a {
+              > span {
+                right: 0;
+                left: auto;
+                &:before {
+                  margin-left: 125px;
+                }
+              }
+            }
+          }
+        }
+        
       }
     }
 
@@ -326,6 +362,7 @@
 
   @include range-width(635px, 1030px) {
     padding-left: 0;
+    padding-bottom: 100px;
   }
   @include range-width(0, 635px) {
     padding-left: 0;
