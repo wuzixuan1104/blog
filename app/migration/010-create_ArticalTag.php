@@ -9,7 +9,7 @@ return [
     `updateAt`   datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新時間',
     `createAt`   datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '新增時間',
     PRIMARY KEY (`id`),
-    KEY `articleId_index` (`articalId`)
+    KEY `articleId_index` (`articleId`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;",
 
   'down' => "DROP TABLE IF EXISTS `ArticleTag`;",

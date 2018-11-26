@@ -183,7 +183,7 @@
             }
           }
         }
-        @include range-width(1000px, 1300px) {
+        @include range-width(1000px) {
           width: calc(100% / 24);
           &:nth-child(n + 25) {
             display: none;

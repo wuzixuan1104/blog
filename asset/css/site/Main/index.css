@@ -28,7 +28,7 @@
   #main .m .calendar div:nth-child(n + 31) { display: none; }
   #main .m .calendar div:nth-child(n + 28) a > span { left: 0; }
   #main .m .calendar div:nth-child(n + 28) a > span:before { margin-left: -15px; } }
-@media screen and (max-width: 1299px) and (min-width: 1000px) { #main .m .calendar div { width: calc(100% / 24); }
+@media screen and (min-width: 1000px) { #main .m .calendar div { width: calc(100% / 24); }
   #main .m .calendar div:nth-child(n + 25) { display: none; }
   #main .m .calendar div:nth-child(n + 22) a > span { left: 0; }
   #main .m .calendar div:nth-child(n + 22) a > span:before { margin-left: -15px; } }
