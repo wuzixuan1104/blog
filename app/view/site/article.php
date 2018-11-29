@@ -12,7 +12,7 @@
       <h1><?php echo $obj->title; ?></h1>
     </header>
     <div class="info">
-      <time data-time="2017.11.28" datetime="<?php echo (String)$obj->createAt; ?>"></time>
+      <time data-time="<?php echo $obj->createAt->format('Y.m.d'); ?>" datetime="<?php echo (String)$obj->createAt; ?>"></time>
     </div>
     <section class="s">
       <?php echo $obj->content; ?>
