@@ -29,8 +29,11 @@ class ArticleTag extends Model {
     if (!$matches['name'])
       return false;
 
-    ($tags = \M\Tag::all()) && ($ids = arrayColumn($tags, 'id')) && ($names = arrayColumn($tags, 'name'));
+    $names = [];
+    $ids = '';
     
+    ($tags = \M\Tag::all()) && ($ids = arrayColumn($tags, 'id')) && ($names = arrayColumn($tags, 'name'));
+
     $tmp = $r = [];
     foreach($matches['name'] as $k => $t) {
       if(in_array(($t = trim($t)), $r))
