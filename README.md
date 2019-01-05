@@ -7,7 +7,7 @@
 + 後端
   + PHP MVC 框架： Maple (來源：https://github.com/comdan66/Maple)
   + 資料庫：Mysql (使用 ORM - Active Record)
-  + server：AWS EC2
+  + server：AWS ec2
   
 + DEMO： https://blog.kerker.tw/ 
 + 圖示：
