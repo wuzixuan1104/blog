@@ -12,5 +12,5 @@
 + DEMO： https://blog.kerker.tw/ 
 + 圖示：
 
-<img src='assets/img/readme2.png' width='700'>
-<img src='assets/img/readme1.png' width='700'>
+<img src='asset/img/readme2.png' width='700'>
+<img src='asset/img/readme1.png' width='700'>
