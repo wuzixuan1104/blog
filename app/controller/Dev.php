@@ -6,6 +6,7 @@ class Dev extends SitePageController {
   }
 
   public function index() {
+
     $where = Where::create(['enable = ? and type = ?', \M\Article::ENABLE_YES, \M\Article::TYPE_DEV]);
     
     $q = Input::get('keyword');
@@ -32,8 +33,12 @@ class Dev extends SitePageController {
 
   public function show() {
     $asset = $this->asset->addCSS('/asset/css/site/Article/index.css');
-    $obj = \M\Article::one('id = ? and type = ? and enable = ?', Router::params('id'), \M\Article::TYPE_DEV, \M\Article::ENABLE_YES);
+    if (!$obj = \M\Article::one('id = ? and type = ? and enable = ?', Router::params('id'), \M\Article::TYPE_DEV, \M\Article::ENABLE_YES))
+      return $this->view->setPath('error/oops.php')->with('error', '找不到此文章！');
     
+    if(($obj->cntPv = $obj->cntPv + 1) && !$obj->save())
+      Log::error('新增觀看次數失敗 : ' . $obj->id);
+
     return $this->view->setPath('site/article.php')
                       ->with('title', $obj->title . ' - Hsuan\'s Blog')
                       ->with('asset', $asset)

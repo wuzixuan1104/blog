@@ -1,8 +1,19 @@
 <?php defined('MAPLE') || exit('此檔案不允許讀取！');
+use AdminListSearchInput as SearchInput;
 
 use AdminListText as ListText;
 use AdminListCtrl as ListCtrl;
 use AdminListImage as ListImage;
+
+echo $list->search(function() {
+  
+  SearchInput::create('ID')
+    ->sql('id = ?');
+
+  SearchInput::create('標題')
+    ->sql('title LIKE ?');
+
+});
 
 echo $list->table(function($obj) {
 
@@ -35,7 +46,8 @@ echo $list->table(function($obj) {
     ->width(150);
 
   ListCtrl::create()
-    ->addEdit('AdminMeEdit', $obj);
+    ->addEdit('AdminMeEdit', $obj)
+    ->addDelete('AdminMeDelete', $obj);
 });
 
 echo $list->pages();

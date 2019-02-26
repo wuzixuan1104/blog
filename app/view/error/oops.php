@@ -12,7 +12,6 @@
     <div class="container">
       <div class="image"><img src="/asset/img/oops.png"></div>
       <span class="text"><?php echo $error; ?></span>
-      <div class="footer"><span>Maple<span></div>
     </div>
   </body>
 </html>
